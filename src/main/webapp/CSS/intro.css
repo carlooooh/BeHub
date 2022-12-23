@@ -1,16 +1,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
 *{
-    margin: 0;
+
     padding: 0;
     box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
 }
+
 body{
     display: flex;
     align-items: center;
     justify-content: center;
     min-height: 100vh;
-    background: #343F4F;
+    background:#2B2C3B;
 }
 .wrapper{
     display: flex;
@@ -28,7 +29,7 @@ body{
 }
 .dynamic-txts li{
     list-style: none;
-    color: #FC6D6D;
+    color: #B9BCFA;
     font-size: 60px;
     font-weight: 500;
     position: relative;
@@ -51,8 +52,8 @@ body{
     left: 0;
     height: 100%;
     width: 100%;
-    background: #343F4F;
-    border-left: 2px solid #FC6D6D;
+    background: #2B2D3B;
+    border-left: 2px solid #fff;
     animation: typing 3s steps(10) infinite;
 }
 @keyframes typing {
@@ -63,3 +64,20 @@ body{
         left: 0;
     }
 }
+
+
+
+.enter-button{
+    display:block;
+    text-align: center;
+    font-size: 25px;
+    text-decoration:none;
+    color: #fff;
+    opacity:1;
+    margin-top:30px;
+    transition: all 1s ease 3s;
+    font-family: 'Poppins', sans-serif;
+
+}
+
+.content-hidden .enter-button{opacity: 0; transform:translate3d(0, -30px, 0);}
