@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="BeHubWebApplication:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>BeHubWebApplication</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="archive" name="BeHubWebApplication-1.0-SNAPSHOT.war">
+      <element id="artifact" artifact-name="BeHubWebApplication:war exploded" />
+    </root>
+  </artifact>
+</component>
