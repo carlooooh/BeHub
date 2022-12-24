@@ -1,0 +1,80 @@
+header {
+    margin:0;
+    padding: 20px 0;
+    box-sizing: border-box;
+    width: 100%;
+    display: flex;
+    position: fixed;
+    top: 0;
+    left: 0;
+    justify-content: space-around;
+    align-items: center;
+    background: #8A8CBA;
+    backdrop-filter: blur(10px);
+    z-index: 999;
+    height: 10vh;
+    border-bottom:3px solid #e9d9bf;
+}
+
+
+.home, .areapersonale, .vendi, .carrello{
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.left-nav ul{
+    display: flex;
+    gap: 35px;
+    margin: 0;
+    list-style:none;
+}
+
+.right-nav ul{
+    display: flex;
+    gap: 35px;
+    margin: 0;
+    list-style:none;
+}
+
+.right-nav ul li a{
+    font-size:25px;
+    text-decoration: none;
+    color: #ffffff;
+    font-family: 'Poppins', sans-serif;
+    cursor: pointer;
+
+}
+
+.left-nav ul li a{
+    font-size:25px;
+    text-decoration: none;
+    color: #ffffff;
+    font-family: 'Poppins', sans-serif;
+    cursor: pointer;
+
+}
+
+header li a img{
+    width: 48px;
+}
+
+
+
+
+@media screen and (max-width: 708px){
+    .a-header, .logo img{
+        display:none;
+    }
+
+    .right-nav li a img, .left-nav li a img{
+        width:48px;
+        justify-content: center;
+        align-items: center;
+
+    }
+
+
+
+}
