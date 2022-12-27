@@ -33,13 +33,13 @@
       </li>
       <li>
         <div class="areapersonale">
-          <a href="cart.jsp"><img src="./immagini/areapersonale.png"></a>
+          <a href="account.jsp"><img src="./immagini/areapersonale.png"></a>
           <a class="a-header" href="cart.jsp">Area Personale</a>
         </div>
       </li>
       <li>
         <div class="vendi">
-          <a href="cart.jsp"><img src="./img/icone/carello-ico.png"></a>
+          <a href="vendi.jsp"><img src="./img/icone/carello-ico.png"></a>
           <a class="a-header" href="cart.jsp">Vendi</a>
         </div>
       </li>
@@ -57,7 +57,7 @@
       </li>
       <li>
         <div class="cart">
-          <a href="cart.jsp"><img src="./img/icone/carello-ico.png"></a>
+          <a href="accedi.jsp"><img src="./img/icone/carello-ico.png"></a>
           <a class="a-header" href="cart.jsp">Accedi/Registrati</a>
         </div>
       </li>
@@ -109,7 +109,6 @@
       <li>
         <div class="carrello">
           <a href="account.jsp"><img src="./immagini/carrello.png"></a>
-          <a class="a-header" href="account.jsp">Carrello</a>
         </div>
       </li>
 
