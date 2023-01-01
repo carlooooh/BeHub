@@ -11,12 +11,12 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <jsp:include page="header.jsp"/>
+
 
 </head>
 <body>
 
-
+<jsp:include page="header.jsp"/>
 
 
 
@@ -68,7 +68,7 @@
                 <div class="carousel-caption">
                     <h2>GIOCATTOLI</h2>
                     <p>C'è un tempo per studiare ma c'è sempre tempo per giocare.</p>
-                    <a href="" class="hero-btn">Esplora</a>
+                    <a href="       " class="hero-btn">Esplora</a>
                 </div>
             </div>
         </div>

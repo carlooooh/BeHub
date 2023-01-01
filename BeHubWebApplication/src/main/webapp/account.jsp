@@ -9,8 +9,20 @@
 <html>
 <head>
     <title>Area Personale</title>
+    <link rel="stylesheet" href="css/account.css">
 </head>
 <body>
+<jsp:include page="header.jsp"/>
+<div class="container">
+    <div class="buttons">
+
+    </div>
+    <div class="infos">
+
+    </div>
+</div>
+
+<jsp:include page="footer.jsp"/>
 
 </body>
 </html>

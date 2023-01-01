@@ -39,8 +39,8 @@
       </li>
       <li>
         <div class="vendi">
-          <a href="vendi.jsp"></a>
-          <a class="a-header" href="cart.jsp">Vendi</a>
+          <a href="vendi.jsp" class="vendi-btn"> VENDI </a>
+
         </div>
       </li>
 

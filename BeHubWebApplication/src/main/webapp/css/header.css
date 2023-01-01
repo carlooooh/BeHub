@@ -61,6 +61,18 @@ header li a img{
 }
 
 
+.vendi-btn{
+    margin-top: 15px;
+    display: inline-list-item;
+    text-decoration: none;
+    color: white;
+    border: 3px solid #ffffff;
+    padding: 8px 34px;
+    font-size: 22px;
+    background: transparent;
+    position: relative;
+    cursor: pointer;
+}
 
 
 @media screen and (max-width: 708px){
