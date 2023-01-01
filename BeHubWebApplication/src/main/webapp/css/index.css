@@ -7,7 +7,7 @@
 }
 
 body {
-    background-image: linear-gradient(135deg, #2B2C3B 25%, #B9BCFA 75%);
+    background-image: linear-gradient(135deg, #c04848 25%, #610361 75%);
     padding-top:10vh;
     font-family: 'Poppins', sans-serif;
 }
@@ -18,8 +18,9 @@ body {
     height: 90vh;
     border: 15px solid ;
 
-    border-left-color: #B9BCFA;
-    border-top-color: #B9BCFA;
+    border-left-color: #610361;
+    border-right-color: #c04848;
+
 
 }
 
@@ -38,19 +39,21 @@ body {
 
 .hero-btn:hover{
     border: 1px solid #B9BCFA;
-    background: #2B2C3B;
+    background: #610361;
     transition: 0.5s;
     color: #B9BCFA;
 }
 
-h1{
+.carosello h1{
     font-family: Serif;
     text-align: center;
+    font-size: 84px;
     color: white;
 }
 
-h2{
+.carousel-item h2{
     font-family: Serif;
+    font-size: 45px;
 }
 
 p{
