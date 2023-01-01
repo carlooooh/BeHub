@@ -39,7 +39,7 @@
       </li>
       <li>
         <div class="vendi">
-          <a href="vendi.jsp"><img src="./img/icone/carello-ico.png"></a>
+          <a href="vendi.jsp"></a>
           <a class="a-header" href="cart.jsp">Vendi</a>
         </div>
       </li>
@@ -108,7 +108,7 @@
 
       <li>
         <div class="carrello">
-          <a href="account.jsp"><img src="./immagini/carrello.png"></a>
+          <a href="account.jsp"><img src="./immagini/carrello2.png"></a>
         </div>
       </li>
 

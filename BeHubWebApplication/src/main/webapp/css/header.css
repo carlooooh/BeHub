@@ -9,11 +9,11 @@ header {
     left: 0;
     justify-content: space-around;
     align-items: center;
-    background: #8A8CBA;
+
     backdrop-filter: blur(10px);
     z-index: 999;
     height: 10vh;
-    border-bottom:3px solid #e9d9bf;
+    border-bottom:1px solid #ffffff;
 }
 
 
@@ -42,7 +42,7 @@ header {
     font-size:25px;
     text-decoration: none;
     color: #ffffff;
-    font-family: 'Poppins', sans-serif;
+    font-family: Courier;
     cursor: pointer;
 
 }
@@ -51,7 +51,7 @@ header {
     font-size:25px;
     text-decoration: none;
     color: #ffffff;
-    font-family: 'Poppins', sans-serif;
+    font-family: Courier;
     cursor: pointer;
 
 }

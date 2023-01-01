@@ -15,22 +15,7 @@
 </head>
 <body>
 
-<footer>
-  <div class="row">
-
-
-
-    <div class="col">
-
-      <p class="email-id">behub@dev.hubproject.it
-      <h4>+39 333 666 9990</h4>
-    </div>
-
-
-
-  </div>
-
-  <hr>
+<hr>
   <p class="copyright"> BeHub &copy; - All Rights Reserved</p>
 
 
@@ -38,4 +23,4 @@
 
 
 </body>
-</html
+</html>

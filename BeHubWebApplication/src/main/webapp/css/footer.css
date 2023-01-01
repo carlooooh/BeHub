@@ -1,89 +1,22 @@
 footer{
     width:100%;
-    position: relative;
+    position: fixed;
     bottom :0;
-    background:linear-gradient(to right, #8A8CBA, #A6A9E0);
     line-height:20px;
     padding: 20px 0 15px;
-}
 
-.logof{
-    width:80px;
-    margin-bottom:30px;
-}
-.logof p{
-    font-family: 'Poppins', sans-serif;
-    color:#fff;
-    font-size:14px;
-}
-
-.row{
-    width:85%;
-    margin:auto;
-    display:flex;
-    flex-wrap:wrap;
-    align-items:flex-start;
-    justify-content: space-between;
-}
-
-.col{
-    font-family: 'Poppins', sans-serif;
-    flex-basis:25%;
-    padding:10px;
-}
-
-
-
-
-.col p{
-    color:#fff;
-}
-
-.col h3{
-
-    font-family: 'Poppins', sans-serif;
-    width:fit-content;
-    margin-bottom:10px;
-    position:relative;
-    color:#fff;
-}
-
-.col h4{
-    font-family: 'Poppins', sans-serif;
-    color:#fff;
-    font-size:14px;
-}
-
-.email-id{
-    width:fit-content;
-    border-bottom: 1px solid #ccc;
-    margin: 5px 0;
-}
-
-
-.col ul li{
-    list-style:none;
-    margin-bottom: 3px;
-
-}
-.col ul li a{
-    font-family: 'Poppins', sans-serif;
-
-    text-decoration:none;
-    color: #fff;
 }
 
 hr{
     width: 90%;
     border: 0;
-    border-bottom: 1px solid #ccc;
+    border-bottom: 4px solid #ffffff;
     margin: 4px auto;
 }
 
 .copyright{
     text-align:center;
     font-family: 'Poppins', sans-serif;
-    color: #fff;
     color: #fff;
 }
 
