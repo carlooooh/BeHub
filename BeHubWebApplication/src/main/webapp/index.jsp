@@ -36,7 +36,7 @@
                 <div class="carousel-caption">
                     <h2>ABBIGLIAMENTO</h2>
                     <p>Scopri sempre più lati della tua personalità.</p>
-                    <a href="" class="hero-btn">Esplora</a>
+                    <a href="catalogo.jsp" class="hero-btn">Esplora</a>
                 </div>
             </div>
             <div class="carousel-item">
@@ -44,7 +44,7 @@
                 <div class="carousel-caption">
                     <h2>CALZATURE</h2>
                     <p>Affronta con stile anche le montagne più alte.</p>
-                    <a href="" class="hero-btn">Esplora</a>
+                    <a href="catalogo.jsp" class="hero-btn">Esplora</a>
                 </div>
             </div>
             <div class="carousel-item">
@@ -52,7 +52,7 @@
                 <div class="carousel-caption">
                     <h2>ELETTRONICA</h2>
                     <p>Chi ha detto che le comodità non piacciono?.</p>
-                    <a href="" class="hero-btn">Esplora</a>
+                    <a href="catalogo.jsp" class="hero-btn">Esplora</a>
                 </div>
             </div>
             <div class="carousel-item">
@@ -60,7 +60,7 @@
                 <div class="carousel-caption">
                     <h2>LIBRI</h2>
                     <p>Le parole feriscono più delle spade.</p>
-                    <a href="" class="hero-btn">Esplora</a>
+                    <a href="catalogo.jsp" class="hero-btn">Esplora</a>
                 </div>
             </div>
             <div class="carousel-item">
@@ -68,7 +68,7 @@
                 <div class="carousel-caption">
                     <h2>GIOCATTOLI</h2>
                     <p>C'è un tempo per studiare ma c'è sempre tempo per giocare.</p>
-                    <a href="       " class="hero-btn">Esplora</a>
+                    <a href="catalogo.jsp" class="hero-btn">Esplora</a>
                 </div>
             </div>
         </div>

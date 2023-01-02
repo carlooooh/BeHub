@@ -10,10 +10,12 @@
 <head>
     <title>Dettagli Prodotto</title>
     <link rel="stylesheet" href="css/prodotto.css">
-    <jsp:include page="header.jsp"/>
+
 
 </head>
 <body>
+<jsp:include page="header.jsp"/>
+
 <div class="container">
   <div class="product">
     <div class="gallery">
@@ -37,6 +39,8 @@
   </div>
 
 </div>
+<jsp:include page="footer.jsp"/>
+
 
 </body>
 </html>

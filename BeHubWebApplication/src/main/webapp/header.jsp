@@ -34,12 +34,12 @@
       <li>
         <div class="areapersonale">
           <a href="account.jsp"><img src="./immagini/areapersonale.png"></a>
-          <a class="a-header" href="cart.jsp">Area Personale</a>
+          <a class="a-header" href="account.jsp">Area Personale</a>
         </div>
       </li>
       <li>
         <div class="vendi">
-          <a href="vendi.jsp" class="vendi-btn"> VENDI </a>
+          <a   href="vendi.jsp" class="vendi-btn"> VENDI </a>
 
         </div>
       </li>
@@ -108,7 +108,7 @@
 
       <li>
         <div class="carrello">
-          <a href="account.jsp"><img src="./immagini/carrello2.png"></a>
+          <a href="carrello.jsp"><img src="./immagini/carrello2.png"></a>
         </div>
       </li>
 
