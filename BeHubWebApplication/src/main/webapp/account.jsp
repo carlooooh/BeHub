@@ -37,7 +37,7 @@
                         <input type="email" name="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" title="Email non valida" maxlength="50" <%--value="<jsp:getProperty name = "registeredUser" property = "email"/>"--%>>
                     </div>
                     <div class="input-box">
-                        <span class="details">Nome</span>
+                        <span class="details">Password</span>
                         <input type="password" name="password" maxlength="50" <%--value="<jsp:getProperty name = "registeredUser" property = "password"/>"--%>>
                     </div>
                     <div class="input-box">
@@ -49,12 +49,12 @@
                         <input type="text" name="cognome" maxlength="50" <%--value="<jsp:getProperty name = "registeredUser" property = "cognome"/>"--%>>
                     </div>
                     <div class="input-box">
-                        <span class="details">Indirizzo</span>
+                        <span class="details">Indirizzo (Via, Città, Procincia, CAP, Stato)</span>
                         <input type="text" name="indirizzo" maxlength="50" <%--value="<jsp:getProperty name = "registeredUser" property = "indirizzo"/>"--%>>
                     </div>
                     <div class="input-box">
                         <span class="details">Data di Nascita</span>
-                        <input type="date" name="dataNascita" title="Inserisci la tua data di nascita" <%--value="<jsp:getProperty name = "registeredUser" property = "telefono"/>"--%>>
+                        <input type="date" name="dataNascita"  title="Inserisci la tua data di nascita" <%--value="<jsp:getProperty name = "registeredUser" property = "telefono"/>"--%>>
                     </div>
                     <div class="input-box">
                         <span class="details">Numero di telefono</span>
@@ -65,7 +65,7 @@
                         <input type="text" name="carta" pattern="[0-9]{16}" title="Inserisci un numero valido di 16 cifre" <%--value="<jsp:getProperty name = "registeredUser" property = "numero"/>"--%>>
                     </div>
                     <div class="input-box">
-                        <span class="details">Scadenza Carta</span>
+                        <span class="details">Scadenza Carta (mm/aaaa)</span>
                         <input type="text" name="scadenza" pattern="[0-9]*" inputmode="numeri c" <%-->value="<jsp:getProperty name = "registeredUser" property = "intestatario"/>"--%>>
                     </div>
                     <div class="input-box">
@@ -77,6 +77,8 @@
                     <input type="submit" name="salva" value="Salva informazioni" style="margin-bottom: 40px">
                     <input type="submit" class="ordini" name="ordini" value="Lista ordini">
                     <input  onclick="location.href='ticket.jsp'" type="submit" class="ticket" name="ticket" value="Ticket" style="margin-bottom: 40px">
+                    <input  onclick="location.href='ticket.jsp'" type="submit" class="prodVenduti" name="prodottiVenduti" value="ProdottiVenduti" style="margin-bottom: 40px">
+                    <input  onclick="location.href='ticket.jsp'" type="submit" class="prodInVendita" name="prodottiInVendita" value="ProdottiInVendita" style="margin-bottom: 40px">
                 </div>
             </form>
 

@@ -24,6 +24,9 @@
     <div class="details">
         <h1>Nome Prodotto</h1>
         <h2>0.00$</h2>
+
+        <h3>E-mail venditore:</h3>
+        <h3>Stato:</h3>
         <p>Una descrizione per il prodotto selezionato</p>
         <form>
 

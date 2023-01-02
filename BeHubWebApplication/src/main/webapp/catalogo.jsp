@@ -85,7 +85,7 @@
                       <%--  <% if (session.getAttribute("registeredUser") != null) { %>  --%>
                         <a href = "AcquistaOra?codice=" class = "wishlist">
 								<span>
-									<i class = "fas fa-heart"></i>
+									<i class = "fas fa-dollar-sign"></i>
 								</span>
                         </a>
                       <%--  <% } %>
@@ -147,7 +147,7 @@
 
     setContent(view, 'Dettagli');
     setContent(buy, 'Aggiungi al carrello');
-    setContent(wishlist, 'Aggiungi ai preferiti');
+    setContent(wishlist, 'Acquista Ora');
     setContent(del, 'Elimina prodotto');
 
     function setContent(list, text){
