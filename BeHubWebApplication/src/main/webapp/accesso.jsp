@@ -6,69 +6,158 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
+<!DOCTYPE html>
+<!-- Coding by CodingLab | www.codinglabweb.com-->
+<html lang="en">
 <head>
-    <title>Title</title>
-    <link rel="stylesheet" href="./css/accesso.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/accesso.css">
+
+
+    <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+
 </head>
 <body>
 
 
-<div class="hero">
-    <div id="bk" class="form-box">
-        <div class="button-box">
-            <div id="btn"></div>
-            <button type="button" class="toggle-btn" onclick="login()">Login</button>
-            <button type="button" class="toggle-btn"onclick="register()">Registrati</button>
+
+
+<section class="container forms">
+    <div class="form login">
+        <div class="form-content">
+            <header>Accedi</header>
+            <form action="#">
+                <div class="field input-field">
+                    <input type="email" placeholder="Email" class="input">
+                </div>
+
+                <div class="field input-field">
+                    <input type="password" placeholder="Password" class="password">
+                    <i class='bx bx-hide eye-icon'></i>
+                </div>
+
+
+
+                <div class="field button-field">
+                    <button>Accedi</button>
+                </div>
+            </form>
+
+            <div class="form-link">
+                <span>Non hai un'account? <a href="#" class="link signup-link">Registrati</a></span>
+            </div>
+            <div class="form-link">
+                <span>Torna alla pagina principale:<a href="index.jsp" >Home</a></span>
+            </div>
         </div>
-            <form id="login" class="input-group">
-                <input type="email" class="input-field" name="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" title="Email non valida" maxlength="50" placeholder="Email" autofocus required>
-                <input type="password" class="input-field" name="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,50}" title="La password deve contenere almeno una lettera maiuscola, una minuscola e un numero, e deve essere almeno di 8 caratteri" placeholder="Password" required>
-                <input type="checkbox" class="check-box"><span>Ricordami!</span>
-                <button type="submit" class="submit-btn">Login</button>
-            </form>
-            <form id="register" class="input-group">
-                <input type="email" class="input-field" name="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" title="Email non valida" maxlength="50" placeholder="Email" autofocus required>
-                <input type="password" class="input-field" name="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,50}" title="La password deve contenere almeno una lettera maiuscola, una minuscola e un numero, e deve essere almeno di 8 caratteri" placeholder="Password" required>
-                <input type="text" class="input-field" name="nome" maxlength="50" placeholder="Nome" required>
-                <input type="text" class="input-field" name="cognome" maxlength="50" placeholder="Cognome" required>
-                <input type="text" class="input-field" name="città" maxlength="50" placeholder="Città" required>
-                <input type="text" class="input-field" name="stato" maxlength="50" placeholder="STATO" required>
-                <input type="text" class="input-field" name="cap" maxlength="5" placeholder="CAP" required>
-                <input type="text" class="input-field" name="provincia" maxlength="50" placeholder="Provincia" required>
-                <input type="text" class="input-field" name="indirizzo" maxlength="50" placeholder="Indirizzo" required>
-                <input type="text" class="input-field" name="telefono" pattern="[0-9]{15}" title="Inserisci un numero di telefono di 15 cifre" placeholder="Cellulare" required>
-                <input type="text" class="input-field" name="carta" pattern="[0-9]{16}" title="Inserisci un numero valido di 16 cifre" placeholder="Numero della Carta" required>
-                <input type="text" class="input-field" name="cvv" pattern="[0-9]{3}" title="Inserisci un numero di 3 cifre" placeholder="CVV" required>
-                <input type="data" class="input-field" name="scadenza" min="2000-01-01" max="2040-12-31" pattern="\d{2}-\d{2}-\d{4}" placeholder="Scadenza" required>
-                <input type="checkbox" class="check-box"><span>Ricordami!</span>
-                <button type="submit" class="submit-btn">Login</button>
-            </form>
+
+
+
     </div>
-</div>
 
+    <!-- Registrazione Form -->
+
+    <div class="form signup">
+        <div class="form-content">
+            <header>Registrati</header>
+            <form action="#">
+                <div class="field input-field">
+                    <input type="email" placeholder="Email" class="input">
+                </div>
+
+                <div class="field input-field">
+                    <input type="password" placeholder="Crea password" class="password">
+                </div>
+
+                <div class="field input-field">
+                    <input type="password" placeholder="Conferma password" class="password">
+                    <i class='bx bx-hide eye-icon'></i>
+                </div>
+
+                <div class="field input-field">
+                    <input type="text" placeholder="Nome" class="nome">
+                </div>
+
+                <div class="field input-field">
+                    <input type="text" placeholder="Cognome" class="cognome">
+                </div>
+
+                <div class="field input-field">
+                    <input type="date" placeholder="Data di Nascita" class="data">
+                </div>
+
+                <div class="field input-field">
+                    <input type="text" placeholder="Indirizzo" class="indirizzo">
+                </div>
+
+                <div class="field input-field">
+                    <input type="text" placeholder="Numero Carta" class="carta">
+                </div>
+
+                <div class="field input-field">
+                    <input type="text" placeholder="Scadenza Carta" class="scadenza">
+                </div>
+
+                <div class="field input-field">
+                    <input type="number" placeholder="CVV" class="cvv">
+                </div>
+
+                <div class="field button-field">
+                    <button>Registrati</button>
+                </div>
+            </form>
+
+            <div class="form-link">
+                <span>Hai già un account? <a href="#" class="link login-link">Accedi</a></span>
+            </div>
+            <div class="form-link">
+                <span>Torna alla pagina principale:<a href="index.jsp" >Home</a></span>
+            </div>
+        </div>
+
+
+
+    </div>
+</section>
 <script>
-    
-    var x= document.getElementById("login");
-    var y= document.getElementById("register");
-    var z= document.getElementById("btn");
-    var c=document.getElementById("bk");
-    
-    function register() {
-        c.style.height="830px"
-        x.style.left ="-400px"
-        z.style.left ="115px"
-        y.style.top="-200px"
-        y.style.left="0px"
-    }
-    function login() {
-        c.style.height="480px"
-        x.style.left ="0px"
-        y.style.left="-400px"
-        z.style.left ="0px"
+<!-- JavaScript -->
+const forms = document.querySelector(".forms"),
+pwShowHide = document.querySelectorAll(".eye-icon"),
+links = document.querySelectorAll(".link");
 
-    }
+pwShowHide.forEach(eyeIcon => {
+eyeIcon.addEventListener("click", () => {
+let pwFields = eyeIcon.parentElement.parentElement.querySelectorAll(".password");
+
+pwFields.forEach(password => {
+if(password.type === "password"){
+password.type = "text";
+eyeIcon.classList.replace("bx-hide", "bx-show");
+return;
+}
+password.type = "password";
+eyeIcon.classList.replace("bx-show", "bx-hide");
+})
+
+})
+})
+
+links.forEach(link => {
+link.addEventListener("click", e => {
+e.preventDefault(); //preventing form submit
+forms.classList.toggle("show-signup");
+})
+})
 </script>
+<!--<script src="js/script.js"></script>-->
+
+
+
 
 </body>
 </html>

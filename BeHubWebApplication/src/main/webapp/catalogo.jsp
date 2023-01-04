@@ -45,8 +45,9 @@
     }
 %>
 --%>
+<div class="header">
 <jsp:include page="header.jsp"/>
-
+</div>
 <div class = "wrapper" style="margin-bottom: 200px">
     <div class="container">
         <div class = "heading-title" style="margin-top: 75px">

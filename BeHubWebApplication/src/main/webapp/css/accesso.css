@@ -1,98 +1,132 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+
 *{
-   margin:0;
+    margin: 0;
     padding: 0;
+    box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
 }
-
-.hero{
-    height:100%;
-    width:100%;
-    background: linear-gradient(135deg, #2B2C3B 25%, #B9BCFA 75%);
+.container{
+    height: 115vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(to right, #c04848, #610361);
+    column-gap: 30px;
+}
+.form{
     position: absolute;
-
+    max-width: 430px;
+    width: 100%;
+    padding: 30px;
+    border-radius: 6px;
+    background: #FFF;
+    box-shadow: -10px 5px 10px 10px rgba(0,0,0,0.1);
 }
-
-.form-box{
-    width:380px;
-    height:480px;
-    position:relative;
-    margin:6% auto;
-    background: #FFFFFF;
-    padding: 5px;
-    overflow: hidden;
-
+.form.signup{
+    opacity: 0;
+    pointer-events: none;
 }
-
-.button-box{
-    width:220px;
-    margin:35px auto;
+.forms.show-signup .form.signup{
+    opacity: 1;
+    pointer-events: auto;
+}
+.forms.show-signup .form.login{
+    opacity: 0;
+    pointer-events: none;
+}
+header{
+    font-size: 28px;
+    font-weight: 600;
+    color: #c04848;
+    text-align: center;
+}
+form{
+    margin-top: 30px;
+}
+.form .field{
     position: relative;
-    box-shadow: 0 0 20px 9px #e53637;
-    border-radius: 30px;
+    height: 50px;
+    width: 100%;
+    margin-top: 20px;
+    border-radius: 6px;
 }
-.toggle-btn{
-    padding:10px 30px;
-    cursor:pointer;
-    background: transparent;
-    border:0;
-    outline:none;
-    position:relative;
+.field input, .field button{
+    height: 100%;
+    width: 100%;
+    border: none;
+    font-size: 16px;
+    font-weight: 400;
+    border-radius: 6px;
 }
-
-#btn{
-    top:0;
-    left:0;
-    position:absolute;
-    width:110px;
-    height:100%;
-    background: linear-gradient(135deg, #2B2C3B 25%, #B9BCFA 75%);
-    border-radius: 30px;
-    transition: .5s;
-}
-
-.input-group{
-    top:80px;
-    position:relative;
-    width:280px;
-    transition: .5s;
-}
-
-
-.input-field{
-    width:100%;
-    padding:10px 0;
-    margin:5px 0;
-    border-left: 0;
-    border-top:0;
-    border-right: 0;
-    border-bottom: 1px solid #999;
+.field input{
     outline: none;
-    background: transparent;
+    padding: 0 15px;
+    border: 1px solid#CACACA;
 }
-.submit-btn{
-    width: 85%;
-    padding: 10px 30px;
-    cursor: pointer;
-    display:block;
-    margin: auto;
-    background: linear-gradient(135deg, #2B2C3B 25%, #B9BCFA 75%);
-    border:0;
-    outline: none;
-    border-radius:30px;
+.field input:focus{
+    border-bottom-width: 2px;
 }
-
-.check-box{
-    margin:30px 10px 30px 0;
-}
-
-span{
-    color: #777;
-    font-size: 12px;
-    bottom: 68px;
+.eye-icon{
     position: absolute;
-
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    font-size: 18px;
+    color: #8b8b8b;
+    cursor: pointer;
+    padding: 5px;
+}
+.field button{
+    color: #fff;
+    background-color: #c04848;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+.field button:hover{
+    background-color: #610361;
+}
+.form-link{
+    text-align: center;
+    margin-top: 10px;
 }
 
-#register{
-    left:450px;
+.form-link span, .form-link a{
+    font-size: 14px;
+    font-weight: 400;
+    color: #232836;
+}
+.form a{
+    color: red;
+    text-decoration: none;
+}
+.form-content a:hover{
+    text-decoration: underline;
+}
+.line{
+    position: relative;
+    height: 1px;
+    width: 100%;
+    margin: 36px 0;
+    background-color: #d4d4d4;
+}
+.line::before{
+    content: 'Or';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #FFF;
+    color: #8b8b8b;
+    padding: 0 15px;
+}
+
+
+
+@media screen and (max-width: 400px) {
+    .form{
+        padding: 20px 10px;
+    }
+
 }
