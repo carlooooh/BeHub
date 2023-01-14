@@ -6,12 +6,12 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-         pageEncoding="ISO-8859-1" import="model.CartBean, model.ProductBean, java.text.DecimalFormat, java.util.*"%>
+         pageEncoding="ISO-8859-1" import=" model.CartBean, model.ProductBean, java.text.DecimalFormat, java.util.*"%>
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="css/cart-style.css"/>
+    <link rel="stylesheet" href="css/carrello.css"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="icon" href="./img/icon.png">
     <title>Geek Factory - Carrello</title>
@@ -27,11 +27,10 @@
             <tr>
                 <th>Immagine</th>
                 <th>Prodotto</th>
-                <th>Prezzo</th>
-                <th>Costo spedizione</th>
+                <th>Prezzo Totale</th>
+                <th>E-mail Venditore</th>
                 <th>Quantità</th>
-                <th>Rimuovi</th>
-                <th>Subtotal</th>
+
             </tr>
             <%
                 Collection<ProductBean> carrello = null;
