@@ -10,6 +10,7 @@ public class OrderBean implements Serializable {
         prodotto = null;
         data = null;
         codice = 0;
+        emailVenditore = "";
     }
 
     public void setProdotto(ProductBean newProdotto) {
@@ -36,7 +37,16 @@ public class OrderBean implements Serializable {
         return codice;
     }
 
+    public String getEmailVenditore() {
+        return emailVenditore;
+    }
+
+    public void setEmailVenditore(String newEmailVenditore) {
+        emailVenditore = newEmailVenditore;
+    }
+
     private ProductBean prodotto;
     private Date data;
     private int codice;
+    private String emailVenditore;
 }

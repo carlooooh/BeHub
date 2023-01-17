@@ -1,6 +1,7 @@
 package model;
 
 import java.io.Serializable;
+import java.sql.Date;
 
 public class UserBean implements Serializable {
     private static final long serialVersionUID = 2856723757650934254L;
@@ -14,6 +15,7 @@ public class UserBean implements Serializable {
         numero="";
         intestatario="";
         role="";
+        data = null;
     }
 
     public void setEmail(String newEmail) {
@@ -80,6 +82,14 @@ public class UserBean implements Serializable {
         return role;
     }
 
+    public Date getData() {
+        return data;
+    }
+
+    public void setData(Date newData) {
+        data = newData;
+    }
+
     private String email;
     private String nome;
     private String cognome;
@@ -88,4 +98,5 @@ public class UserBean implements Serializable {
     private String numero;
     private String intestatario;
     private String role;
+    private Date data;
 }

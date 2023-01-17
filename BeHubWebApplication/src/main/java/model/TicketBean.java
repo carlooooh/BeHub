@@ -12,6 +12,7 @@ public class TicketBean implements Serializable {
         oggetto = "";
         data = null;
         emailUtente = "";
+        stato = Stato.Chiuso;
     }
 
     public int getCodice() {
@@ -54,10 +55,26 @@ public class TicketBean implements Serializable {
         emailUtente = newEmailUtente;
     }
 
+    public int getStato() {
+        if (stato == Stato.Aperto) return 0;
+        else return 1;
+    }
+
+    public void setStato(int codiceStato) {
+        if (codiceStato == 0)
+            stato = Stato.Aperto;
+        else
+            stato = Stato.Chiuso;
+    }
 
     private int codice;
     private String testo;
     private String oggetto;
     private Date data;
     private String emailUtente;
+    public enum Stato {
+        Aperto, //valore 0
+        Chiuso; //valore 1
+    }
+    private Stato stato;
 }

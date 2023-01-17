@@ -1,11 +1,11 @@
 <component name="ArtifactManager">
-  <artifact type="jar" name="unnamed2">
+  <artifact type="exploded-war" name="unnamed2">
     <output-path>$PROJECT_DIR$/out/artifacts/unnamed2</output-path>
-    <root id="archive" name="unnamed.jar">
+    <root id="root">
       <element id="directory" name="META-INF">
         <element id="file-copy" path="$PROJECT_DIR$/META-INF/MANIFEST.MF" />
       </element>
-      <element id="file-copy" path="$PROJECT_DIR$/src/main/webapp/intro.html" />
+      <element id="file-copy" path="$PROJECT_DIR$/BeHubWebApplication/src/main/webapp/intro.jsp" />
     </root>
   </artifact>
 </component>
