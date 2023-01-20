@@ -79,9 +79,9 @@ public class TicketModel {
     }
 
     /*
-    Metodo che modifica lo stato del TicketBean da "Aperto" a "Chiuso" e aggiorna la lista di ticket dell'utente
+    Metodo che modifica lo stato del TicketBean da "Aperto" a "Chiuso"
     */
-    public synchronized Collection<TicketBean> chiudiTicket(TicketBean ticket, Collection<TicketBean> listaTicket) {
+    public synchronized boolean chiudiTicket(TicketBean ticket) {
         Connection connection = null;
         String sql = "UPDATE Ticket SET stato = ? WHERE codice = ?";
 
@@ -94,11 +94,12 @@ public class TicketModel {
             ps.executeUpdate();
             connection.commit();
 
-            return modificaListaTicket(listaTicket, ticket.getCodice());
+            //return modificaListaTicket(listaTicket, ticket.getCodice());
+            return true;
         }
         catch (SQLException e) {
             e.printStackTrace();
-            return listaTicket;
+            return false;
         }
         finally {
             if (connection != null) {

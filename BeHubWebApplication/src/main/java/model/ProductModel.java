@@ -104,7 +104,7 @@ public class ProductModel {
 
         int result = 0;
 
-        String deleteSQL = "UPDATE " + ProductModel.TABLE_NAME + "SET deleted = false WHERE codice = ?";
+        String deleteSQL = "UPDATE " + ProductModel.TABLE_NAME + "SET deleted = true WHERE codice = ?";
 
         try {
             connection = DriverManagerConnectionPool.getConnection();
@@ -124,6 +124,7 @@ public class ProductModel {
         }
         return (result != 0); //Ritorna true se l'operazione ha successo, false altrimenti
     }
+    //Metodo per ottenere una collezione di ProductBean di una certa categoria
     public synchronized Collection<ProductBean> doRetrieveAll(String where) throws SQLException {
         Connection connection = null;
         PreparedStatement preparedStatement = null;
@@ -157,7 +158,11 @@ public class ProductModel {
                 products.add(bean);
             }
 
-        } finally {
+        }
+        catch(Exception e) {
+            e.printStackTrace();
+        }
+        finally {
             try {
                 if (preparedStatement != null)
                     preparedStatement.close();
@@ -202,7 +207,7 @@ public class ProductModel {
             }
         }
     }
-
+    //Metodo per modificare un prodotto
     public synchronized void updateProduct(ProductBean bean) {
         String sql = "UPDATE Prodotto SET nome = ?, descrizione = ?, prezzo = ?, speseSpedizione = ?, nomeCategoria = ?, quantity = ?, condizione = ? WHERE codice = ?";
         Connection con = null;
@@ -230,6 +235,85 @@ public class ProductModel {
         finally {
             if (con != null) {
                 DriverManagerConnectionPool.releaseConnection(con);
+            }
+        }
+    }
+    //Metodo per ottenere una collezione di ProductBean in vendita da un certo utente
+    public synchronized Collection<ProductBean> getProdottiInVendita(String email) {
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        PreparedStatement preparedStatement2 = null;
+
+        Collection<ProductBean> products = new LinkedList<ProductBean>();
+
+        String selectSQL = "SELECT * FROM " + ProductModel.TABLE_NAME + " WHERE deleted = 'false' AND emailVenditore = '" + email + "'";
+
+        try {
+            connection = DriverManagerConnectionPool.getConnection();
+            preparedStatement = connection.prepareStatement(selectSQL);
+
+            ResultSet rs = preparedStatement.executeQuery();
+
+            while (rs.next()) {
+                ProductBean bean = new ProductBean();
+
+                bean.setCodice(rs.getInt("codice"));
+                bean.setNome(rs.getString("nome"));
+                bean.setDescrizione(rs.getString("descrizione"));
+                bean.setPrezzo(rs.getDouble("prezzo"));
+                bean.setSpedizione(rs.getDouble("speseSpedizione"));
+                bean.setEmail(rs.getString("emailVenditore"));
+                bean.setCategoria(parseCategoria(rs.getString("nomeCategoria")));
+                bean.setData(rs.getDate("dataAnnuncio"));
+                bean.setQuantity(rs.getInt("quantity"));
+                bean.setCondizione(parseCondizione(rs.getString("condizione")));
+                bean.setImmagine(rs.getString("urlImmagine"));
+
+                products.add(bean);
+            }
+            return products;
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+        finally {
+            try {
+                if (preparedStatement != null)
+                    preparedStatement.close();
+                if (connection != null) {
+                    DriverManagerConnectionPool.releaseConnection(connection);
+                }
+            }
+            catch(Exception e) {
+                e.printStackTrace();
+            }
+        }
+        return products;
+    }
+
+    //Metodo per diminuire la quantità di un prodotto dopo l'acquisto
+    public synchronized boolean diminuisciQuantità(int codiceProdotto, int quantitàAcquistata) {
+        String sql = "UPDATE Prodotto SET quantity = quantity - ? WHERE codice = ?";
+        Connection connection = null;
+
+        try {
+            connection = DriverManagerConnectionPool.getConnection();
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ps.setInt(1, quantitàAcquistata);
+            ps.setInt(2, codiceProdotto);
+
+            ps.executeUpdate();
+            connection.commit();
+
+            return true;
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+        finally {
+            if (connection != null) {
+                DriverManagerConnectionPool.releaseConnection(connection);
             }
         }
     }

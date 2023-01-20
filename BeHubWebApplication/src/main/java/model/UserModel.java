@@ -37,7 +37,7 @@ public class UserModel {
     /*
     Metodo che modifica le informazioni di un account
      */
-    public synchronized UserBean update(UserBean bean, String emailOld) { //prima insert
+    public synchronized boolean update(UserBean bean, String emailOld) { //prima insert
         String email = bean.getEmail();
         String nome = bean.getNome();
         String cognome = bean.getCognome();
@@ -65,11 +65,11 @@ public class UserModel {
             ps.executeUpdate();
             con.commit();
             DriverManagerConnectionPool.releaseConnection(con);
-            return bean;
+            return true;
         }
         catch (Exception e) {
             e.printStackTrace();
-            return bean;
+            return false;
         }
     }
 

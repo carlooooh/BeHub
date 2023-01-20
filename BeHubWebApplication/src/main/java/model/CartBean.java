@@ -16,7 +16,7 @@ public class CartBean implements Serializable {
         Metodo per aggiungere un prodotto al carrello modificando la quantità se già presente
      */
     public void setCarrello(ProductBean newProdotto) {
-        ProductBean bean = this.retriveByKey(newProdotto.getCodice());
+        ProductBean bean = this.retrieveByKey(newProdotto.getCodice());
         if (bean == null) {
             carrello.add(newProdotto);
         }
@@ -35,7 +35,7 @@ public class CartBean implements Serializable {
     /*
         Metodo per ottenere un prodotto specifico dal carrello usando il codice del prodotto
      */
-    public ProductBean retriveByKey(int codiceProdotto) {
+    public ProductBean retrieveByKey(int codiceProdotto) {
         for (Iterator<ProductBean> i = this.getCarrello().iterator(); i.hasNext(); ) {
             ProductBean bean = (ProductBean) i.next();
             if (bean.getCodice() == codiceProdotto)

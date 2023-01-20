@@ -12,13 +12,14 @@ public class OrderModel {
     /*
     Metodo per creare un'istanza dell'ordine nel database dopo l'acquisto
      */
-    public synchronized CartBean doOrder(CartBean cart, UserBean user) {
+    public synchronized boolean doOrder(CartBean cart, UserBean user) {
         Collection<ProductBean> carrello = null;
 
         Connection con = null;
         carrello = cart.getCarrello();
 
         String sql = "INSERT INTO Ordine (codiceProdotto, emailCliente, prezzoTotale, quantity, dataAcquisto) VALUES (?, ?, ?, ?, current_date())";
+        String modificaQuantità = "UPDATE Prodotto SET quantity = quantity - 1 WHERE codice = ?";
 
         try {
             con = DriverManagerConnectionPool.getConnection();
@@ -38,10 +39,10 @@ public class OrderModel {
                 }
                 con.commit();
             }
-            cart.removeAllItems();
-            return cart;
+            return true;
         } catch (Exception e) {
-            return cart;
+            e.printStackTrace();
+            return false;
         } finally {
             if (con != null) {
                 DriverManagerConnectionPool.releaseConnection(con);
@@ -52,7 +53,7 @@ public class OrderModel {
     /*
     Metodo per ottenere la lista di ordini di un utente
      */
-    public synchronized Collection<OrderBean> getOrders(String email) throws SQLException {
+    public synchronized Collection<OrderBean> getOrdini(String email) {
         Connection con = null;
         PreparedStatement ps = null;
         ResultSet rs = null;
@@ -89,12 +90,6 @@ public class OrderModel {
         } finally {
             if (con != null) {
                 DriverManagerConnectionPool.releaseConnection(con);
-            }
-            if (ps != null) {
-                ps.close();
-            }
-            if (rs != null) {
-                rs.close();
             }
         }
     }
@@ -142,5 +137,50 @@ public class OrderModel {
             }
         }
         return lista;
+    }
+    //Metodo per ottenere la lista di prodotti venduti dall'utente
+    public synchronized Collection<OrderBean> getProdottiVenduti(String email) {
+        String SQL = "SELECT * FROM Ordine AS o, Prodotto AS p WHERE o.codiceProdotto = p.codice AND p.emailVenditore = ? ORDER BY o.dataAcquisto DESC";
+        PreparedStatement ps = null;
+        Collection<OrderBean> listaOrdini = new LinkedList<OrderBean>();
+        Connection con = null;
+
+        try {
+            con = DriverManagerConnectionPool.getConnection();
+            ps = con.prepareStatement(SQL);
+            ps.setString(1, email);
+            ResultSet rs = ps.executeQuery();
+
+            while(rs.next()) {
+                OrderBean ordine = new OrderBean();
+                ProductBean prodotto = new ProductBean();
+
+                prodotto.setCodice(rs.getInt("codiceProdotto"));
+                prodotto.setEmail(email);
+                prodotto.setPrezzo(rs.getDouble("prezzoTotale"));
+                prodotto.setQuantity(rs.getInt("quantity"));
+                prodotto.setNome(rs.getString("nome"));
+                prodotto.setDescrizione(rs.getString("descrizione"));
+                prodotto.setCondizione(ProductModel.parseCondizione(rs.getString("condizione")));
+                prodotto.setCategoria(ProductModel.parseCategoria(rs.getString("categoria")));
+                prodotto.setImmagine(rs.getString("urlImmagine"));
+
+                ordine.setCodice(rs.getInt("codiceOrdine"));
+                ordine.setData(rs.getDate("dataAcquisto"));
+                ordine.setEmailVenditore(rs.getString("emailCliente"));
+                ordine.setProdotto(prodotto);
+                listaOrdini.add(ordine);
+            }
+            return listaOrdini;
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+        finally {
+            if (con != null) {
+                DriverManagerConnectionPool.releaseConnection(con);
+            }
+        }
     }
 }
