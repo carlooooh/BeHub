@@ -18,9 +18,5 @@
 <hr>
   <p class="copyright"> BeHub &copy; - All Rights Reserved</p>
 
-
-</footer>
-
-
 </body>
 </html>
