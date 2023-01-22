@@ -73,5 +73,5 @@
 </div>
 
 </body>
-<script src="main.js"> </script>
+<script src="prec-suc.js"> </script>
 </html>
