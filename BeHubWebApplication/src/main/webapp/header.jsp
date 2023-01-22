@@ -33,7 +33,7 @@
       </li>
       <% if (session.getAttribute("utente") != null) {
         UserBean utente = (UserBean) session.getAttribute("utente");
-        if (utente.getRole().compareTo("RU") != 0) {
+        if (utente.getEmail().compareTo("") != 0) {
       %>
       <li>
         <div class="areapersonale">
@@ -41,23 +41,6 @@
           <a href="account.jsp" data-item="area personale" class="left-nav-link">Area Personale</a>
         </div>
       </li>
-      <%
-        }
-        else if(utente.getRole().compareTo("AS") != 0){
-
-      %>
-
-      <li>
-        <div class="areapersonale">
-          <i class="fa-solid fa-user-astronaut fa-2xl"></i>
-          <a href="account.jsp" data-item="area personale" class="left-nav-link">Gestione</a>
-        </div>
-      </li>
-
-      <%
-        }
-      %>
-
       <li>
         <div class="vendi">
           <i class="fa-solid fa-sack-dollar fa-2xl"></i>
@@ -67,6 +50,7 @@
 
 
        <% }
+       }
        else {
        %>
 
@@ -107,8 +91,6 @@
     </ul>
   </div>
 </header>
-
-
 </body>
 </html>
 
