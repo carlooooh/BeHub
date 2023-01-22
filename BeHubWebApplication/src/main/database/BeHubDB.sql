@@ -57,6 +57,8 @@ CREATE TABLE Ordine
     prezzoTotale double(10,2) NOT NULL,
     quantity int NOT NULL,
     dataAcquisto date NOT NULL,
+    tracking varchar(50),
+    stato ENUM('In lavorazione', 'Spedito', 'Consegnato') NOT NULL default 'In lavorazione',
     PRIMARY KEY(codiceOrdine,codiceProdotto),
     FOREIGN KEY(codiceProdotto) REFERENCES Prodotto(codice) ON UPDATE cascade ON DELETE cascade,
     FOREIGN KEY(emailCliente) REFERENCES Utente(email) ON UPDATE cascade ON DELETE cascade

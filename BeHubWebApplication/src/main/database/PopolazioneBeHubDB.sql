@@ -2,13 +2,13 @@
 
 /* Popolazione Utente */
 INSERT INTO Utente (email, passwordUser, nome, cognome, indirizzo, telefono, numeroCarta, dataNascita, ruolo)
-VALUES ('geekfactory@gmail.com', sha2('ABC12345', 256), 'Test', 'Test', 'Unisa, Dipartimento Informatica', '3476549862', '543672459843', 01/01/2000, 'AS');
+VALUES ('geekfactory@gmail.com', sha2('ABC12345', 256), 'Test', 'Test', 'Unisa, Dipartimento Informatica', '3476549862', '5436724598431234', current_date(), 'AS');
 INSERT INTO Utente (email, passwordUser, nome, cognome, indirizzo, telefono, numeroCarta, dataNascita)
-VALUES ('mariorossi@gmail.com', sha2('TEST1234', 256), 'Mario', 'Rossi', 'Napoli, Via Roma 1, 80000', '3476549862', '543672459843', 01/01/2000);
+VALUES ('mariorossi@gmail.com', sha2('TEST1234', 256), 'Mario', 'Rossi', 'Napoli, Via Roma 1, 80000', '3476549862', '5436724598432343', current_date());
 INSERT INTO Utente (email, passwordUser, nome, cognome, indirizzo, telefono, numeroCarta, dataNascita)
-VALUES ('luigiverdi@gmail.com', sha2('TEST5678', 256), 'Luigi', 'Verdi', 'Roma, Via Napoli 1, 11283', '3476549862', '543672459843', 01/01/2000);
+VALUES ('luigiverdi@gmail.com', sha2('TEST5678', 256), 'Luigi', 'Verdi', 'Roma, Via Napoli 1, 11283', '3476549862', '5436724598431234', current_date());
 INSERT INTO Utente (email, passwordUser, nome, cognome, indirizzo, telefono, numeroCarta, dataNascita)
-VALUES ('antoniobianchi@gmail.com', sha2('Test1234', 256), 'Antonio', 'Bianchi', 'Milano, Via Napoli 2, 20192', '3476549862', '543672459843', 01/01/2000);
+VALUES ('antoniobianchi@gmail.com', sha2('Test1234', 256), 'Antonio', 'Bianchi', 'Milano, Via Napoli 2, 20192', '3476549862', '5436724598431234', current_date());
 
 /* Popolazione Categoria */
 INSERT INTO Categoria (nome) VALUES ('Abbigliamento');
