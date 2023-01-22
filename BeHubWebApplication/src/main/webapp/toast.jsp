@@ -14,7 +14,7 @@
 <body>
 
 
-<script src="messaggi.js"></script>
+<script src="toast.js"></script>
 
 <div class="toast">
     <div class="toast-content">
