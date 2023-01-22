@@ -24,7 +24,7 @@ public class ProdottiInVenditaControl extends HttpServlet {
         String email = (String) request.getSession().getAttribute("email");
         ProductModel productModel = new ProductModel();
         Collection<ProductBean> prodotti = productModel.getProdottiInVendita(email);  //ottenimento prodotti in vendita per l'utente
-        request.setAttribute("prodottiInVendita", prodotti);
+        request.getSession().setAttribute("prodottiInVendita", prodotti);
 
         RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/prodotti-in-vendita.jsp");
         dispatcher.forward(request, response);

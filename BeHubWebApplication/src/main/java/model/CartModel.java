@@ -25,6 +25,7 @@ public class CartModel {
                     prodotto.setQuantity(bean.getQuantity());
                     prodotto.setCondizione(bean.getCondizione());
                     prodotto.setImmagine(bean.getImmagine());
+                    prodotto.setMaxQuantity(bean.getMaxQuantity());
                 }
                 lista.add(prodotto);
             }
@@ -81,7 +82,7 @@ public class CartModel {
 
         ProductBean bean = new ProductBean();
 
-        String selectSQL = "SELECT p.nome, p.descrizione, p.prezzo, p.speseSpedizione, p.emailVenditore, p.nomeCategoria, p.condizione, p.quantity, p.dataAnnuncio, p.urlImmagine FROM Prodotto AS p, Immagine AS i WHERE p.codice = ? AND p.deleted = false";
+        String selectSQL = "SELECT p.codice, p.nome, p.descrizione, p.prezzo, p.speseSpedizione, p.emailVenditore, p.nomeCategoria, p.condizione, p.quantity, p.dataAnnuncio, p.urlImmagine FROM Prodotto AS p WHERE p.codice = ? AND p.deleted = false";
 
         try {
             connection = DriverManagerConnectionPool.getConnection();
@@ -102,11 +103,63 @@ public class CartModel {
                 bean.setData(rs.getDate("dataAnnuncio"));
                 bean.setImmagine(rs.getString("urlImmagine"));
                 bean.setCondizione(ProductModel.parseCondizione(rs.getString("condizione")));
+                bean.setMaxQuantity(rs.getInt("quantity"));
+
+                carrello.setCarrello(bean);
             }
-            carrello.setCarrello(bean);
+
             return carrello;
         }
         catch (Exception e) {
+            e.printStackTrace();
+            return carrello;
+        }
+        finally {
+            if (connection != null) {
+                DriverManagerConnectionPool.releaseConnection(connection);
+            }
+        }
+    }
+
+    /*
+    Metodo per aggiungere un prodotto al carrello con quantità fissata
+     */
+    public synchronized CartBean aggiungiAlCarrello(CartBean carrello, int codiceProdotto, int quantità) {
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+
+        ProductBean bean = new ProductBean();
+
+        String selectSQL = "SELECT p.codice, p.nome, p.descrizione, p.prezzo, p.speseSpedizione, p.emailVenditore, p.nomeCategoria, p.condizione, p.quantity, p.dataAnnuncio, p.urlImmagine FROM Prodotto AS p WHERE p.codice = ? AND p.deleted = false";
+
+        try {
+            connection = DriverManagerConnectionPool.getConnection();
+            preparedStatement = connection.prepareStatement(selectSQL);
+            preparedStatement.setInt(1, codiceProdotto);
+
+            ResultSet rs = preparedStatement.executeQuery();
+
+            while (rs.next()) {
+                bean.setCodice(rs.getInt("codice"));
+                bean.setNome(rs.getString("nome"));
+                bean.setDescrizione(rs.getString("descrizione"));
+                bean.setPrezzo(rs.getDouble("prezzo"));
+                bean.setSpedizione(rs.getDouble("speseSpedizione"));
+                bean.setEmail(rs.getString("emailVenditore"));
+                bean.setCategoria(ProductModel.parseCategoria(rs.getString("nomeCategoria")));
+                bean.setQuantity(quantità); //setta la quantità del prodotto
+                bean.setData(rs.getDate("dataAnnuncio"));
+                bean.setImmagine(rs.getString("urlImmagine"));
+                bean.setCondizione(ProductModel.parseCondizione(rs.getString("condizione")));
+                bean.setMaxQuantity(rs.getInt("quantity"));
+
+                carrello.setCarrello(bean);
+            }
+
+            return carrello;
+        }
+        catch (Exception e) {
+            e.printStackTrace();
             return carrello;
         }
         finally {

@@ -78,7 +78,7 @@ public class ProductModel {
                 bean.setPrezzo(rs.getDouble("prezzo"));
                 bean.setSpedizione(rs.getDouble("speseSpedizione"));
                 bean.setEmail(rs.getString("emailVenditore"));
-                bean.setCategoria(parseCategoria(rs.getString("nomeTipologia")));
+                bean.setCategoria(parseCategoria(rs.getString("nomeCategoria")));
                 bean.setData(rs.getDate("dataAnnuncio"));
                 bean.setQuantity(rs.getInt("quantity"));
                 bean.setCondizione(parseCondizione(rs.getString("condizione")));
@@ -98,32 +98,7 @@ public class ProductModel {
         }
     }
 
-    public synchronized boolean doDelete(int code) throws SQLException {
-        Connection connection = null;
-        PreparedStatement preparedStatement = null;
 
-        int result = 0;
-
-        String deleteSQL = "UPDATE " + ProductModel.TABLE_NAME + "SET deleted = true WHERE codice = ?";
-
-        try {
-            connection = DriverManagerConnectionPool.getConnection();
-            preparedStatement = connection.prepareStatement(deleteSQL);
-            preparedStatement.setInt(1, code);
-
-            result = preparedStatement.executeUpdate();
-            connection.commit();
-
-        } finally {
-            try {
-                if (preparedStatement != null)
-                    preparedStatement.close();
-            } finally {
-                DriverManagerConnectionPool.releaseConnection(connection);
-            }
-        }
-        return (result != 0); //Ritorna true se l'operazione ha successo, false altrimenti
-    }
     //Metodo per ottenere una collezione di ProductBean di una certa categoria
     public synchronized Collection<ProductBean> doRetrieveAll(String where) throws SQLException {
         Connection connection = null;
@@ -242,7 +217,6 @@ public class ProductModel {
     public synchronized Collection<ProductBean> getProdottiInVendita(String email) {
         Connection connection = null;
         PreparedStatement preparedStatement = null;
-        PreparedStatement preparedStatement2 = null;
 
         Collection<ProductBean> products = new LinkedList<ProductBean>();
 
@@ -275,6 +249,7 @@ public class ProductModel {
         }
         catch (Exception e) {
             e.printStackTrace();
+            return products;
         }
         finally {
             try {
@@ -288,7 +263,6 @@ public class ProductModel {
                 e.printStackTrace();
             }
         }
-        return products;
     }
 
     //Metodo per diminuire la quantità di un prodotto dopo l'acquisto
@@ -303,7 +277,7 @@ public class ProductModel {
             ps.setInt(2, codiceProdotto);
 
             ps.executeUpdate();
-            connection.commit();
+            //connection.commit();
 
             return true;
         }

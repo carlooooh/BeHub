@@ -28,12 +28,11 @@ public class ListaOrdiniUtenteControl extends HttpServlet {
         listaOrdini = orderModel.getOrdini(request.getParameter("emailOrdini")); //ottenimento lista ordini dell'utente
 
         if (listaOrdini != null) {
-            request.setAttribute("listaOrdini", listaOrdini);
-            RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/"); //Da aggiungere
-            dispatcher.forward(request, response);
+            request.getSession().setAttribute("listaOrdini", listaOrdini);
+            response.sendRedirect(request.getContextPath() + "/ordini.jsp");
         }
         else {
-            RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/"); //Da aggiungere
+            RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/account.jsp?errormsg=true");
             dispatcher.forward(request, response);
         }
     }

@@ -22,7 +22,6 @@ public class LoginControl extends HttpServlet {
         UserModel userModel = new UserModel();
         String email = request.getParameter("email");
         String password = request.getParameter("password");
-        System.out.println("ciao");
         UserBean user = userModel.login(email, password);
 
         //Login avvenuto con successo

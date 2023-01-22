@@ -131,6 +131,14 @@ public class ProductBean implements Serializable {
         else return 1;
     }
 
+    public int getMaxQuantity() {
+        return maxQuantity;
+    }
+
+    public void setMaxQuantity(int newMaxQuantity) {
+        maxQuantity = newMaxQuantity;
+    }
+
     //Variabili
     private int codice;
     private String nome;
@@ -154,4 +162,5 @@ public class ProductBean implements Serializable {
         Usato;
     }
     private Condizione condizione;
+    private int maxQuantity;
 }

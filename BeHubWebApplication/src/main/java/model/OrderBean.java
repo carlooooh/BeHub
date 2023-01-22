@@ -10,7 +10,8 @@ public class OrderBean implements Serializable {
         prodotto = null;
         data = null;
         codice = 0;
-        emailVenditore = "";
+        email = "";
+        tracking = null;
     }
 
     public void setProdotto(ProductBean newProdotto) {
@@ -37,16 +38,50 @@ public class OrderBean implements Serializable {
         return codice;
     }
 
-    public String getEmailVenditore() {
-        return emailVenditore;
+    public String getEmail() {
+        return email;
     }
 
-    public void setEmailVenditore(String newEmailVenditore) {
-        emailVenditore = newEmailVenditore;
+    public void setEmail(String newEmail) {
+        email = newEmail;
+    }
+
+    public String getTracking() {
+        return tracking;
+    }
+
+    public void setTracking(String codiceTracking) {
+        tracking = codiceTracking;
+    }
+
+    public void setStato(int valoreStato) {
+        if (valoreStato == 0)
+            stato = StatoOrdine.In_Lavorazione;
+        else if (valoreStato == 1)
+            stato = StatoOrdine.Spedito;
+        else if (valoreStato == 2)
+            stato = StatoOrdine.Consegnato;
+    }
+
+    public int getStato() {
+        if (stato == StatoOrdine.In_Lavorazione)
+            return 0;
+        else if (stato == StatoOrdine.Spedito)
+            return 1;
+        else if (stato == StatoOrdine.Consegnato)
+            return 2;
+        else return -1;
     }
 
     private ProductBean prodotto;
     private Date data;
     private int codice;
-    private String emailVenditore;
+    private String email;
+    public enum StatoOrdine {
+        In_Lavorazione, //valore 0
+        Spedito,        //valore 1
+        Consegnato,     //valore 2
+    }
+    private StatoOrdine stato;
+    private String tracking;
 }

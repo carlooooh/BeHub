@@ -33,7 +33,6 @@ public class RegistrazioneControl extends HttpServlet {
         user.setIndirizzo((String) request.getAttribute("indirizzo"));
         user.setTelefono((String) request.getAttribute("telefono"));
         String data = (String) request.getAttribute("data");
-        System.out.println(data);
         try {
             Date tempdata = new SimpleDateFormat("yyyy-MM-dd").parse(data);
             java.sql.Date veraData = new java.sql.Date(tempdata.getTime());

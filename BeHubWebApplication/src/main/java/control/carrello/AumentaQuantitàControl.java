@@ -21,8 +21,7 @@ public class AumentaQuantitàControl extends HttpServlet {
         String tempCodice = request.getParameter("aumCodice");
         int codice = Integer.parseInt(tempCodice);
         CartBean cart = (CartBean) request.getSession().getAttribute("carrello");
-        int maxQuantity = Integer.parseInt(request.getParameter("maxQuantity"));
-        if (cart.retrieveByKey(codice).getQuantity() != maxQuantity)  {  //maxQuantity è la quantità massima del prodotto
+        if (cart.retrieveByKey(codice).getQuantity() != cart.retrieveByKey(codice).getMaxQuantity())  {  //maxQuantity è la quantità massima del prodotto
             cart.retrieveByKey(codice).addQuantity();
         }
         request.getSession().setAttribute("carrello", cart);

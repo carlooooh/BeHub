@@ -22,7 +22,7 @@ public class ListaProdottiCategoriaControl extends HttpServlet {
         String categoria = request.getParameter("categoria");
         ProductModel productModel = new ProductModel();
         try {
-            request.setAttribute("products", productModel.doRetrieveAll(categoria));
+            request.setAttribute("products", productModel.doRetrieveAll(categoria)); //lista prodotti della categoria
         }
         catch (Exception e) {
             e.printStackTrace();

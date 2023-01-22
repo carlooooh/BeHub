@@ -24,9 +24,15 @@ public class InserimentoProdottoControl extends HttpServlet {
         CartBean cart = (CartBean) request.getSession().getAttribute("carrello");
         CartModel cartModel = new CartModel();
 
-        cart = cartModel.aggiungiAlCarrello(cart, codice); //Aggiunge il prodotto al carrello
+        if (request.getParameter("quantity") != null) {
+            int quantity = Integer.parseInt(request.getParameter("quantity"));
+            cart = cartModel.aggiungiAlCarrello(cart, codice, quantity);
+        }
+        else {
+            cart = cartModel.aggiungiAlCarrello(cart, codice); //Aggiunge il prodotto al carrello
+        }
 
         request.getSession().setAttribute("carrello", cart);
-        request.getRequestDispatcher("/carrello.jsp").forward(request, response);
+        response.sendRedirect(request.getContextPath() + "/carrello.jsp");
     }
 }

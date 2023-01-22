@@ -25,7 +25,7 @@ public class ProdottiVendutiControl extends HttpServlet {
        String email = (String) request.getSession().getAttribute("email");
        Collection<OrderBean> listaProdottiVenduti = orderModel.getProdottiVenduti(email); //ottenimento lista prodotti venduti
 
-       request.setAttribute("listaProdottiVenduti", listaProdottiVenduti);
+       request.getSession().setAttribute("listaProdottiVenduti", listaProdottiVenduti);
        RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/prodotti-venduti.jsp");
        dispatcher.forward(request, response);
     }
