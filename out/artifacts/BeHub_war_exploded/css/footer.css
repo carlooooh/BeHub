@@ -1,0 +1,23 @@
+footer{
+    width:100%;
+    position: fixed;
+    bottom :0;
+    line-height:20px;
+    padding: 20px 0 15px;
+
+}
+
+hr{
+    width: 90%;
+    border: 0;
+    border-bottom: 4px solid #ffffff;
+    margin: 4px auto;
+}
+
+.copyright{
+    text-align:center;
+    font-family: 'Poppins', sans-serif;
+    color: #fff;
+}
+
+
