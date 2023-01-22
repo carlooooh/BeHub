@@ -8,20 +8,17 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
          pageEncoding="ISO-8859-1" %>
 
-<%--
-<% if (session.getAttribute("registeredUser") == null) {
-    response.sendRedirect("loginPage.jsp");
+<% if (session.getAttribute("utente") == null) {
+    response.sendRedirect("accesso.jsp");
 }
 %>
-<jsp:useBean id="registeredUser"  scope="session"/>
---%>
 
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Geek Factory - Vendita</title>
+    <title>BeHub - Vendita</title>
     <link rel="stylesheet" href="./css/account.css">
     <link rel="icon" href="./img/icon.png">
 </head>
@@ -34,7 +31,7 @@
     <div class="container" style="height: 540px">
         <div class="title">Inserisci informazioni sul prodotto</div>
         <div class="content">
-            <form action="Vendita" enctype="multipart/form-data" METHOD="POST">
+            <form action="VenditaControl"  METHOD="POST">
                 <div class="user-details">
                     <div class="input-box">
                         <span class="details">Nome prodotto</span>
@@ -42,11 +39,15 @@
                     </div>
                     <div class="input-box">
                         <span class="details">Prezzo</span>
-                        <input type="number" step="0.01" name="prezzo" max="9999999" placeholder="Inserire prezzo" required/>
+                        <input type="number" step="0.01" name="prezzo" max="999999" placeholder="Inserire prezzo" required/>
+                    </div>
+                    <div class="input-box">
+                        <span class="details">Spese di spedizione</span>
+                        <input type="number" step="0.01" name="spedizione" max="999999" placeholder="Inserire spese di spedizione" required/>
                     </div>
                     <div class="input-box">
                         <span class="details">Quantità</span>
-                        <input type="number" step="0" name="spedizione" max="999" placeholder="Inserire quantità prodotto" required/>
+                        <input type="number" step="0" name="quantity" max="999" placeholder="Inserire quantità prodotto" required/>
                     </div>
                     <div class="input-box">
                         <span class="details">Immagine</span>
@@ -54,19 +55,19 @@
                     </div>
                     <div class="input-box">
                         <span class="details">Categoria</span>
-                        <select id="tipologia" name="tipologia" required>
-                            <option value="Action Figures">Abbigliamento</option>
-                            <option value="Gadget">Calzature</option>
-                            <option value="Arredamento Casa">Elettronica</option>
-                            <option value="Action Figures">Libri</option>
-                            <option value="Action Figures">Giochi</option>
+                        <select id="categoria" name="categoria" required>
+                            <option value="Abbigliamento">Abbigliamento</option>
+                            <option value="Calzature">Calzature</option>
+                            <option value="Elettronica">Elettronica</option>
+                            <option value="Libri">Libri</option>
+                            <option value="Giochi">Giochi</option>
                         </select>
                     </div>
                     <div class="input-box">
                         <span class="details">Condizioni Prodotto</span>
                         <select id="condizioni" name="condizioni" required>
-                            <option value="Action Figures">Nuovo</option>
-                            <option value="Gadget">Usato</option>
+                            <option value="Nuovo">Nuovo</option>
+                            <option value="Usato">Usato</option>
 
                         </select>
                     </div>

@@ -1,4 +1,4 @@
-<%--
+<%@ page import="model.ProductBean" %><%--
   Created by IntelliJ IDEA.
   User: eljon
   Date: 01/01/2023
@@ -6,12 +6,16 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%
+    ProductBean bean = new ProductBean();
+    if (request.getAttribute("prodottoInDettaglio") != null) {
+        bean = (ProductBean) request.getAttribute("prodottoInDettaglio");
+    }
+%>
 <html>
 <head>
-    <title>Dettagli Prodotto</title>
+    <title>BeHub - Dettagli Prodotto</title>
     <link rel="stylesheet" href="css/prodotto.css">
-
-
 </head>
 <body>
 <jsp:include page="header.jsp"/>
@@ -22,21 +26,26 @@
         <img src="immagini/scarpe.png">
     </div>
     <div class="details">
-        <h1>Nome Prodotto</h1>
-        <h2>0.00$</h2>
+        <h1><%=bean.getNome()%></h1>
+        <h2><%=bean.getPrezzo()%> euro + <%=bean.getSpedizione()%> euro di spedizione</h2>
 
-        <h3>E-mail venditore:</h3>
-        <h3>Stato:</h3>
-        <p>Una descrizione per il prodotto selezionato</p>
-        <form>
+        <h3>E-mail venditore: <%=bean.getEmail()%></h3>
+        <h3>Condizione: <%=bean.getCondizione()%></h3>
+        <p><%=bean.getDescrizione()%></p>
+        <form action="AcquistaOraControl?codice=<%=bean.getCodice()%>" method="post">
 
             <div class="quantity-select">
                 <p>Quantità</p>
-                <input type="number" value="1">
+                <input type="number" name="quantity" value="1" min="1" max="<%=bean.getQuantity()%>">
             </div>
 
-            <button onclick="location.href='acquista.jsp'">Acquista Ora</button>
-            <button onclick="location.href='carrello.jsp'">Aggiungi al Carrello</button>
+            <%
+                if (session.getAttribute("utente") != null) {
+            %>
+            <button name="acquistaOra" value="Acquista Ora">Acquista Ora</button>
+            <%  }
+            %>
+            <button name="aggiungiAlCarrello" value="Aggiungi al Carrello">Aggiungi al Carrello</button>
         </form>
     </div>
   </div>

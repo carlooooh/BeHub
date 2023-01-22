@@ -6,7 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-         pageEncoding="ISO-8859-1" import=" model.CartBean, model.ProductBean, java.text.DecimalFormat, java.util.*"%>
+         pageEncoding="ISO-8859-1" import="model.CartBean, model.ProductBean, java.text.DecimalFormat, java.util.*"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="css/carrello.css"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="icon" href="./img/icon.png">
-    <title>Geek Factory - Carrello</title>
+    <title>BeHub - Carrello</title>
 </head>
 <body>
 
@@ -27,10 +27,11 @@
             <tr>
                 <th>Immagine</th>
                 <th>Prodotto</th>
-                <th>Prezzo Totale</th>
-                <th>E-mail Venditore</th>
+                <th>Prezzo</th>
+                <th>Costo spedizione</th>
                 <th>Quantità</th>
-
+                <th>Rimuovi</th>
+                <th>Subtotal</th>
             </tr>
             <%
                 Collection<ProductBean> carrello = null;
@@ -67,11 +68,11 @@
                 <td id="price"><%=prezzo%> &euro;</td>
                 <td id="sped"><%=spedizione%> &euro;</td>
                 <td>
-                    <a href="CartControl?action=diminuisci&codice=<%=bean.getCodice()%>"><i class="fa-solid fa-minus"></i></a>
-                    <input id="quantity" type="number" value="<%=bean.getQuantity()%>" min="1" max="99" readonly>
-                    <a href="CartControl?action=aumenta&codice=<%=bean.getCodice()%>"><i class="fa-solid fa-plus"></i></a>
+                    <a href="DiminuisciQuantitàControl?dimCodice=<%=bean.getCodice()%>"><i class="fa-solid fa-minus"></i></a>
+                    <input id="quantity" type="number" value="<%=bean.getQuantity()%>" min="1" max="<%=bean.getMaxQuantity()%>" readonly>
+                    <a href="AumentaQuantitàControl?aumCodice=<%=bean.getCodice()%>"><i class="fa-solid fa-plus"></i></a>
                 </td>
-                <td><a href="CartControl?action=rimuovere&codice=<%=bean.getCodice()%>"><i class="fas fa-trash-alt"></i></a></td>
+                <td><a href="RimozioneProdottoControl?codice=<%=bean.getCodice()%>"><i class="fas fa-trash-alt"></i></a></td>
                 <td class="product-price" id="subtotal"><%=prezzoTot%> &euro;</td>
             </tr>
             <% 		}
@@ -80,7 +81,7 @@
         </table>
 
         <%  String totale = df.format(somma);
-            if (!carrello.isEmpty()) {
+            if (carrello != null && !carrello.isEmpty()) {
         %>
         <div class="total-price">
             <table>
@@ -91,7 +92,7 @@
             </table>
         </div>
         <%
-            if (session.getAttribute("registeredUser") != null) {
+            if (session.getAttribute("utente") != null) {
 
 
         %>
@@ -103,7 +104,7 @@
         else {
         %>
         <div class="button-buy-container">
-            <a href="loginPage.jsp"><button class="buy-button" style="cursor: pointer">REGISTRATI PER ACQUISTARE</button></a>
+            <a href="accesso.jsp"><button class="buy-button" style="cursor: pointer">REGISTRATI PER ACQUISTARE</button></a>
         </div>
         <%
             }

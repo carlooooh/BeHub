@@ -1,4 +1,6 @@
-<%--
+<%@ page import="java.util.Collection" %>
+<%@ page import="model.TicketBean" %>
+<%@ page import="java.util.Iterator" %><%--
   Created by IntelliJ IDEA.
   User: carlo
   Date: 02/01/2023
@@ -8,7 +10,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>BeHub - Lista Ticket</title>
     <link rel="stylesheet" href="css/lista-ticket.css">
 </head>
 <jsp:include page="header.jsp"/>
@@ -28,29 +30,37 @@
                     </tr>
                 </thead>
                 <tbody>
+                <%
+                    if (request.getAttribute("listaTicket") != null) {
+                        Collection<TicketBean> listaTicket = (Collection<TicketBean>) request.getAttribute("listaTicket");
+                        Iterator<TicketBean> iterator = listaTicket.iterator();
+                        while (iterator.hasNext()) {
+                            TicketBean ticket = iterator.next();
+                %>
                     <tr>
-                        <td>XXXXXX</td>
-                        <td>Oggetto...</td>
-                        <td> <p class="status status-nd">N/D</p></td>
-                        <td><a href="#" class="btn">Visualizza</a></td>
-                    </tr>
-                    <tr>
-                        <td>12345</td>
-                        <td>Informazioni utili per pagare</td>
-                        <td> <p class="status status-inviato">Inviato</p></td>
-                        <td><a href="#" class="btn">Visualizza</a></td>
-                    </tr>
-                    <tr>
-                        <td>12345</td>
-                        <td>okay letsgoooooo andiamoo</td>
+                        <td><%=ticket.getCodice()%>></td>
+                        <td><%=ticket.getOggetto()%>></td>
+                        <%
+                            if (ticket.getStato() == 0) {
+                        %>
                         <td> <p class="status status-aperto">Aperto</p></td>
+                        <%  }
+                            else {
+                        %>
+                        <td> <p class="status status-nd">Chiuso</p></td>
+                        <%  }
+                        %>
                         <td><a href="#" class="btn">Visualizza</a></td>
                     </tr>
+                <%
+                        }
+                    }
+                %>
                 </tbody>
             </table>
 
             <form>
-                <button onclick="location.href='acquista.jsp'">Compila Ticket</button>
+                <button onclick="location.href='scrittura-ticket.jsp'">Compila Ticket</button>
             </form>
         </div>
 </div>

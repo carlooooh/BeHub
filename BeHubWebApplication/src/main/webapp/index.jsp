@@ -1,9 +1,8 @@
-<%@ page import="model.CartBean" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html>
 <head>
-    <title>HomePage</title>
+    <title>BeHub - HomePage</title>
     <link rel="stylesheet" href="./css/index.css">
     <!-- Latest compiled and minified CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -19,12 +18,8 @@
 
 <jsp:include page="header.jsp"/>
 
-<% if (session.getAttribute("carrello") == null) {
-    CartBean cart=new CartBean();
-    session.setAttribute("carrello",cart);
-}
 
-%>
+
 <div class="carosello">
     <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-indicators">
@@ -41,7 +36,7 @@
                 <div class="carousel-caption">
                     <h2>ABBIGLIAMENTO</h2>
                     <p>Scopri sempre più lati della tua personalità.</p>
-                    <a href="catalogo.jsp" class="hero-btn">Esplora</a>
+                    <a href="ListaProdottiCategoriaControl?categoria=Abbigliamento" class="hero-btn">Esplora</a>
                 </div>
             </div>
             <div class="carousel-item">
@@ -49,7 +44,7 @@
                 <div class="carousel-caption">
                     <h2>CALZATURE</h2>
                     <p>Affronta con stile anche le montagne più alte.</p>
-                    <a href="catalogo.jsp" class="hero-btn">Esplora</a>
+                    <a href="ListaProdottiCategoriaControl?categoria=Calzature" class="hero-btn">Esplora</a>
                 </div>
             </div>
             <div class="carousel-item">
@@ -57,7 +52,7 @@
                 <div class="carousel-caption">
                     <h2>ELETTRONICA</h2>
                     <p>Chi ha detto che le comodità non piacciono?.</p>
-                    <a href="catalogo.jsp" class="hero-btn">Esplora</a>
+                    <a href="ListaProdottiCategoriaControl?categoria=Elettronica" class="hero-btn">Esplora</a>
                 </div>
             </div>
             <div class="carousel-item">
@@ -65,7 +60,7 @@
                 <div class="carousel-caption">
                     <h2>LIBRI</h2>
                     <p>Le parole feriscono più delle spade.</p>
-                    <a href="catalogo.jsp" class="hero-btn">Esplora</a>
+                    <a href="ListaProdottiCategoriaControl?categoria=Libri" class="hero-btn">Esplora</a>
                 </div>
             </div>
             <div class="carousel-item">
@@ -73,7 +68,7 @@
                 <div class="carousel-caption">
                     <h2>GIOCATTOLI</h2>
                     <p>C'è un tempo per studiare ma c'è sempre tempo per giocare.</p>
-                    <a href="catalogo.jsp" class="hero-btn">Esplora</a>
+                    <a href="ListaProdottiCategoriaControl?categoria=Giocattoli" class="hero-btn">Esplora</a>
                 </div>
             </div>
         </div>

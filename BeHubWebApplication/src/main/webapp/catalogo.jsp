@@ -7,26 +7,24 @@
 --%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" import=" java.util.*,  java.text.DecimalFormat"%>
+<%@ page import="model.ProductBean" %>
+<%@ page import="model.UserBean" %>
 
 
-<%--
 <%
-   Collection<?> products = (Collection<?>) request.getAttribute("products");
-    if(products == null) {
-        response.sendRedirect("./ProductControl");
-        return;
-    }
-    String tipologia = request.getParameter("tipologia");
+    if (request.getAttribute("products") != null) {
+        Collection<?> products = (Collection<?>) request.getAttribute("products");
+        String tipologia = request.getParameter("categoria");
 
 %>
---%>
+
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="ISO-8859-1">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Geek Factory - Prodotti</title>
+    <title>BeHub - Catalogo</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="css/catalogo.css">
 </head>
@@ -57,7 +55,7 @@
 
         <div class = "item-grid" style="margin-top: 20px">
 
-         <%--   <%
+            <%
                 if (products != null && products.size() != 0) {
                     Iterator<?> it = products.iterator();
                     while (it.hasNext()) {
@@ -66,74 +64,74 @@
                         DecimalFormat df = new DecimalFormat("0.00");
 
                         String prezzoTot = df.format(tot) + " €";
-                        String image = "img/productIMG/" + bean.getImmagine();
+                        String image = "immagini/scarpe.png";
             %>
-        --%>
+
             <div class="item">
                 <div class = "item-img">
                     <img src = "./immagini/scarpe.png" alt = "img/productIMG/noimg.jpg">
                     <div class = "item-action">
-                        <a href = "prodotto.jsp?codice=" class = "view">
+                        <a href = "DettagliProdottoControl?codice=<%=bean.getCodice()%>" class = "view">
 								<span>
 									<i class = "fas fa-search-plus"></i>
 								</span>
                         </a>
-                        <a href = "CartControl?action=aggiungi&codice=" class = "buy">
+                        <a href = "InserimentoProdottoControl?codice=<%=bean.getCodice()%>&quantity=1" class = "buy">
 								<span>
 									<i class = "fas fa-cart-plus"></i>
 								</span>
                         </a>
-                      <%--  <% if (session.getAttribute("registeredUser") != null) { %>  --%>
-                        <a href = "AcquistaOra?codice=" class = "wishlist">
+                        <% if (session.getAttribute("utente") != null) { %>
+                        <a href = "AcquistaOra?codice="<%=bean.getCodice()%> class = "wishlist">
 								<span>
 									<i class = "fas fa-dollar-sign"></i>
 								</span>
                         </a>
-                      <%--  <% } %>
-                        <% if (session.getAttribute("registeredUser") != null) {
-                            UserBean utente = (UserBean) session.getAttribute("registeredUser");
+                        <% } %>
+                        <% if (session.getAttribute("utente") != null) {
+                            UserBean utente = (UserBean) session.getAttribute("utente");
                             if (utente.getEmail().compareTo("") != 0) {
-                                String ruolo = (String) session.getAttribute("role");
+                                String ruolo = (String) session.getAttribute("ruolo");
                                 String emailUtente = (String) session.getAttribute("email");
-                                if (ruolo.compareTo("admin") == 0 || bean.getEmail().compareTo(emailUtente) == 0) {
+                                if (ruolo.compareTo("AC") == 0 || bean.getEmail().compareTo(emailUtente) == 0) {
                         %>
 
-                        --%>
-                        <a href = "ProductControl?action=modificaForm&codice=" class = "upd">
+
+                        <a href = "ProdottoDaModificareControl?codice=<%=bean.getCodice()%>" class = "upd">
 								<span>
 									<i class = "far fa-edit" style="color: red"></i>
 								</span>
                         </a>
 
-                        <a href = "ProductControl?action=elimina&codice=" class = "del">
+                        <a href = "EliminaProdottoCatalogoControl?codice=<%=bean.getCodice()%>" class = "del">
 								<span>
 									<i class = "fas fa-trash-alt" style="color: red"></i>
 								</span>
                         </a>
 
 
-                     <%--   <%
+                        <%
                                     }
                                 }
                             }
                         %>
 
-                        --%>
+
                     </div>
                 </div>
 
                 <div class = "item-details">
 
                     </ul>
-                    <p class = "price" style="color: #fff"></p>
-                    <p class = "name" style="color: #fff"></p>
+                    <p class = "price" style="color: #fff"><%=prezzoTot%></p>
+                    <p class = "name" style="color: #fff"><%=bean.getNome()%></p>
                 </div>
             </div>
-        <%--    <%
+            <%
                     }
                 }
+                }
             %>
-        --%>
         </div>
     </div>
 </div>

@@ -1,3 +1,4 @@
+<%@ page import="model.ProductBean" %>
 <%--
   Created by IntelliJ IDEA.
   User: eljon
@@ -7,8 +8,8 @@
 --%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
          pageEncoding="ISO-8859-1" %>
-<% if (session.getAttribute("registeredUser") == null) {
-  response.sendRedirect("loginPage.jsp");
+<% if (session.getAttribute("utente") == null) {
+  response.sendRedirect("accesso.jsp");
 }
 %>
 <!DOCTYPE html>
@@ -16,7 +17,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Geek Factory - Modifica prodotto</title>
+  <title>BeHub - Modifica Prodotto</title>
   <link rel="stylesheet" href="./css/account.css">
   <link rel="icon" href="./img/icon.png">
 </head>
@@ -24,19 +25,19 @@
 <div class="header">
   <jsp:include page="header.jsp"/>
 </div>
-<%--
+
 <%	if (request.getAttribute("updateProd") != null) {
   ProductBean bean = (ProductBean) request.getAttribute("updateProd");
 
-  String tipologia = bean.getTipologia();
-  String tag = bean.getTag();
+  int categoria = bean.getCategoria();
+  int condizione = bean.getCondizione();
 %>
---%>
+
 <div class="test">
   <div class="container" style="height: 485px">
     <div class="title">Modifica prodotto</div>
     <div class="content">
-      <form action="ProductControl?action=modifica&codice=<%=bean.getCodice()%>" METHOD="POST">
+      <form action="ModificaProdottoControl?codice=<%=bean.getCodice()%>" METHOD="POST">
         <div class="user-details">
           <div class="input-box">
             <span class="details">Nome prodotto</span>
@@ -51,53 +52,57 @@
             <input type="number" step="0.01" name="spedizione" max="999" value="<%=bean.getSpedizione()%>" placeholder="Inserire spese di spedizione" required/>
           </div>
           <div class="input-box">
-            <span class="details">Tipologia</span>
-            <select id="tipologia" name="tipologia" required>
-              <% if (tipologia.compareTo("Action Figures") == 0) { %>
-              <option value="Action Figures" selected>Action Figures</option>
+            <span class="details">Quantità</span>
+            <input type="number" step="1" name="quantity" max="99" value="<%=bean.getQuantity()%>" placeholder="Inserire quantità" required/>
+          </div>
+          <div class="input-box">
+            <span class="details">Categoria</span>
+            <select id="categoria" name="categoria" required>
+              <% if (categoria == 0) { %>
+              <option value="Abbigliamento" selected>Abbigliamento</option>
               <% } else { %>
-              <option value="Action Figures">Action Figures</option>
+              <option value="Abbigliamento">Abbigliamento</option>
               <% } %>
-              <% if (tipologia.compareTo("Gadget") == 0) { %>
-              <option value="Gadget" selected>Gadget</option>
+              <% if (categoria == 1) { %>
+              <option value="Calzature" selected>Calzature</option>
               <% } else { %>
-              <option value="Gadget">Gadget</option>
+              <option value="Calzature">Calzature</option>
               <% } %>
-              <% if (tipologia.compareTo("Arredamento Casa") == 0) { %>
-              <option value="Arredamento Casa" selected>Arredamento Casa</option>
+              <% if (categoria == 2) { %>
+              <option value="Elettronica" selected>Elettronica</option>
               <% } else { %>
-              <option value="Arredamento Casa">Arredamento Casa</option>
+              <option value="Elettronica">Elettronica</option>
+              <% } %>
+              <% if (categoria == 3) { %>
+              <option value="Libri" selected>Libri</option>
+              <% } else { %>
+              <option value="Libri">Libri</option>
+              <% } %>
+              <% if (categoria == 4) { %>
+              <option value="Giocattoli" selected>Giocattoli</option>
+              <% } else { %>
+              <option value="Giocattoli">Giocattoli</option>
               <% } %>
             </select>
           </div>
           <div class="input-box">
-            <span class="details">Tag</span>
-            <select id="tag" name="tag" required>
-              <% if (tag.compareTo("Manga/Anime") == 0) { %>
-              <option value="Manga/Anime" selected>Manga/Anime</option>
+            <span class="details">Condizione</span>
+            <select id="condizione" name="condizione" required>
+              <% if (condizione == 0) { %>
+              <option value="Nuovo" selected>Nuovo</option>
               <% } else { %>
-              <option value="Manga/Anime">Manga/Anime</option>
+              <option value="Nuovo">Nuovo</option>
               <% } %>
-              <% if (tag.compareTo("Film/Serie TV") == 0) { %>
-              <option value="Film/Serie TV" selected>Film/Serie TV</option>
+              <% if (condizione == 1) { %>
+              <option value="Usato" selected>Usato</option>
               <% } else { %>
-              <option value="Film/Serie TV">Film/Serie TV</option>
-              <% } %>
-              <% if (tag.compareTo("Videogiochi") == 0) { %>
-              <option value="Videogiochi" selected>Videogiochi</option>
-              <% } else { %>
-              <option value="Videogiochi">Videogiochi</option>
-              <% } %>
-              <% if (tag.compareTo("Originali") == 0) { %>
-              <option value="Originali" selected>Originali</option>
-              <% } else { %>
-              <option value="Originali">Originali</option>
+              <option value="Usato">Usato</option>
               <% } %>
             </select>
           </div>
           <div class="input-box">
             <span class="details">Descrizione</span>
-            <textarea id="descrizione" name="descrizione" rows="4" cols="60" style="resize: none; width: 310px; height: 80px" required><%=bean.getDescrizione()%></textarea>
+            <textarea style="resize: none" id="descrizione" name="descrizione" rows="4" cols="60" style="resize: none; width: 310px; height: 80px" required><%=bean.getDescrizione()%></textarea>
           </div>
         </div>
         <div class="button">

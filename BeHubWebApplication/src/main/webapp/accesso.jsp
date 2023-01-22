@@ -31,13 +31,13 @@
     <div class="form login">
         <div class="form-content">
             <header>Accedi</header>
-            <form action="#">
+            <form action="LoginControl" method="post">
                 <div class="field input-field">
-                    <input type="email" placeholder="Email" class="input">
+                    <input type="email" placeholder="Email" class="input" name="email" id="email" required>
                 </div>
 
                 <div class="field input-field">
-                    <input type="password" placeholder="Password" class="password">
+                    <input type="password" placeholder="Password" class="password" name="password" id="password" required>
                     <i class='bx bx-hide eye-icon'></i>
                 </div>
 
@@ -62,39 +62,44 @@
 
     <!-- Registrazione Form -->
 
-    <div class="form signup">
+    <div class="form signup" style="margin-top: 15px">
         <div class="form-content">
             <header>Registrati</header>
-            <form action="#">
+            <form action="RegistrazioneControl" method="post">
                 <div class="field input-field">
-                    <input type="email" placeholder="Email" class="input">
+                    <input type="email" name="email" maxlength="50" placeholder="Email" class="input" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" title="Email non valida" autofocus required>
                 </div>
 
                 <div class="field input-field">
-                    <input type="password" placeholder="Crea password" class="password">
+                    <input type="password" name="password" class="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,50}" title="La password deve contenere almeno una lettera maiuscola, una minuscola e un numero, e deve essere almeno di 8 caratteri" maxlength="50" placeholder="Inserisci la tua password" required>
                 </div>
 
                 <div class="field input-field">
-                    <input type="password" placeholder="Conferma password" class="password">
+                    <input type="password" name="" maxlength="50" placeholder="Conferma password" class="password" required>
                     <i class='bx bx-hide eye-icon'></i>
                 </div>
 
                 <div class="field input-field">
-                    <input type="text" placeholder="Nome" class="nome">
+                    <input type="text" name="nome" maxlength="50" placeholder="Nome" class="nome" required>
                 </div>
 
                 <div class="field input-field">
-                    <input type="text" placeholder="Cognome" class="cognome">
+                    <input type="text" name="cognome" maxlength="50" placeholder="Cognome" class="cognome" required>
                 </div>
 
                 <div class="field input-field">
-                    <input type="date" placeholder="Data di Nascita" class="data">
+                    <input type="date" name="data" placeholder="Data di Nascita" class="data" required>
                 </div>
 
                 <div class="field input-field">
-                    <input type="text" placeholder="Indirizzo" class="indirizzo">
+                    <input type="text" name="indirizzo" maxlength="150" placeholder="Indirizzo" class="indirizzo" required>
                 </div>
 
+                <div class="field input-field">
+                    <input type="text" name="telefono" placeholder="Telefono" class="telefono" pattern="[0-9]{10,15}" title="Inserisci un numero di telefono di 10-15 cifre" required>
+                </div>
+
+                <!--
                 <div class="field input-field">
                     <input type="text" placeholder="Numero Carta" class="carta">
                 </div>
@@ -106,6 +111,7 @@
                 <div class="field input-field">
                     <input type="number" placeholder="CVV" class="cvv">
                 </div>
+                -->
 
                 <div class="field button-field">
                     <button>Registrati</button>
