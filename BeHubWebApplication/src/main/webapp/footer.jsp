@@ -14,13 +14,9 @@
   <link rel="stylesheet" href="./css/footer.css">
 </head>
 <body>
-
+<div class="push"></div>
 <hr>
   <p class="copyright"> BeHub &copy; - All Rights Reserved</p>
-
-
-</footer>
-
 
 </body>
 </html>

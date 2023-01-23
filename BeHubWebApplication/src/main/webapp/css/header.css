@@ -3,14 +3,10 @@ header {
     padding: 20px 0;
     box-sizing: border-box;
     width: 100%;
-    display: flex;
     position: fixed;
     top: 0;
     left: 0;
-    justify-content: space-around;
-    align-items: center;
     z-index: 999;
-    height: 10vh;
 
 }
 
@@ -25,23 +21,25 @@ header {
 .right-nav {
     float: right;
     padding-right: 10px;
-    justify-content: flex-end;
-    align-items: center;
 }
 
 .left-nav ul{
-    display: flex;
+    display: inline-flex;
     gap: 35px;
     list-style:none;
     text-align: left;
+    align-items: center;
+    justify-content: flex-start;
 }
 
 .right-nav ul{
     text-align: right;
-    display: flex;
+    display: inline-flex;
     margin-right: 10px;
     gap: 35px;
     list-style:none;
+    align-items: center;
+    justify-content: flex-end;
 }
 
 
@@ -112,17 +110,18 @@ header {
     color:white;
     align-self: center;
 }
-.fa-arrow-right-from-arc{
-    color:white;
+
+
+.fa-basket-shopping{
+    color: #FFFFFF;
     align-self: center;
 }
-.fa-basket-shopping{
+.fa-person-through-window{
     color: #FFFFFF;
     align-self: center;
 }
 
 
-
 header li a img{
-    width: 48px;
+    width: 30px;
 }

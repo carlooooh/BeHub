@@ -73,7 +73,7 @@
                     </div>
                     <div class="input-box">
                         <span class="details">Descrizione</span>
-                        <textarea id="descrizione" name="descrizione" rows="4" cols="50" style="resize: none; width: 450px; height: 80px" required></textarea> <!-- 93 -->
+                        <textarea id="descrizione" name="descrizione" rows="4" cols="50" style="resize: none; width: 300px; height: 80px" required></textarea> <!-- 93 -->
                     </div>
                 </div>
                 <div class="button">

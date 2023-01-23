@@ -1,11 +1,5 @@
 @charset "UTF-8";
 
-*{
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-}
-
 body {
     background: linear-gradient(to right, #c04848, #610361);
 }
@@ -24,7 +18,7 @@ body {
 }
 #cart-container th {
     text-align: center;
-    font-family: Courier;
+    font-family: 'Poppins', sans-serif;
     padding: 5px;
     color: black;
     background:#fff;
@@ -34,7 +28,7 @@ body {
     text-align: center;
     padding: 10px 5px;
     color: #fff;
-    font-family: Courier;
+    font-family: 'Poppins', sans-serif;
 
 }
 #cart-container td input {
@@ -43,7 +37,7 @@ body {
     padding: 0px;
 }
 #cart-container td img {
-    display: block;
+    display: flex;
     margin-left: auto;
     margin-right: auto;
     width: 160px;
@@ -55,7 +49,7 @@ body {
 }
 #cart-container .total-price table {
     border-top: 3px solid #fff;
-    font-family: Courier;
+    font-family: 'Poppins', sans-serif;
     width: 100%;
     max-width: 350px;
 }
@@ -86,7 +80,7 @@ body {
     background-color:#0a0a23;
     color: #fff;
     border:none;
-    font-family: Courier;
+    font-family: 'Poppins', sans-serif;
     font-weight: 550;
 }
 
