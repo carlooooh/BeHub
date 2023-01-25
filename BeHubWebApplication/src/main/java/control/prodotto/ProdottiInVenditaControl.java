@@ -21,7 +21,12 @@ public class ProdottiInVenditaControl extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String email = (String) request.getSession().getAttribute("email");
+        String email;
+        if (request.getParameter("admin") != null) { //Usa email scelta se chiamato da un admin
+            email = request.getParameter("emailUtente");
+        }
+        else
+            email = (String) request.getSession().getAttribute("email");
         ProductModel productModel = new ProductModel();
         Collection<ProductBean> prodotti = productModel.getProdottiInVendita(email);  //ottenimento prodotti in vendita per l'utente
         request.getSession().setAttribute("prodottiInVendita", prodotti);

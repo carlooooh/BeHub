@@ -3,13 +3,7 @@
 <%@ page import="java.text.DecimalFormat" %>
 <%@ page import="java.util.Iterator" %>
 <%@ page import="model.ProductBean" %>
-<%@ page import="model.OrderModel" %><%--
-  Created by IntelliJ IDEA.
-  User: Mirko
-  Date: 22/01/2023
-  Time: 15:46
-  To change this template use File | Settings | File Templates.
---%>
+<%@ page import="model.OrderModel" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html>

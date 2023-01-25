@@ -1,10 +1,4 @@
-<%@ page import="model.ProductBean" %><%--
-  Created by IntelliJ IDEA.
-  User: eljon
-  Date: 01/01/2023
-  Time: 17:56
-  To change this template use File | Settings | File Templates.
---%>
+<%@ page import="model.ProductBean" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%
     ProductBean bean = new ProductBean();

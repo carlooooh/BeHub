@@ -35,6 +35,6 @@ public class ScritturaTicketControl extends HttpServlet {
         ticketModel.aggiungiTicket(ticket);
 
         //Trasferimento alla lista ticket dell'utente
-        response.sendRedirect(request.getContextPath() + "/TicketControl");
+        response.sendRedirect(request.getContextPath() + "/ListaTicketControl");
     }
 }

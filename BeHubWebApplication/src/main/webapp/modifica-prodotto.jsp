@@ -1,11 +1,4 @@
 <%@ page import="model.ProductBean" %>
-<%--
-  Created by IntelliJ IDEA.
-  User: eljon
-  Date: 02/01/2023
-  Time: 11:16
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
          pageEncoding="ISO-8859-1" %>
 <% if (session.getAttribute("utente") == null) {

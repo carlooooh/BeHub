@@ -1,12 +1,6 @@
 <%@ page import="java.util.Collection" %>
 <%@ page import="model.TicketBean" %>
-<%@ page import="java.util.Iterator" %><%--
-  Created by IntelliJ IDEA.
-  User: carlo
-  Date: 02/01/2023
-  Time: 15:47
-  To change this template use File | Settings | File Templates.
---%>
+<%@ page import="java.util.Iterator" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -38,8 +32,8 @@
                             TicketBean ticket = iterator.next();
                 %>
                     <tr>
-                        <td><%=ticket.getCodice()%>></td>
-                        <td><%=ticket.getOggetto()%>></td>
+                        <td><%=ticket.getCodice()%></td>
+                        <td><%=ticket.getOggetto()%></td>
                         <%
                             if (ticket.getStato() == 0) {
                         %>
@@ -50,7 +44,7 @@
                         <td> <p class="status status-nd">Chiuso</p></td>
                         <%  }
                         %>
-                        <td><a href="#" class="btn">Visualizza</a></td>
+                        <td><a href="DettagliTicketControl?codiceTicket=<%=ticket.getCodice()%>" class="btn">Visualizza</a></td>
                     </tr>
                 <%
                         }
@@ -59,8 +53,8 @@
                 </tbody>
             </table>
 
-            <form>
-                <button onclick="location.href='scrittura-ticket.jsp'">Compila Ticket</button>
+            <form action="scrittura-ticket.jsp">
+                <button>Compila Ticket</button>
             </form>
         </div>
 </div>

@@ -1,32 +1,14 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: carlo
-  Date: 29/12/2022
-  Time: 17:31
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
-<!-- Coding by CodingLab | www.codinglabweb.com-->
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-
-    <!-- CSS -->
     <link rel="stylesheet" href="css/accesso.css">
-
-
     <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
-
 </head>
 <body>
-
-
-
-
 <section class="container forms">
     <div class="form login">
         <div class="form-content">
@@ -125,13 +107,9 @@
                 <span>Torna alla pagina principale:<a href="index.jsp" >Home</a></span>
             </div>
         </div>
-
-
-
     </div>
 </section>
 <script>
-<!-- JavaScript -->
 const forms = document.querySelector(".forms"),
 pwShowHide = document.querySelectorAll(".eye-icon"),
 links = document.querySelectorAll(".link");
@@ -160,10 +138,5 @@ forms.classList.toggle("show-signup");
 })
 })
 </script>
-<!--<script src="js/script.js"></script>-->
-
-
-
-
 </body>
 </html>

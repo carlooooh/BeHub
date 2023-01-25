@@ -1,4 +1,4 @@
-body{
+footer{
     width:100%;
     position: fixed;
     bottom: 0;
@@ -22,5 +22,3 @@ hr{
 .push{
     padding-bottom: 300px;
 }
-
-

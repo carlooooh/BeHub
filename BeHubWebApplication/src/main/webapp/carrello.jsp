@@ -1,10 +1,3 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: eljon
-  Date: 27/12/2022
-  Time: 11:47
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
          pageEncoding="ISO-8859-1" import="model.CartBean, model.ProductBean, java.text.DecimalFormat, java.util.*"%>
 <!DOCTYPE html>
@@ -97,7 +90,7 @@
 
         %>
         <div class="button-buy-container">
-            <a href="OrderControl"><button class="buy-button" style="cursor: pointer">PROCEDI ALL'ACQUISTO</button></a>
+            <a href="checkout.jsp"><button class="buy-button" style="cursor: pointer">PROCEDI ALL'ACQUISTO</button></a>
         </div>
 
         <% 	}

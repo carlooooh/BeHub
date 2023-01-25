@@ -1,15 +1,9 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: eljon
-  Date: 02/01/2023
-  Time: 16:06
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
          pageEncoding="ISO-8859-1" import="java.text.DecimalFormat, java.util.*"%>
 <%@ page import="model.OrderBean" %>
 <%@ page import="model.ProductBean" %>
 <%@ page import="model.OrderModel" %>
+<%@ page import="model.UserBean" %>
 <%
   if (session.getAttribute("utente") == null) {
     response.sendRedirect("/accesso.jsp");
@@ -47,7 +41,7 @@
       <%
         Collection<OrderBean> ordini = (Collection<OrderBean>) session.getAttribute("listaProdottiVenduti");
         DecimalFormat df = new DecimalFormat("0.00");
-        String email = (String) session.getAttribute("email");
+        UserBean utente = (UserBean) session.getAttribute("utente");
 
         if (ordini != null && ordini.size() != 0) {
           Iterator<?> it = ordini.iterator();
@@ -67,7 +61,7 @@
           </div>
         </td>
         <td><%=prod.getNome()%></td>
-        <td id="price"><%=tot%> &euro;</td>
+        <td id="price"><%=prezzoTot%> &euro;</td>
         <td id="quantity"><%=prod.getQuantity()%></td>
         <td><%=ord.getData()%></td>
         <td class="product-price" id="subtotal"><%=ord.getEmail()%></td>
@@ -78,14 +72,19 @@
         <td><%=ord.getTracking()%></td>
         <%
           }
-          else {
+          else if (utente.getRole().compareTo("RU") == 0) { //non viene visualizzato dall'addetto al supporto
         %>
         <td>
           <form action="InserimentoTrackingControl?codiceOrdine=<%=ord.getCodice()%>" method="post">
-            <input type="text" name="tracking" required><br>
-            <input type="submit" value="Applica">
+            <input type="text" name="tracking" maxlength="50" size="10" required><br>
+            <input type="submit" value="&#10004;">
           </form>
         </td>
+        <%
+          }
+          else {
+        %>
+        <td>N/D</td>
         <%
           }
         %>

@@ -1,10 +1,8 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: carlo
-  Date: 02/01/2023
-  Time: 18:47
-  To change this template use File | Settings | File Templates.
---%>
+<%@ page import="model.CartBean" %>
+<%@ page import="model.ProductBean" %>
+<%@ page import="java.util.Collection" %>
+<%@ page import="java.util.Iterator" %>
+<%@ page import="java.text.DecimalFormat" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -15,19 +13,28 @@
   <title>BeHub - Checkout</title>
   <link rel="stylesheet" href="css/acquista.css" />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TweenMax.min.js"></script>
-
-
 </head>
-
-
 <body>
+<%
+  CartBean carrello = (CartBean) session.getAttribute("carrello");
+  Collection<ProductBean> prodotti = carrello.getCarrello();
+  Iterator<ProductBean> iterator = prodotti.iterator();
+  Double prezzoTot = 0.0;
+  while (iterator.hasNext()) {
+    ProductBean prodotto = iterator.next();
+    Double prezzoProdotto = (prodotto.getPrezzo() + prodotto.getSpedizione()) * prodotto.getQuantity();
+    prezzoTot += prezzoProdotto;
+  }
+  DecimalFormat df = new DecimalFormat("0.00");
+  String prezzoTotString = df.format(prezzoTot);
+%>
 <div class="container">
   <div class="left column">
     <div class="header"><h1 class="ml12">Checkout</h1></div>
     <div class="sottotitolo"> <h3> Concludi il tuo acquisto</h3></div>
     <div class="price">
       <span>Totale</span>
-      <span>$979.80</span>
+      <span><%=prezzoTotString%> &euro;</span>
     </div>
   </div>
   <div class="right column">

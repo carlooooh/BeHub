@@ -5,7 +5,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Collection;
-import java.util.Iterator;
 import java.util.LinkedList;
 
 public class TicketModel {
@@ -108,27 +107,77 @@ public class TicketModel {
         }
     }
 
-    private synchronized Collection<TicketBean> modificaListaTicket(Collection<TicketBean> listaTicket, int codiceTicket) {
-        Iterator<TicketBean> it = listaTicket.iterator();
-        TicketBean ticket = null;
+    /*
+    Metodo per ottenere la lista di ticket aperti dell'utente
+     */
+    public synchronized Collection<TicketBean> getListaTicketAperti(String emailUtente) {
+        Connection connection = null;
+        String sql = "SELECT * FROM Ticket WHERE emailUtente = ? AND stato = ? ORDER BY dataInvio DESC";
+        Collection<TicketBean> listaTicket = new LinkedList<TicketBean>();
 
-        //cerca il ticket corretto da modificare
-        while (it.hasNext()) {
-            TicketBean tempTicket = (TicketBean) it.next();
-            if (ticket.getCodice() == codiceTicket) {
-                ticket = tempTicket;
-                break;
+        try {
+            connection = DriverManagerConnectionPool.getConnection();
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ps.setString(1, emailUtente);
+            ps.setString(2, "Aperto");
+
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                TicketBean ticket = new TicketBean();
+                ticket.setCodice(rs.getInt("codice"));
+                ticket.setData(rs.getDate("dataInvio"));
+                ticket.setEmailUtente(emailUtente);
+                ticket.setOggetto(rs.getString("oggetto"));
+                ticket.setTesto(rs.getString("testo"));
+                ticket.setStato(parseStato(rs.getString("stato")));
+
+                listaTicket.add(ticket);
             }
         }
-
-        //modifica il ticket e lo sostituisce nella lista
-        if (ticket != null) {
-            listaTicket.remove(ticket);
-            ticket.setStato(1);
-            listaTicket.add(ticket);
+        catch (SQLException e) {
+            e.printStackTrace();
         }
+        finally {
+            if (connection != null) {
+                DriverManagerConnectionPool.releaseConnection(connection);
+            }
+            return listaTicket;
+        }
+    }
 
-        return listaTicket;
+    /*
+    Metodo per ottenere un ticket dal database
+    */
+    public synchronized TicketBean retrieveByKey(int codiceTicket) {
+        TicketBean ticket = new TicketBean();
+        Connection connection = null;
+        String sql = "SELECT * FROM Ticket WHERE codice = ?";
+
+        try {
+            connection = DriverManagerConnectionPool.getConnection();
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ps.setInt(1, codiceTicket);
+
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                ticket.setCodice(codiceTicket);
+                ticket.setTesto(rs.getString("testo"));
+                ticket.setStato(parseStato(rs.getString("stato")));
+                ticket.setEmailUtente(rs.getString("emailUtente"));
+                ticket.setOggetto(rs.getString("oggetto"));
+                ticket.setData(rs.getDate("dataInvio"));
+            }
+            return ticket;
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+        finally {
+            if (connection != null)
+                DriverManagerConnectionPool.releaseConnection(connection);
+        }
     }
 
     /*

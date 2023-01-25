@@ -22,7 +22,12 @@ public class ProdottiVendutiControl extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
        OrderModel orderModel = new OrderModel();
-       String email = (String) request.getSession().getAttribute("email");
+        String email;
+        if (request.getParameter("admin") != null) { //Usa email scelta se chiamato da un admin
+            email = request.getParameter("emailUtente");
+        }
+        else
+            email = (String) request.getSession().getAttribute("email");
        Collection<OrderBean> listaProdottiVenduti = orderModel.getProdottiVenduti(email); //ottenimento lista prodotti venduti
 
        request.getSession().setAttribute("listaProdottiVenduti", listaProdottiVenduti);

@@ -1,11 +1,5 @@
 <%@ page import="model.CartBean" %>
-<%@ page import="model.UserBean" %><%--
-  Created by IntelliJ IDEA.
-  User: eljon
-  Date: 24/12/2022
-  Time: 11:56
-  To change this template use File | Settings | File Templates.
---%>
+<%@ page import="model.UserBean" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html>
@@ -23,41 +17,54 @@
       session.setAttribute("carrello", carrello);
     }
   %>
-  <div class="left-nav">
+  <div class="left-nav2">
     <ul>
       <li>
         <div class="home">
           <a href="index.jsp"><img src="./immagini/logoBeHub2.png"></a>
-          <a href="index.jsp" data-item="home" class="left-nav-link">Home</a>
+          <a href="index.jsp" data-item="home" class="left-nav-link2">Home</a>
         </div>
       </li>
       <% if (session.getAttribute("utente") != null) {
         UserBean utente = (UserBean) session.getAttribute("utente");
-        if (utente.getEmail().compareTo("") != 0) {
+        if (utente.getRole().compareTo("AS") != 0) {
       %>
       <li>
         <div class="areapersonale">
           <i class="fa-solid fa-user-astronaut fa-2xl"></i>
-          <a href="account.jsp" data-item="area personale" class="left-nav-link">Area Personale</a>
+          <a href="account.jsp" data-item="area personale" class="left-nav-link2">Area Personale</a>
         </div>
       </li>
+      <%
+        }
+        else {
+      %>
+      <li>
+        <div class="areapersonale">
+          <i class="fa-solid fa-user-astronaut fa-2xl"></i>
+          <a href="supporto.jsp" data-item="area personale" class="left-nav-link2">Pagina supporto</a>
+        </div>
+      </li>
+      <%
+        }
+      %>
       <li>
         <div class="vendi">
           <i class="fa-solid fa-sack-dollar fa-2xl"></i>
-          <a href="vendi.jsp" data-item="vendi" class="left-nav-link">Vendi</a>
+          <a href="vendi.jsp" data-item="vendi" class="left-nav-link2">Vendi</a>
         </div>
       </li>
 
 
-       <% }
-       }
+       <%
+        }
        else {
        %>
 
        <li>
          <div class="accedi">
            <i class="fa-regular fa-address-card fa-2xl color" style="color: white"></i>
-           <a href="accesso.jsp" data-item="accedi" class="left-nav-link">Accedi</a>
+           <a href="accesso.jsp" data-item="accedi" class="left-nav-link2">Accedi</a>
          </div>
        </li>
        <%
@@ -66,7 +73,7 @@
     </ul>
   </div>
 
-  <div class="ms-auto right-nav">
+  <div class="ms-auto right-nav2">
 
     <ul>
         <% if (session.getAttribute("utente") != null) {

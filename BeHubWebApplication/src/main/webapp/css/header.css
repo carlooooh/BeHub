@@ -11,19 +11,19 @@ header {
 }
 
 
-.left-nav {
+.left-nav2 {
     float: left;
     padding-left: 10px;
     justify-content: flex-start;
     align-items: center;
 }
 
-.right-nav {
+.right-nav2 {
     float: right;
     padding-right: 10px;
 }
 
-.left-nav ul{
+.left-nav2 ul{
     display: inline-flex;
     gap: 35px;
     list-style:none;
@@ -32,7 +32,7 @@ header {
     justify-content: flex-start;
 }
 
-.right-nav ul{
+.right-nav2 ul{
     text-align: right;
     display: inline-flex;
     margin-right: 10px;
@@ -43,7 +43,7 @@ header {
 }
 
 
-.left-nav-link {
+.left-nav-link2 {
     font-size: 25px;
     text-align: center;
     text-decoration: none;
@@ -55,7 +55,7 @@ header {
     position: relative;
     text-transform: uppercase;
 }
-.left-nav-link::before {
+.left-nav-link2::before {
     content: attr(data-item);
     transition: 0.5s;
     color: #c04848;
@@ -67,12 +67,12 @@ header {
     width: 0;
     overflow: hidden;
 }
-.left-nav-link:hover::before {
+.left-nav-link2:hover::before {
     width: 100%;
     transition: all 0.5s ease-in-out;
 }
 
-.right-nav-link {
+.right-nav-link2 {
     font-size: 25px;
     text-align: center;
     text-decoration: none;
@@ -84,7 +84,7 @@ header {
     position: relative;
     text-transform: uppercase;
 }
-.right-nav-link::before {
+.right-nav-link2::before {
     content: attr(data-item);
     transition: 0.5s;
     color: #8254ff;
@@ -96,7 +96,7 @@ header {
     width: 0;
     overflow: hidden;
 }
-.right-nav-link:hover::before {
+.right-nav-link2:hover::before {
     width: 100%;
     transition: all 0.5s ease-in-out;
 }

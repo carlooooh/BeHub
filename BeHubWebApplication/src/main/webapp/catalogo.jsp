@@ -1,10 +1,3 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: eljon
-  Date: 27/12/2022
-  Time: 11:49
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" import=" java.util.*,  java.text.DecimalFormat"%>
 <%@ page import="model.ProductBean" %>
@@ -14,7 +7,6 @@
 <%
     if (request.getAttribute("products") != null) {
         Collection<?> products = (Collection<?>) request.getAttribute("products");
-        String tipologia = request.getParameter("categoria");
 
 %>
 
@@ -29,20 +21,6 @@
     <link rel="stylesheet" href="css/catalogo.css">
 </head>
 <body>
-<%--
-<%
-    if (session.getAttribute("refreshProduct") != null && (Boolean) session.getAttribute("refreshProduct") == true) {
-        request.getSession().setAttribute("refreshProduct", false);
-%>
-
---%>
-
-
-<%--
-<%
-    }
-%>
---%>
 <div class="header">
 <jsp:include page="header.jsp"/>
 </div>

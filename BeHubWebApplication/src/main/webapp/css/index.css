@@ -9,10 +9,10 @@
 body {
     background: linear-gradient(135deg, #c04848 25%, #610361 75%);
     padding-top:10vh;
-    font-family: 'Poppins', sans-serif;
 }
 .carosello{
     height: 100%;
+    font-family: 'Poppins', sans-serif;
 }
 .imgCarosello{
     height: 90vh;

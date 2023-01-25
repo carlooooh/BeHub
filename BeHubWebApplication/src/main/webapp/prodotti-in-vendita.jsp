@@ -1,15 +1,9 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: eljon
-  Date: 02/01/2023
-  Time: 15:42
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
          pageEncoding="ISO-8859-1" import="java.text.DecimalFormat, java.util.*"%>
 <%@ page import="model.OrderBean" %>
 <%@ page import="model.ProductBean" %>
 <%@ page import="model.ProductModel" %>
+<%@ page import="model.UserBean" %>
 <% if (session.getAttribute("utente") == null) {
   response.sendRedirect("/accesso.jsp");
 }
@@ -44,7 +38,6 @@
       <%
         Collection<ProductBean> prodottiInVendita = (Collection<ProductBean>) session.getAttribute("prodottiInVendita");
         DecimalFormat df = new DecimalFormat("0.00");
-        String email = request.getParameter("email");
 
         if (prodottiInVendita != null && prodottiInVendita.size() != 0) {
           Iterator<?> it = prodottiInVendita.iterator();
@@ -67,11 +60,15 @@
         <td id="quantity"><%=prod.getQuantity()%></td>
         <td><%=ProductModel.controllaCategoria(prod.getCategoria())%></td>
         <td><%=ProductModel.controllaCondizione(prod.getCondizione())%></td>
-        <td><i class = "far fa-edit" style="color: red; cursor: pointer" href="ProdottoDaModificareControl?codice=<%=prod.getCodice()%>"></i></td>
+        <%
+            UserBean utente = (UserBean) session.getAttribute("utente");
+            if (utente.getRole().compareTo("RU") == 0) { //l'addetto al supporto non può accedervi
+        %>
+        <td><i class = "far fa-edit" style="color: red; cursor: pointer" href="/ProdottoDaModificareControl?codice=<%=prod.getCodice()%>"></i></td>
       </tr>
-    <%
+    <%      }
+          }
         }
-      }
     %>
     </table>
   </div>

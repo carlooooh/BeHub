@@ -1,15 +1,6 @@
-<%@ page import="model.UserModel" %>
-<%@ page import="java.util.Collection" %>
-<%@ page import="java.util.Iterator" %>
 <%@ page import="model.UserBean" %>
 <%@ page import="java.text.DateFormat" %>
-<%@ page import="java.text.SimpleDateFormat" %><%--
-  Created by IntelliJ IDEA.
-  User: eljon
-  Date: 27/12/2022
-  Time: 11:45
-  To change this template use File | Settings | File Templates.
---%>
+<%@ page import="java.text.SimpleDateFormat" %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
          pageEncoding="ISO-8859-1"       %>
 <% if (session.getAttribute("utente") == null) {
@@ -67,10 +58,12 @@
                     </div>
                     <%
                         if (utente.getNumero() != null) {
+                            String numeroCarta = utente.getNumero();
+                            String numeroCartaFormattato = numeroCarta.substring(0, 4) + "xxxxxxxx" + numeroCarta.substring(9);
                     %>
                     <div class="input-box">
                         <span class="details">Numero carta di credito</span>
-                        <input type="text" name="carta" pattern="[0-9]{16}" title="Inserisci un numero valido di 16 cifre" value="<%=utente.getNumero()%>">
+                        <input type="text" name="carta" pattern="[0-9]{16}" title="Inserisci un numero valido di 16 cifre" value="<%=numeroCartaFormattato%>">
                     </div>
                     <%
                         }
@@ -78,7 +71,7 @@
                     %>
                     <div class="input-box">
                         <span class="details">Numero carta di credito</span>
-                        <input type="text" name="carta" pattern="[0-9]{16}" title="Inserisci un numero valido di 16 cifre">
+                        <input type="text" name="carta" pattern="[0-9]{16}" title="Inserisci un numero valido di 16 cifre" value="">
                     </div>
                     <%
                         }
@@ -94,7 +87,7 @@
                     %>
                     <div class="input-box">
                         <span class="details">Intestatario carta</span>
-                        <input type="text" name="intestatario" maxlength="50">
+                        <input type="text" name="intestatario" maxlength="50" value="">
                     </div>
                     <%
                         }
