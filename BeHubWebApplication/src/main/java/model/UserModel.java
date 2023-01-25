@@ -8,34 +8,6 @@ import java.util.Collection;
 import java.util.LinkedList;
 
 public class UserModel {
-    /*
-    Metodo per ottenere la lista di email degli utenti
-     */
-    public synchronized Collection<String> retrieveAllEmail() {
-        Collection<String> collection = new LinkedList<String>();
-        Connection con = null;
-        PreparedStatement ps = null;
-        String sql = "SELECT email FROM Utente";
-
-        try {
-            con = DriverManagerConnectionPool.getConnection();
-            ps = con.prepareStatement(sql);
-
-            ResultSet rs = ps.executeQuery();
-            while (rs.next()) {
-                collection.add(rs.getString(1));
-            }
-            return collection;
-        }
-        catch (Exception e) {
-            return collection;
-        }
-        finally {
-            if (con != null) {
-                DriverManagerConnectionPool.releaseConnection(con);
-            }
-        }
-    }
 
     /*
     Metodo che modifica le informazioni di un account
@@ -77,7 +49,9 @@ public class UserModel {
             return false;
         }
     }
-
+    /*
+    * Inserisce un nuovo UserBean nel database
+    * */
     public synchronized boolean insert(UserBean user, String psw) {
         String email = user.getEmail();
         String password = psw;

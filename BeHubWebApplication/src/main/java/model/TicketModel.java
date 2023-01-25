@@ -107,6 +107,7 @@ public class TicketModel {
         }
     }
 
+
     /*
     Metodo per ottenere la lista di ticket aperti dell'utente
      */
@@ -179,6 +180,7 @@ public class TicketModel {
                 DriverManagerConnectionPool.releaseConnection(connection);
         }
     }
+
 
     /*
     Metodo interno per utilizzare correttamente il valore dello stato del TicketBean

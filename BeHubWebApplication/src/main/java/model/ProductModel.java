@@ -12,7 +12,7 @@ public class ProductModel {
     private static final String TABLE_NAME = "Prodotto";
 
     /*
-    Metodo per inserire nel database un prodotto passando in input un ProductBean e un url ad una immagine
+    Metodo per inserire nel database un prodotto passando in input un ProductBean
      */
     public synchronized void doSave(ProductBean product) throws SQLException {
 
