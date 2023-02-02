@@ -5,7 +5,8 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import model.OrderModel;
+import model.DAOImplementation.OrderDAOModel;
+import model.DAOInterfaces.OrderDAO;
 
 import java.io.IOException;
 
@@ -20,7 +21,7 @@ public class InserimentoTrackingControl extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String tracking = request.getParameter("tracking");
         int codiceOrdine = Integer.parseInt(request.getParameter("codiceOrdine"));
-        OrderModel orderModel = new OrderModel();
+        OrderDAO orderModel = new OrderDAOModel();
 
         orderModel.inserisciTracking(tracking, codiceOrdine);
 

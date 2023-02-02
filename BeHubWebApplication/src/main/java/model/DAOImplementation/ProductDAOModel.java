@@ -1,4 +1,8 @@
-package model;
+package model.DAOImplementation;
+
+import model.DAOInterfaces.ProductDAO;
+import model.bean.ProductBean;
+import model.utils.DriverManagerConnectionPool;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -7,7 +11,7 @@ import java.sql.SQLException;
 import java.util.Collection;
 import java.util.LinkedList;
 
-public class ProductModel {
+public class ProductDAOModel implements ProductDAO {
 
     private static final String TABLE_NAME = "Prodotto";
 
@@ -61,7 +65,7 @@ public class ProductModel {
 
         ProductBean bean = new ProductBean();
 
-        String selectSQL = "SELECT * FROM " + ProductModel.TABLE_NAME + " WHERE codice = ? AND deleted = false";
+        String selectSQL = "SELECT * FROM " + ProductDAOModel.TABLE_NAME + " WHERE codice = ? AND deleted = false";
 
         try {
             //Creazione ProductBean dalla tavola Prodotto del database
@@ -107,7 +111,7 @@ public class ProductModel {
 
         Collection<ProductBean> products = new LinkedList<ProductBean>();
 
-        String selectSQL = "SELECT * FROM " + ProductModel.TABLE_NAME + " WHERE deleted = 'false' AND nomeCategoria = '" + where + "'";
+        String selectSQL = "SELECT * FROM " + ProductDAOModel.TABLE_NAME + " WHERE deleted = 'false' AND nomeCategoria = '" + where + "'";
 
         try {
             connection = DriverManagerConnectionPool.getConnection();
@@ -220,7 +224,7 @@ public class ProductModel {
 
         Collection<ProductBean> products = new LinkedList<ProductBean>();
 
-        String selectSQL = "SELECT * FROM " + ProductModel.TABLE_NAME + " WHERE deleted = 'false' AND emailVenditore = '" + email + "'";
+        String selectSQL = "SELECT * FROM " + ProductDAOModel.TABLE_NAME + " WHERE deleted = 'false' AND emailVenditore = '" + email + "'";
 
         try {
             connection = DriverManagerConnectionPool.getConnection();

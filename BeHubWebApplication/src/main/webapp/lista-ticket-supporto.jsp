@@ -1,5 +1,5 @@
 <%@ page import="java.util.Collection" %>
-<%@ page import="model.TicketBean" %>
+<%@ page import="model.bean.TicketBean" %>
 <%@ page import="java.util.Iterator" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>

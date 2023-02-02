@@ -1,4 +1,11 @@
-package model;
+package model.DAOImplementation;
+
+import model.DAOInterfaces.OrderDAO;
+import model.bean.CartBean;
+import model.bean.OrderBean;
+import model.bean.ProductBean;
+import model.bean.UserBean;
+import model.utils.DriverManagerConnectionPool;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -7,14 +14,14 @@ import java.util.Collection;
 import java.util.Iterator;
 import java.util.LinkedList;
 
-public class OrderModel {
+public class OrderDAOModel implements OrderDAO {
     /*
     Metodo per effettuare gli ordini dei prodotti nel carrello
      */
     public synchronized boolean doOrder(CartBean cart, UserBean user) {
         Collection<ProductBean> carrello = cart.getCarrello();
         Connection con = null;
-        ProductModel productModel = new ProductModel();
+        ProductDAOModel productModel = new ProductDAOModel();
 
         String sql = "INSERT INTO Ordine (codiceProdotto, emailCliente, prezzoTotale, quantity, dataAcquisto) VALUES (?, ?, ?, ?, current_date())";
 
@@ -54,7 +61,7 @@ public class OrderModel {
      */
     public synchronized boolean doOrder(ProductBean prodotto, UserBean user) {
         Connection con = null;
-        ProductModel productModel = new ProductModel();
+        ProductDAOModel productModel = new ProductDAOModel();
 
         String sql = "INSERT INTO Ordine (codiceProdotto, emailCliente, prezzoTotale, quantity, dataAcquisto) VALUES (?, ?, ?, ?, current_date())";
 
@@ -155,8 +162,8 @@ public class OrderModel {
                 prodotto.setQuantity(rs.getInt("quantity"));
                 prodotto.setNome(rs.getString("nome"));
                 prodotto.setDescrizione(rs.getString("descrizione"));
-                prodotto.setCondizione(ProductModel.parseCondizione(rs.getString("condizione")));
-                prodotto.setCategoria(ProductModel.parseCategoria(rs.getString("nomeCategoria")));
+                prodotto.setCondizione(ProductDAOModel.parseCondizione(rs.getString("condizione")));
+                prodotto.setCategoria(ProductDAOModel.parseCategoria(rs.getString("nomeCategoria")));
                 prodotto.setImmagine(rs.getString("urlImmagine"));
 
                 ordine.setCodice(rs.getInt("codiceOrdine"));

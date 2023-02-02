@@ -1,5 +1,5 @@
-<%@ page import="model.CartBean" %>
-<%@ page import="model.ProductBean" %>
+<%@ page import="model.bean.CartBean" %>
+<%@ page import="model.bean.ProductBean" %>
 <%@ page import="java.util.Collection" %>
 <%@ page import="java.util.Iterator" %>
 <%@ page import="java.text.DecimalFormat" %>

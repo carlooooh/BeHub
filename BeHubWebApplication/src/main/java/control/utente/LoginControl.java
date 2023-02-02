@@ -5,8 +5,9 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import model.UserBean;
-import model.UserModel;
+import model.DAOInterfaces.UserDAO;
+import model.bean.UserBean;
+import model.DAOImplementation.UserDAOModel;
 
 import java.io.IOException;
 
@@ -19,7 +20,7 @@ public class LoginControl extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        UserModel userModel = new UserModel();
+        UserDAO userModel = new UserDAOModel();
         String email = request.getParameter("email");
         String password = request.getParameter("password");
         UserBean user = userModel.login(email, password);

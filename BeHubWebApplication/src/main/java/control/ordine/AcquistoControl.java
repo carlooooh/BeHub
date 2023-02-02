@@ -6,9 +6,10 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import model.CartBean;
-import model.OrderModel;
-import model.UserBean;
+import model.DAOInterfaces.OrderDAO;
+import model.bean.CartBean;
+import model.DAOImplementation.OrderDAOModel;
+import model.bean.UserBean;
 
 import java.io.IOException;
 
@@ -21,7 +22,7 @@ public class AcquistoControl extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        OrderModel orderModel = new OrderModel();
+        OrderDAO orderModel = new OrderDAOModel();
         CartBean carrello = (CartBean) request.getSession().getAttribute("carrello");
         UserBean utente = (UserBean) request.getSession().getAttribute("utente");
 

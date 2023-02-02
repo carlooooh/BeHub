@@ -6,8 +6,9 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import model.OrderBean;
-import model.OrderModel;
+import model.DAOInterfaces.OrderDAO;
+import model.bean.OrderBean;
+import model.DAOImplementation.OrderDAOModel;
 
 import java.io.IOException;
 import java.util.Collection;
@@ -21,7 +22,7 @@ public class ProdottiVendutiControl extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-       OrderModel orderModel = new OrderModel();
+       OrderDAO orderModel = new OrderDAOModel();
         String email;
         if (request.getParameter("admin") != null) { //Usa email scelta se chiamato da un admin
             email = request.getParameter("emailUtente");

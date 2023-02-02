@@ -6,10 +6,12 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import model.CartBean;
-import model.CartModel;
-import model.ProductBean;
-import model.ProductModel;
+import model.DAOInterfaces.CartDAO;
+import model.DAOInterfaces.ProductDAO;
+import model.bean.CartBean;
+import model.DAOImplementation.CartDAOModel;
+import model.bean.ProductBean;
+import model.DAOImplementation.ProductDAOModel;
 
 import java.io.IOException;
 
@@ -28,16 +30,16 @@ public class ModificaProdottoControl extends HttpServlet {
         prodotto.setDescrizione(request.getParameter("descrizione"));
         prodotto.setPrezzo(Double.parseDouble(request.getParameter("prezzo")));
         prodotto.setSpedizione(Double.parseDouble(request.getParameter("spedizione")));
-        prodotto.setCondizione(ProductModel.parseCondizione(request.getParameter("condizione")));
-        prodotto.setCategoria(ProductModel.parseCategoria(request.getParameter("categoria")));
+        prodotto.setCondizione(ProductDAOModel.parseCondizione(request.getParameter("condizione")));
+        prodotto.setCategoria(ProductDAOModel.parseCategoria(request.getParameter("categoria")));
         prodotto.setQuantity(Integer.parseInt(request.getParameter("quantity")));
 
-        ProductModel productModel = new ProductModel();
+        ProductDAO productModel = new ProductDAOModel();
         productModel.updateProduct(prodotto); //Modifica prodotto
 
         //Aggiornamento prodotto nel carrello
         if (request.getSession().getAttribute("carrello") != null) {
-            CartModel cartModel = new CartModel();
+            CartDAO cartModel = new CartDAOModel();
             CartBean carrello = cartModel.updateCarrello(prodotto, (CartBean) request.getSession().getAttribute("carrello"));
             request.getSession().setAttribute("carrello", carrello);
         }

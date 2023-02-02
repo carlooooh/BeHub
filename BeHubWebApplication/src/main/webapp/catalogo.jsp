@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" import=" java.util.*,  java.text.DecimalFormat"%>
-<%@ page import="model.ProductBean" %>
-<%@ page import="model.UserBean" %>
+<%@ page import="model.bean.ProductBean" %>
+<%@ page import="model.bean.UserBean" %>
 
 
 <%

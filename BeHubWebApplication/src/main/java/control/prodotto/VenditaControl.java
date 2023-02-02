@@ -5,8 +5,9 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import model.ProductBean;
-import model.ProductModel;
+import model.DAOInterfaces.ProductDAO;
+import model.bean.ProductBean;
+import model.DAOImplementation.ProductDAOModel;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -27,14 +28,13 @@ public class VenditaControl extends HttpServlet {
         prodotto.setQuantity(Integer.parseInt(request.getParameter("quantity")));
         prodotto.setPrezzo(Double.parseDouble(request.getParameter("prezzo")));
         prodotto.setSpedizione(Double.parseDouble(request.getParameter("spedizione")));
-        prodotto.setCategoria(ProductModel.parseCategoria(request.getParameter("categoria")));
-        prodotto.setCondizione(ProductModel.parseCondizione(request.getParameter("condizioni")));
-        System.out.println(request.getParameter("immagine"));
+        prodotto.setCategoria(ProductDAOModel.parseCategoria(request.getParameter("categoria")));
+        prodotto.setCondizione(ProductDAOModel.parseCondizione(request.getParameter("condizioni")));
         prodotto.setImmagine(request.getParameter("immagine"));
         prodotto.setEmail((String) request.getSession().getAttribute("email"));
 
         //Utilizzo della classe ProductModel per la vendita
-        ProductModel productModel = new ProductModel();
+        ProductDAO productModel = new ProductDAOModel();
         try {
             productModel.doSave(prodotto);
         } catch (SQLException e) {

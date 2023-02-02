@@ -1,4 +1,10 @@
-package model;
+package model.DAOImplementation;
+
+import model.DAOInterfaces.CartDAO;
+import model.bean.CartBean;
+import model.bean.ProductBean;
+import model.bean.UserBean;
+import model.utils.DriverManagerConnectionPool;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -7,7 +13,7 @@ import java.util.Collection;
 import java.util.Iterator;
 import java.util.LinkedList;
 
-public class CartModel {
+public class CartDAOModel implements CartDAO {
     public synchronized CartBean updateCarrello(ProductBean bean, CartBean cart) {
         Collection<ProductBean> collection = cart.getCarrello();
         Collection<ProductBean> lista = new LinkedList<ProductBean>();
@@ -35,45 +41,6 @@ public class CartModel {
     }
 
     /*
-    Metodo per inserire negli ordini tutti gli elementi del carrello dopo l'acquisto
-     */
-    public synchronized CartBean acquista(CartBean cart, UserBean user) {
-        Connection con = null;
-        Collection<ProductBean>carrello = cart.getCarrello();
-        String sql = "INSERT INTO Ordine (codiceProdotto, emailCliente, prezzoTotale, quantity, dataAcquisto) VALUES (?, ?, ?, ?, current_date())";
-
-        try {
-            con = DriverManagerConnectionPool.getConnection();
-
-            if (carrello != null && carrello.size() != 0) {
-                for (Iterator<ProductBean> i = cart.getCarrello().iterator(); i.hasNext();) { //per ogni prodotto del carrello viene creato un ordine
-                    ProductBean bean = (ProductBean) i.next();
-                    Double prezzoTot = ((bean.getPrezzo() + bean.getSpedizione()) * bean.getQuantity());
-
-                    PreparedStatement ps = con.prepareStatement(sql);
-                    ps.setInt(1, bean.getCodice());
-                    ps.setString(2, user.getEmail());
-                    ps.setDouble(3, prezzoTot);
-                    ps.setInt(4, bean.getQuantity());
-
-                    ps.executeUpdate();
-                }
-                con.commit();
-                cart.removeAllItems();
-            }
-            return cart;
-        }
-        catch (Exception e) {
-            return cart;
-        }
-        finally {
-            if (con != null) {
-                DriverManagerConnectionPool.releaseConnection(con);
-            }
-        }
-    }
-
-    /*
     Metodo per aggiungere un prodotto al carrello
      */
     public synchronized CartBean aggiungiAlCarrello(CartBean carrello, int codiceProdotto) {
@@ -98,11 +65,11 @@ public class CartModel {
                 bean.setPrezzo(rs.getDouble("prezzo"));
                 bean.setSpedizione(rs.getDouble("speseSpedizione"));
                 bean.setEmail(rs.getString("emailVenditore"));
-                bean.setCategoria(ProductModel.parseCategoria(rs.getString("nomeCategoria")));
+                bean.setCategoria(ProductDAOModel.parseCategoria(rs.getString("nomeCategoria")));
                 bean.setQuantity(rs.getInt("quantity"));
                 bean.setData(rs.getDate("dataAnnuncio"));
                 bean.setImmagine(rs.getString("urlImmagine"));
-                bean.setCondizione(ProductModel.parseCondizione(rs.getString("condizione")));
+                bean.setCondizione(ProductDAOModel.parseCondizione(rs.getString("condizione")));
                 bean.setMaxQuantity(rs.getInt("quantity"));
 
                 carrello.setCarrello(bean);
@@ -146,11 +113,11 @@ public class CartModel {
                 bean.setPrezzo(rs.getDouble("prezzo"));
                 bean.setSpedizione(rs.getDouble("speseSpedizione"));
                 bean.setEmail(rs.getString("emailVenditore"));
-                bean.setCategoria(ProductModel.parseCategoria(rs.getString("nomeCategoria")));
+                bean.setCategoria(ProductDAOModel.parseCategoria(rs.getString("nomeCategoria")));
                 bean.setQuantity(quantità); //setta la quantità del prodotto
                 bean.setData(rs.getDate("dataAnnuncio"));
                 bean.setImmagine(rs.getString("urlImmagine"));
-                bean.setCondizione(ProductModel.parseCondizione(rs.getString("condizione")));
+                bean.setCondizione(ProductDAOModel.parseCondizione(rs.getString("condizione")));
                 bean.setMaxQuantity(rs.getInt("quantity"));
 
                 carrello.setCarrello(bean);

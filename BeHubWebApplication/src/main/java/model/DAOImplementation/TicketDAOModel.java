@@ -1,4 +1,8 @@
-package model;
+package model.DAOImplementation;
+
+import model.DAOInterfaces.TicketDAO;
+import model.bean.TicketBean;
+import model.utils.DriverManagerConnectionPool;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -7,7 +11,7 @@ import java.sql.SQLException;
 import java.util.Collection;
 import java.util.LinkedList;
 
-public class TicketModel {
+public class TicketDAOModel implements TicketDAO {
     /*
     Metodo per aggiungere un ticket nel database
      */

@@ -6,7 +6,8 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import model.ProductModel;
+import model.DAOImplementation.ProductDAOModel;
+import model.DAOInterfaces.ProductDAO;
 
 import java.io.IOException;
 
@@ -20,7 +21,7 @@ public class ListaProdottiCategoriaControl extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String categoria = request.getParameter("categoria");
-        ProductModel productModel = new ProductModel();
+        ProductDAO productModel = new ProductDAOModel();
         try {
             request.setAttribute("products", productModel.doRetrieveAll(categoria)); //lista prodotti della categoria
         }

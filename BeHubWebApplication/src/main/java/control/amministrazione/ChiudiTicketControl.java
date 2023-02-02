@@ -6,8 +6,9 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import model.TicketBean;
-import model.TicketModel;
+import model.DAOInterfaces.TicketDAO;
+import model.bean.TicketBean;
+import model.DAOImplementation.TicketDAOModel;
 
 import java.io.IOException;
 
@@ -25,7 +26,7 @@ public class ChiudiTicketControl extends HttpServlet {
         TicketBean ticket = new TicketBean();
         ticket.setCodice(Integer.parseInt(codiceTicket));
 
-        TicketModel ticketModel = new TicketModel();
+        TicketDAO ticketModel = new TicketDAOModel();
         Boolean control = ticketModel.chiudiTicket(ticket);
 
         if (control == true) {

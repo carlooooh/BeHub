@@ -6,8 +6,9 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import model.ProductBean;
-import model.ProductModel;
+import model.DAOInterfaces.ProductDAO;
+import model.bean.ProductBean;
+import model.DAOImplementation.ProductDAOModel;
 
 import java.io.IOException;
 import java.util.Collection;
@@ -27,7 +28,7 @@ public class ProdottiInVenditaControl extends HttpServlet {
         }
         else
             email = (String) request.getSession().getAttribute("email");
-        ProductModel productModel = new ProductModel();
+        ProductDAO productModel = new ProductDAOModel();
         Collection<ProductBean> prodotti = productModel.getProdottiInVendita(email);  //ottenimento prodotti in vendita per l'utente
         request.getSession().setAttribute("prodottiInVendita", prodotti);
 

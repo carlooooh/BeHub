@@ -5,8 +5,9 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import model.UserBean;
-import model.UserModel;
+import model.DAOInterfaces.UserDAO;
+import model.bean.UserBean;
+import model.DAOImplementation.UserDAOModel;
 
 import java.io.IOException;
 import java.sql.Date;
@@ -38,7 +39,7 @@ public class ModificaInformazioniControl extends HttpServlet {
             response.sendRedirect(request.getContextPath() + "/ProdottiInVenditaControl");
         }
         else {
-            UserModel userModel = new UserModel();
+            UserDAO userModel = new UserDAOModel();
             String oldEmail = (String) request.getSession().getAttribute("email");
             UserBean utente = new UserBean();
             String newEmail = request.getParameter("email");

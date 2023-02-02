@@ -6,8 +6,9 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import model.ProductBean;
-import model.ProductModel;
+import model.DAOInterfaces.ProductDAO;
+import model.bean.ProductBean;
+import model.DAOImplementation.ProductDAOModel;
 
 import java.io.IOException;
 
@@ -21,7 +22,7 @@ public class ProdottoDaModificareControl extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         ProductBean prodotto;
-        ProductModel productModel = new ProductModel();
+        ProductDAO productModel = new ProductDAOModel();
         try {
             prodotto = productModel.doRetrieveByKey(Integer.parseInt(request.getParameter("codice")));
             request.setAttribute("updateProd", prodotto);

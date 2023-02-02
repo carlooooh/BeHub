@@ -6,10 +6,12 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import model.OrderModel;
-import model.ProductBean;
-import model.ProductModel;
-import model.UserBean;
+import model.DAOImplementation.OrderDAOModel;
+import model.DAOInterfaces.OrderDAO;
+import model.DAOInterfaces.ProductDAO;
+import model.bean.ProductBean;
+import model.DAOImplementation.ProductDAOModel;
+import model.bean.UserBean;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -30,8 +32,8 @@ public class AcquistaOraControl extends HttpServlet {
         }
         //Funzionalità di acquisto rapido
         else {
-            OrderModel orderModel = new OrderModel();
-            ProductModel productModel = new ProductModel();
+            OrderDAO orderModel = new OrderDAOModel();
+            ProductDAO productModel = new ProductDAOModel();
             int codice = Integer.parseInt(request.getParameter("codice"));
             UserBean utente = (UserBean) request.getSession().getAttribute("utente");
             Boolean control = false;

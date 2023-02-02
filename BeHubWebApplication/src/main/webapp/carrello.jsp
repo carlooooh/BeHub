@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-         pageEncoding="ISO-8859-1" import="model.CartBean, model.ProductBean, java.text.DecimalFormat, java.util.*"%>
+         pageEncoding="ISO-8859-1" import="model.bean.CartBean, model.bean.ProductBean, java.text.DecimalFormat, java.util.*"%>
 <!DOCTYPE html>
 <html>
 <head>

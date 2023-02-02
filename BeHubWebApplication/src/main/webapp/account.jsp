@@ -1,4 +1,4 @@
-<%@ page import="model.UserBean" %>
+<%@ page import="model.bean.UserBean" %>
 <%@ page import="java.text.DateFormat" %>
 <%@ page import="java.text.SimpleDateFormat" %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"

@@ -1,9 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
          pageEncoding="ISO-8859-1" import="java.text.DecimalFormat, java.util.*"%>
-<%@ page import="model.OrderBean" %>
-<%@ page import="model.ProductBean" %>
-<%@ page import="model.ProductModel" %>
-<%@ page import="model.UserBean" %>
+<%@ page import="model.bean.OrderBean" %>
+<%@ page import="model.bean.ProductBean" %>
+<%@ page import="model.DAOImplementation.ProductDAOModel" %>
+<%@ page import="model.bean.UserBean" %>
 <% if (session.getAttribute("utente") == null) {
   response.sendRedirect("/accesso.jsp");
 }
@@ -58,8 +58,8 @@
         <td><%=prod.getNome()%></td>
         <td id="price"><%=prezzoTot%> &euro;</td>
         <td id="quantity"><%=prod.getQuantity()%></td>
-        <td><%=ProductModel.controllaCategoria(prod.getCategoria())%></td>
-        <td><%=ProductModel.controllaCondizione(prod.getCondizione())%></td>
+        <td><%=ProductDAOModel.controllaCategoria(prod.getCategoria())%></td>
+        <td><%=ProductDAOModel.controllaCondizione(prod.getCondizione())%></td>
         <%
             UserBean utente = (UserBean) session.getAttribute("utente");
             if (utente.getRole().compareTo("RU") == 0) { //l'addetto al supporto non può accedervi

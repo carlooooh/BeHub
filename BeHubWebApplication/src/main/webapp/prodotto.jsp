@@ -1,4 +1,4 @@
-<%@ page import="model.ProductBean" %>
+<%@ page import="model.bean.ProductBean" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%
     ProductBean bean = new ProductBean();

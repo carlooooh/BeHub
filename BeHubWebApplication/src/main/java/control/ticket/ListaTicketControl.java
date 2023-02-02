@@ -6,8 +6,9 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import model.TicketBean;
-import model.TicketModel;
+import model.DAOInterfaces.TicketDAO;
+import model.bean.TicketBean;
+import model.DAOImplementation.TicketDAOModel;
 
 import java.io.IOException;
 import java.util.Collection;
@@ -23,7 +24,7 @@ public class ListaTicketControl extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Collection<TicketBean> listaTicket = new LinkedList<TicketBean>();
-        TicketModel ticketModel = new TicketModel();
+        TicketDAO ticketModel = new TicketDAOModel();
         String email = (String) request.getSession().getAttribute("email");
         listaTicket = ticketModel.getListaTicket(email);
 

@@ -1,9 +1,9 @@
-<%@ page import="model.OrderBean" %>
+<%@ page import="model.bean.OrderBean" %>
 <%@ page import="java.util.Collection" %>
 <%@ page import="java.text.DecimalFormat" %>
 <%@ page import="java.util.Iterator" %>
-<%@ page import="model.ProductBean" %>
-<%@ page import="model.OrderModel" %>
+<%@ page import="model.bean.ProductBean" %>
+<%@ page import="model.DAOImplementation.OrderDAOModel" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html>
@@ -61,7 +61,7 @@
                 <td id="quantity"><%=prod.getQuantity()%></td>
                 <td><%=prod.getEmail()%></td>
                 <td><%=ordine.getData()%></td>
-                <td><%=OrderModel.parseStato(ordine.getStato())%></td>
+                <td><%=OrderDAOModel.parseStato(ordine.getStato())%></td>
                 <%
                     if (ordine.getTracking() != null) {
                 %>

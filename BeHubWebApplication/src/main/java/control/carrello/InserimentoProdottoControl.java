@@ -5,8 +5,9 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import model.CartBean;
-import model.CartModel;
+import model.DAOInterfaces.CartDAO;
+import model.bean.CartBean;
+import model.DAOImplementation.CartDAOModel;
 
 import java.io.IOException;
 
@@ -22,7 +23,7 @@ public class InserimentoProdottoControl extends HttpServlet {
         String tempCodice = request.getParameter("codice");
         int codice = Integer.parseInt(tempCodice);
         CartBean cart = (CartBean) request.getSession().getAttribute("carrello");
-        CartModel cartModel = new CartModel();
+        CartDAO cartModel = new CartDAOModel();
 
         if (request.getParameter("quantity") != null) {
             int quantity = Integer.parseInt(request.getParameter("quantity"));

@@ -1,13 +1,14 @@
-package model;
+package model.DAOImplementation;
 
 
+import model.DAOInterfaces.UserDAO;
+import model.bean.UserBean;
+import model.utils.DriverManagerConnectionPool;
 import org.apache.commons.codec.digest.DigestUtils;
 
 import java.sql.*;
-import java.util.Collection;
-import java.util.LinkedList;
 
-public class UserModel {
+public class UserDAOModel implements UserDAO {
 
     /*
     Metodo che modifica le informazioni di un account

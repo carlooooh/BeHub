@@ -1,9 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
          pageEncoding="ISO-8859-1" import="java.text.DecimalFormat, java.util.*"%>
-<%@ page import="model.OrderBean" %>
-<%@ page import="model.ProductBean" %>
-<%@ page import="model.OrderModel" %>
-<%@ page import="model.UserBean" %>
+<%@ page import="model.bean.OrderBean" %>
+<%@ page import="model.bean.ProductBean" %>
+<%@ page import="model.DAOImplementation.OrderDAOModel" %>
+<%@ page import="model.bean.UserBean" %>
 <%
   if (session.getAttribute("utente") == null) {
     response.sendRedirect("/accesso.jsp");
@@ -65,7 +65,7 @@
         <td id="quantity"><%=prod.getQuantity()%></td>
         <td><%=ord.getData()%></td>
         <td class="product-price" id="subtotal"><%=ord.getEmail()%></td>
-        <td><%=OrderModel.parseStato(ord.getStato())%></td>
+        <td><%=OrderDAOModel.parseStato(ord.getStato())%></td>
         <%
           if (ord.getTracking() != null) {
         %>
