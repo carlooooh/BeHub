@@ -56,42 +56,6 @@
                         <span class="details">Numero di telefono</span>
                         <input type="text" name="telefono" pattern="[0-9]{10,15}" title="Inserisci un numero di telefono di 10-15 cifre" value="<%=utente.getTelefono()%>" required>
                     </div>
-                    <%
-                        if (utente.getNumero() != null) {
-                            String numeroCarta = utente.getNumero();
-                            String numeroCartaFormattato = numeroCarta.substring(0, 4) + "xxxxxxxx" + numeroCarta.substring(9);
-                    %>
-                    <div class="input-box">
-                        <span class="details">Numero carta di credito</span>
-                        <input type="text" name="carta" pattern="[0-9]{16}" title="Inserisci un numero valido di 16 cifre" value="<%=numeroCartaFormattato%>">
-                    </div>
-                    <%
-                        }
-                        else {
-                    %>
-                    <div class="input-box">
-                        <span class="details">Numero carta di credito</span>
-                        <input type="text" name="carta" pattern="[0-9]{16}" title="Inserisci un numero valido di 16 cifre" value="">
-                    </div>
-                    <%
-                        }
-                        if (utente.getIntestatario() == null) {
-                    %>
-                    <div class="input-box">
-                        <span class="details">Intestatario carta</span>
-                        <input type="text" name="intestatario" maxlength="50" value="<%=utente.getIntestatario()%>">
-                    </div>
-                    <%
-                        }
-                        else {
-                    %>
-                    <div class="input-box">
-                        <span class="details">Intestatario carta</span>
-                        <input type="text" name="intestatario" maxlength="50" value="">
-                    </div>
-                    <%
-                        }
-                    %>
                 </div>
                 <div class="button">
                     <input type="submit" name="salva" value="Salva informazioni" style="margin-bottom: 40px">

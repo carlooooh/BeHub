@@ -52,12 +52,6 @@ public class ModificaInformazioniControl extends HttpServlet {
             String data = request.getParameter("dataNascita");
             Date dataNascita = Date.valueOf(data);
             utente.setData(dataNascita);
-            if (request.getParameter("intestatario") != null) {
-                utente.setIntestatario(request.getParameter("intestatario"));
-            }
-            if (request.getParameter("carta") != null) {
-                utente.setNumero(request.getParameter("carta"));
-            }
 
             Boolean control = userModel.update(utente, oldEmail); //aggiornamento dell'utente
             request.getSession().setAttribute("email", newEmail); //aggiornamento email nella sessione
