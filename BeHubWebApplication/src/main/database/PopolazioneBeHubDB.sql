@@ -2,7 +2,9 @@
 
 /* Popolazione Utente */
 INSERT INTO Utente (email, passwordUser, nome, cognome, indirizzo, telefono, numeroCarta, dataNascita, ruolo)
-VALUES ('geekfactory@gmail.com', sha2('ABC12345', 256), 'Test', 'Test', 'Unisa, Dipartimento Informatica', '3476549862', '5436724598431234', current_date(), 'AS');
+VALUES ('behubsupporto@gmail.com', sha2('ABC12345', 256), 'Test', 'Test', 'Unisa, Dipartimento Informatica', '3476549862', '5436724598431234', current_date(), 'AS');
+INSERT INTO Utente (email, passwordUser, nome, cognome, indirizzo, telefono, numeroCarta, dataNascita, ruolo)
+VALUES ('behubcatalogo@gmail.com', sha2('ABC12345', 256), 'Test', 'Test', 'Unisa, Dipartimento Informatica', '3476549862', '5436724598431234', current_date(), 'AC');
 INSERT INTO Utente (email, passwordUser, nome, cognome, indirizzo, telefono, numeroCarta, dataNascita)
 VALUES ('mariorossi@gmail.com', sha2('TEST1234', 256), 'Mario', 'Rossi', 'Napoli, Via Roma 1, 80000', '3476549862', '5436724598432343', current_date());
 INSERT INTO Utente (email, passwordUser, nome, cognome, indirizzo, telefono, numeroCarta, dataNascita)

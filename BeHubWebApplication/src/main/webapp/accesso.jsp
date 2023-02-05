@@ -15,11 +15,11 @@
             <header>Accedi</header>
             <form action="LoginControl" method="post">
                 <div class="field input-field">
-                    <input type="email" placeholder="Email" class="input" name="email" id="email" required>
+                    <input type="email" placeholder="Email" class="input" name="email" id="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" title="Email non valida" autofocus required>
                 </div>
 
                 <div class="field input-field">
-                    <input type="password" placeholder="Password" class="password" name="password" id="password" required>
+                    <input type="password" placeholder="Password" class="password" name="password" id="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,50}" title="La password deve contenere almeno una lettera maiuscola, una minuscola e un numero, e deve essere almeno di 8 caratteri" required>
                     <i class='bx bx-hide eye-icon'></i>
                 </div>
 
@@ -57,16 +57,16 @@
                 </div>
 
                 <div class="field input-field">
-                    <input type="password" name="" maxlength="50" placeholder="Conferma password" class="password" required>
+                    <input type="password" name="" maxlength="50" placeholder="Conferma password" class="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,50}" title="La password deve contenere almeno una lettera maiuscola, una minuscola e un numero, e deve essere almeno di 8 caratteri" required>
                     <i class='bx bx-hide eye-icon'></i>
                 </div>
 
                 <div class="field input-field">
-                    <input type="text" name="nome" maxlength="50" placeholder="Nome" class="nome" required>
+                    <input type="text" name="nome" pattern="[A-Z][a-z]*" maxlength="50" placeholder="Nome" class="nome" required>
                 </div>
 
                 <div class="field input-field">
-                    <input type="text" name="cognome" maxlength="50" placeholder="Cognome" class="cognome" required>
+                    <input type="text" name="cognome" pattern="[A-Z][a-z]*" maxlength="50" placeholder="Cognome" class="cognome" required>
                 </div>
 
                 <div class="field input-field">
@@ -80,21 +80,6 @@
                 <div class="field input-field">
                     <input type="text" name="telefono" placeholder="Telefono" class="telefono" pattern="[0-9]{10,15}" title="Inserisci un numero di telefono di 10-15 cifre" required>
                 </div>
-
-                <!--
-                <div class="field input-field">
-                    <input type="text" placeholder="Numero Carta" class="carta">
-                </div>
-
-                <div class="field input-field">
-                    <input type="text" placeholder="Scadenza Carta" class="scadenza">
-                </div>
-
-                <div class="field input-field">
-                    <input type="number" placeholder="CVV" class="cvv">
-                </div>
-                -->
-
                 <div class="field button-field">
                     <button>Registrati</button>
                 </div>

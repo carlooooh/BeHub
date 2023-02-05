@@ -16,7 +16,7 @@
             <input type="text" maxlength="50" placeholder="Oggetto" id="oggetto" name="oggetto">
         </div>
         <div class="message-box">
-            <textarea id="msg" name="msg" cols="30" rows="10" placeholder="Scrivi qui il tuo messaggio!" style="resize: none"></textarea>
+            <textarea id="msg" name="msg" cols="30" rows="10" placeholder="Scrivi qui il tuo messaggio!" maxlenght="255" style="resize: none"></textarea>
         </div>
         <div class="button">
             <button id="send" onclick="message()">Invia</button>

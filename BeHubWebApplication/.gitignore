@@ -11,6 +11,7 @@ target/
 *.iws
 *.iml
 *.ipr
+.idea/artifacts/unnamed2.xml
 
 ### Eclipse ###
 .apt_generated
