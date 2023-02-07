@@ -24,7 +24,7 @@
     <div class="container" style="height: 540px">
         <div class="title">Inserisci informazioni sul prodotto</div>
         <div class="content">
-            <form action="VenditaControl"  METHOD="POST">
+            <form action="VenditaControl" enctype="multipart/form-data" METHOD="POST">
                 <div class="user-details">
                     <div class="input-box">
                         <span class="details">Nome prodotto</span>
@@ -32,15 +32,15 @@
                     </div>
                     <div class="input-box">
                         <span class="details">Prezzo</span>
-                        <input type="number" step="0.01" name="prezzo" max="999999" placeholder="Inserire prezzo" required/>
+                        <input type="text" name="prezzo" pattern="[0-9]{1-6}" title="Inserire numero valido" placeholder="Inserire prezzo" required/>
                     </div>
                     <div class="input-box">
                         <span class="details">Spese di spedizione</span>
-                        <input type="number" step="0.01" name="spedizione" max="999999" placeholder="Inserire spese di spedizione" required/>
+                        <input type="text" name="spedizione" pattern="[0-9]{1-4}" title="Inserire numero valido" placeholder="Inserire spese di spedizione" required/>
                     </div>
                     <div class="input-box">
                         <span class="details">Quantità</span>
-                        <input type="number" step="0" name="quantity" max="999" placeholder="Inserire quantità prodotto" required/>
+                        <input type="text" name="quantity" pattern="[0-9]{1-3}" title="Inserire numero valido" placeholder="Inserire quantità prodotto" required/>
                     </div>
                     <div class="input-box">
                         <span class="details">Immagine</span>
@@ -61,7 +61,6 @@
                         <select id="condizioni" name="condizioni" required>
                             <option value="Nuovo">Nuovo</option>
                             <option value="Usato">Usato</option>
-
                         </select>
                     </div>
                     <div class="input-box">
