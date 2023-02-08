@@ -3,7 +3,6 @@ package GestioneTicket.model;
 import model.DAOImplementation.TicketDAOModel;
 import model.bean.TicketBean;
 import org.junit.jupiter.api.Test;
-
 import java.util.Collection;
 import java.util.LinkedList;
 
@@ -14,13 +13,20 @@ class TicketDAOModelTest {
     void aggiuntaTicketTest(){
 
         TicketBean ticket=new TicketBean();
-        ticket.setOggetto("Supporto");
-        ticket.setTesto("Mi serve aiuto");
-        ticket.setEmailUtente("antoniobianchi@gmail.com");
+        ticket.setOggetto("Richiesta rimborso De Monarchia");
+        ticket.setTesto("Ho comprato un libro (De Monarchia) ma non è ancora arrivato dopo più di 1 mese. Voglio il rimborso!");
+        ticket.setEmailUtente("mariorossi@gmail.com");
         ticket.setStato(1);
         TicketDAOModel ticketDAOModel = new TicketDAOModel();
 
-        assertTrue(ticketDAOModel.aggiungiTicket(ticket));
+        ticketDAOModel.aggiungiTicket(ticket);
+
+        TicketBean ticketBean=new TicketBean();
+
+        ticketBean=ticketDAOModel.retrieveByKey(10);
+
+        assertEquals(ticket.getOggetto(), ticketBean.getOggetto());
+        assertEquals(ticket.getTesto(), ticketBean.getTesto());
     }
 
     @Test

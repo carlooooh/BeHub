@@ -1,4 +1,4 @@
-package GestioneProdotto.model;
+package GestioneProdotto.control.model;
 
 import model.DAOImplementation.ProductDAOModel;
 import model.bean.ProductBean;

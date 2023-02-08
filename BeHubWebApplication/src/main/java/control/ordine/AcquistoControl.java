@@ -33,12 +33,17 @@ public class AcquistoControl extends HttpServlet {
             request.getSession().setAttribute("carrello", carrello);
             String email = (String) request.getSession().getAttribute("email");
 
-            RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/ListaOrdiniUtenteControl?emailOrdini=" + email);
-            dispatcher.forward(request, response);
+
+            response.sendRedirect(request.getContextPath() + "/ListaOrdiniUtenteControl?emailOrdini=" + email);
+
+            /*RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/ListaOrdiniUtenteControl?emailOrdini=" + email);
+            dispatcher.forward(request, response);*/
         }
         else {
-            RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/carrello.jsp?acquisto=failure");
-            dispatcher.forward(request, response);
+            response.sendRedirect(request.getContextPath() + "/carrello.jsp?acquisto=failure");
+
+            /*RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/carrello.jsp?acquisto=failure");
+            dispatcher.forward(request, response); */
         }
     }
 }
