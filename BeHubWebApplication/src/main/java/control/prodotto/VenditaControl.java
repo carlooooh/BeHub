@@ -27,7 +27,7 @@ public class VenditaControl extends HttpServlet {
     }
 
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         ProductBean product = new ProductBean();
         product.setEmail((String) request.getSession().getAttribute("email"));
 
@@ -36,50 +36,44 @@ public class VenditaControl extends HttpServlet {
         for (Part p : request.getParts()) {
             if ("nome".equals(p.getName())) {
                 String nome = new String(p.getInputStream().readAllBytes(), StandardCharsets.UTF_8);
-                System.out.println(nome);
                 product.setNome(nome);
             }
-            else if ("descrizione".equals(p.getName())) {
+            if ("descrizione".equals(p.getName())) {
                 String descrizione = new String(p.getInputStream().readAllBytes(), StandardCharsets.UTF_8);
-                System.out.println(descrizione);
                 product.setDescrizione(descrizione);
             }
-            else if ("prezzo".equals(p.getName())) {
+            if ("prezzo".equals(p.getName())) {
                 String prezzo = new String(p.getInputStream().readAllBytes(), StandardCharsets.UTF_8);
-                System.out.println(prezzo);
                 product.setPrezzo(Double.parseDouble(prezzo));
             }
-            else if ("spedizione".equals(p.getName())) {
+            if ("spedizione".equals(p.getName())) {
                 String spedizione = new String(p.getInputStream().readAllBytes(), StandardCharsets.UTF_8);
-                System.out.println(spedizione);
                 product.setSpedizione(Double.parseDouble(spedizione));
             }
-            else if ("quantity".equals(p.getName())) {
+            if ("quantity".equals(p.getName())) {
                 String quantity = new String(p.getInputStream().readAllBytes(), StandardCharsets.UTF_8);
-                System.out.println(quantity);
                 product.setQuantity(Integer.parseInt(quantity));
             }
-            else if ("categoria".equals(p.getName())) {
+            if ("categoria".equals(p.getName())) {
                 String categoria = new String(p.getInputStream().readAllBytes(), StandardCharsets.UTF_8);
-                System.out.println(categoria);
                 product.setCategoria(ProductDAOModel.parseCategoria(categoria));
             }
-            else if ("condizioni".equals(p.getName())) {
+            if ("condizioni".equals(p.getName())) {
                 String condizioni = new String(p.getInputStream().readAllBytes(), StandardCharsets.UTF_8);
-                System.out.println(condizioni);
                 product.setCondizione(ProductDAOModel.parseCondizione(condizioni));
             }
-            else if ("immagine".equals(p.getName())) {
+            if ("immagine".equals(p.getName())) {
                 String nomeFile = p.getSubmittedFileName();
                 p.write(UPLOAD_DIRECTORY + File.separator + nomeFile);
                 product.setImmagine(UPLOAD_DIRECTORY + File.separator + nomeFile);
             }
         }
+        request.setAttribute("prodottoVenduto", product);
 
         //Utilizzo della classe ProductModel per la vendita
         ProductDAO productModel = new ProductDAOModel();
         try {
-            productModel.doSave(product);
+            productModel.doSave((ProductBean) request.getAttribute("prodottoVenduto"));
         } catch (SQLException e) {
             e.printStackTrace();
         }

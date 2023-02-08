@@ -23,7 +23,7 @@ public class ModificaProdottoControl extends HttpServlet {
     }
 
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         ProductBean prodotto = new ProductBean();
         prodotto.setCodice(Integer.parseInt(request.getParameter("codice")));
         prodotto.setNome(request.getParameter("nome"));
@@ -43,7 +43,6 @@ public class ModificaProdottoControl extends HttpServlet {
             CartBean carrello = cartModel.updateCarrello(prodotto, (CartBean) request.getSession().getAttribute("carrello"));
             request.getSession().setAttribute("carrello", carrello);
         }
-        RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/index.jsp");
-        dispatcher.forward(request, response);
+        response.sendRedirect(request.getContextPath() + "/index.jsp");
     }
 }
