@@ -3,7 +3,6 @@ package model.DAOImplementation;
 import model.DAOInterfaces.CartDAO;
 import model.bean.CartBean;
 import model.bean.ProductBean;
-import model.bean.UserBean;
 import model.utils.DriverManagerConnectionPool;
 
 import java.sql.Connection;
