@@ -19,7 +19,7 @@ public class LoginControl extends HttpServlet {
     }
 
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         UserDAO userModel = new UserDAOModel();
         String email = request.getParameter("email");
         String password = request.getParameter("password");

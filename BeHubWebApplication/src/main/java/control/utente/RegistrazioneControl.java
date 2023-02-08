@@ -22,7 +22,7 @@ public class RegistrazioneControl extends HttpServlet {
     }
 
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         UserDAO userModel = new UserDAOModel();
 
         //Creazione UserBean
@@ -39,7 +39,7 @@ public class RegistrazioneControl extends HttpServlet {
             java.sql.Date veraData = new java.sql.Date(tempdata.getTime());
             user.setData(veraData);
         } catch (ParseException e) {
-            throw new RuntimeException(e);
+           e.printStackTrace();
         }
 
         //Inserimento UserBean nel database
