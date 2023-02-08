@@ -20,7 +20,7 @@ public class ModificaInformazioniControl extends HttpServlet {
     }
 
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         //Smistamento lista ordini
         if (request.getParameter("ordini") != null) {
             String email = (String) request.getSession().getAttribute("email");

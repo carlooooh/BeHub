@@ -1,17 +1,15 @@
 package GestioneUtente.control;
 
-import control.prodotto.ModificaProdottoControl;
 import control.utente.LoginControl;
-import control.utente.RegistrazioneControl;
+import control.utente.ModificaInformazioniControl;
 import jakarta.servlet.ServletConfig;
 import jakarta.servlet.ServletContext;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
-import model.DAOImplementation.ProductDAOModel;
 import model.DAOImplementation.UserDAOModel;
-import model.bean.ProductBean;
+import model.DAOInterfaces.UserDAO;
 import model.bean.UserBean;
 import model.utils.DriverManagerConnectionPool;
 import org.junit.jupiter.api.Test;
@@ -19,18 +17,14 @@ import org.mockito.Mockito;
 
 import java.io.IOException;
 import java.sql.Connection;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.when;
 
-class RegistrazioneControlTest {
+class ModificaInformazioniControlTest {
 
     @Test
     void doPostTest() throws ServletException, IOException {
-
         //mock
         HttpServletRequest request = Mockito.mock(HttpServletRequest.class);
         HttpServletResponse response = Mockito.mock(HttpServletResponse.class);
@@ -39,20 +33,19 @@ class RegistrazioneControlTest {
         ServletContext servletContext = Mockito.mock(ServletContext.class);
         Connection connection = Mockito.mock(Connection.class);
         DriverManagerConnectionPool driverManagerConnectionPool = Mockito.mock(DriverManagerConnectionPool.class);
-        RegistrazioneControl servlet = new RegistrazioneControl();
+        ModificaInformazioniControl servlet = new ModificaInformazioniControl();
         UserBean userBean = Mockito.mock(UserBean.class);
         UserDAOModel userDAOModel = Mockito.mock(UserDAOModel.class);
-        SimpleDateFormat dateFormat = Mockito.mock(SimpleDateFormat.class);
 
         //when
-        when(request.getAttribute("email")).thenReturn("test1@gmail.com");
-        when(request.getAttribute("password")).thenReturn("Test1234");
-        when(request.getAttribute("nome")).thenReturn("test");
-        when(request.getAttribute("cognome")).thenReturn("test");
-        when(request.getAttribute("indirizzo")).thenReturn("test 1");
-        when(request.getAttribute("telefono")).thenReturn("3516367622");
-        when(request.getAttribute("data")).thenReturn("2023-12-12");
         when(request.getSession()).thenReturn(session);
+        when(session.getAttribute("email")).thenReturn("luigiverdi@gmail.com");
+        when(request.getParameter("email")).thenReturn("luigiverdiNEW@gmail.com");
+        when(request.getParameter("nome")).thenReturn("LuigiNEW");
+        when(request.getParameter("cognome")).thenReturn("VerdiNEW");
+        when(request.getParameter("indirizzo")).thenReturn("via test 1");
+        when(request.getParameter("telefono")).thenReturn("1231231231");
+        when(request.getParameter("dataNascita")).thenReturn("2022-12-12");
         when(request.getContextPath()).thenReturn("http://localhost:8080/demoBeHub_war_exploded");
 
         //test
@@ -60,19 +53,22 @@ class RegistrazioneControlTest {
         servlet.doPost(request, response);
 
         //verify
-        assertEquals("test1@gmail.com", request.getAttribute("email"));
-        assertEquals("Test1234", request.getAttribute("password"));
-        assertEquals("test", request.getAttribute("nome"));
-        assertEquals("test", request.getAttribute("cognome"));
-        assertEquals("test 1", request.getAttribute("indirizzo"));
-        assertEquals("3516367622", request.getAttribute("telefono"));
-        assertEquals("2023-12-12", request.getAttribute("data"));
+        assertEquals("luigiverdi@gmail.com", session.getAttribute("email"));
+        assertEquals("luigiverdiNEW@gmail.com", request.getParameter("email"));
+        assertEquals("LuigiNEW", request.getParameter("nome"));
+        assertEquals("VerdiNEW", request.getParameter("cognome"));
+        assertEquals("via test 1", request.getParameter("indirizzo"));
+        assertEquals("1231231231", request.getParameter("telefono"));
+        assertEquals("2022-12-12", request.getParameter("dataNascita"));
 
-        //verifica inserimento database
+        //verifica modifica database
         UserDAOModel model = new UserDAOModel();
-        assertNotNull(model.login("test1@gmail.com", "Test1234"));
+        UserBean user = model.login("luigiverdiNEW@gmail.com", "Test1234");
+
+        assertEquals("luigiverdiNEW@gmail.com", user.getEmail());
+        assertEquals("LuigiNEW", user.getNome());
+        assertEquals("VerdiNEW", user.getCognome());
+        assertEquals("via test 1", user.getIndirizzo());
+        assertEquals("1231231231", user.getTelefono());
     }
-
-
-
 }
