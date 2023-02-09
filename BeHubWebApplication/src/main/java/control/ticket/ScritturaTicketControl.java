@@ -19,7 +19,7 @@ public class ScritturaTicketControl extends HttpServlet {
     }
 
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String oggetto = request.getParameter("oggetto");
         String testo = request.getParameter("msg");
         String email = (String) request.getSession().getAttribute("email");

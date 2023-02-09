@@ -21,7 +21,7 @@ public class AcquistoControl extends HttpServlet {
     }
 
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         OrderDAO orderModel = new OrderDAOModel();
         CartBean carrello = (CartBean) request.getSession().getAttribute("carrello");
         UserBean utente = (UserBean) request.getSession().getAttribute("utente");
