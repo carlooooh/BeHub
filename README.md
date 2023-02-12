@@ -29,7 +29,6 @@ Hanno contribuito a questo progetto:
 - CSS
 - Bootstrap
 - JavaScript
-- Ajax
 - XML
 
 ## Tecnologie utilizzate per il testing
@@ -37,15 +36,14 @@ Hanno contribuito a questo progetto:
 - JUnit
 - Mockito
 - Selenium IDE
-- DBUnit
-- Database H2
-- XML
+
 
 ## Documentazione
 
 La documentazione del progetto include i seguenti documenti (disponibili nella directory "deliverables"):
 
 - Problem Statement
+- Use Case
 - Requirements Analysis Document
 - System Design Document
 - Object Design Document
