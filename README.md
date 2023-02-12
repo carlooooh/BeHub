@@ -43,7 +43,6 @@ Hanno contribuito a questo progetto:
 La documentazione del progetto include i seguenti documenti (disponibili nella directory "deliverables"):
 
 - Problem Statement
-- Use Case
 - Requirements Analysis Document
 - System Design Document
 - Object Design Document
