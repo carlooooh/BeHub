@@ -13,9 +13,9 @@ Gli ordini e il catalogo sono gestiti da personale dedicato con ruoli diversi.
 ## Descrizione del progetto
 
 Hanno contribuito a questo progetto:
-* [Hida Eljon]
-* [Pacelli Mirko Danilo]
-* [Perilli Carlo]
+* Hida Eljon
+* Pacelli Mirko Danilo
+* Perilli Carlo
 
 ## Tecnologie utilizzate
 
