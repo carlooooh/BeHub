@@ -21,13 +21,13 @@ INSERT INTO Categoria (nome) VALUES ('Libri');
 
 /* Popolazione Prodotto */
 INSERT INTO Prodotto (nome, descrizione, prezzo, speseSpedizione, emailVenditore, urlImmagine, nomeCategoria, condizione, quantity, dataAnnuncio)
-VALUES ('Divina Commedia nuova edizione', 'Divina Commedia scritta da Dante Alighieri, maestro della poesia italiana medievale', 10, 2, 'mariorossi@gmail.com', 'C:\Users\franc\OneDrive\Documenti\apache-tomcat-10.0.27\BeHub\IMG\divinacommedia.jpg', 'Libri', 'Usato', 1, current_date());
+VALUES ('Divina Commedia nuova edizione', 'Divina Commedia scritta da Dante Alighieri, maestro della poesia italiana medievale', 10, 2, 'mariorossi@gmail.com', 'immagini/prodotti/divinacommedia.jpg', 'Libri', 'Usato', 14, current_date());
 INSERT INTO Prodotto (nome, descrizione, prezzo, speseSpedizione, emailVenditore, urlImmagine, nomeCategoria, condizione, quantity, dataAnnuncio)
-VALUES ('Promessi Sposi', 'Divina Commedia scritta da Dante Alighieri, maestro della poesia italiana medievale', 10, 2, 'mariorossi@gmail.com', 'C:\Users\franc\OneDrive\Documenti\apache-tomcat-10.0.27\BeHub\IMG\divinacommedia.jpg', 'Libri', 'Nuovo', 10, current_date());
+VALUES ('Promessi Sposi', 'Promessi Sposi di Manzoni', 10, 2, 'mariorossi@gmail.com', 'immagini/prodotti/promessisposi.jpg', 'Libri', 'Nuovo', 10, current_date());
 INSERT INTO Prodotto (nome, descrizione, prezzo, speseSpedizione, emailVenditore, urlImmagine, nomeCategoria, condizione, quantity, dataAnnuncio)
-VALUES ('De Monarchia', 'Divina Commedia scritta da Dante Alighieri, maestro della poesia italiana medievale', 10, 2, 'luigiverdi@gmail.com', 'C:\Users\franc\OneDrive\Documenti\apache-tomcat-10.0.27\BeHub\IMG\divinacommedia.jpg', 'Libri', 'Usato', 1, current_date());
+VALUES ('De Monarchia', 'De Monarchia di Dante Alighieri', 10, 2, 'luigiverdi@gmail.com', 'immagini/prodotti/monarchia.jpg', 'Libri', 'Usato', 12, current_date());
 INSERT INTO Prodotto (nome, descrizione, prezzo, speseSpedizione, emailVenditore, urlImmagine, nomeCategoria, condizione, quantity, dataAnnuncio)
-VALUES ('Harry Potter e la pietra filosofale nuovo', 'Divina Commedia scritta da Dante Alighieri, maestro della poesia italiana medievale', 10, 2, 'luigiverdi@gmail.com', 'C:\Users\franc\OneDrive\Documenti\apache-tomcat-10.0.27\BeHub\IMG\divinacommedia.jpg', 'Libri', 'Nuovo', 1, current_date());
+VALUES ('Harry Potter e la pietra filosofale nuovo', 'Harry Potter e la pietra filosofale di J.K Rowling', 10, 2, 'luigiverdi@gmail.com', 'immagini/prodotti/harrypotter.jpg', 'Libri', 'Nuovo', 11, current_date());
 
 /* Popolazione Ordine */
 INSERT INTO Ordine (codiceProdotto, emailCliente, prezzoTotale, quantity, dataAcquisto)
@@ -44,4 +44,3 @@ INSERT INTO Ticket (testo, oggetto, dataInvio, emailUtente, stato)
 VALUES ('Ho comprato un libro (De Monarchia) ma non è ancora arrivato dopo più di 1 mese. Voglio il rimborso!', 'Richiesta rimborso De Monarchia', current_date(), 'mariorossi@gmail.com', 'Aperto');
 INSERT INTO Ticket (testo, oggetto, dataInvio, emailUtente, stato)
 VALUES ('Ho comprato un libro (Harry Potter e a pietra filosofale) ma non è ancora arrivato dopo più di 1 mese. Voglio il rimborso!', 'Articolo non arrivato', current_date(), 'mariorossi@gmail.com', 'Chiuso');
-
