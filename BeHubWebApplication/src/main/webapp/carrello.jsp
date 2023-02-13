@@ -54,7 +54,7 @@
             <tr>
                 <td>
                     <div class="cart-info">
-                        <img src="<%=image%>" alt="immagini/prodotti/scarpe.png" style="width: 160px; height: 160px">
+                        <img src="<%=image%>" onerror="this.src='immagini/prodotti/scarpe.png'" style="width: 160px; height: 160px">
                     </div>
                 </td>
                 <td><%=bean.getNome()%></td>

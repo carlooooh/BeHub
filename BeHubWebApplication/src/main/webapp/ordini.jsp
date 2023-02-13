@@ -53,7 +53,7 @@
             <tr>
                 <td>
                     <div class="order-info">
-                        <img src="<%=image%>" alt="immagini/prodotti/scarpe.png" style="width: 120px; height: 120px">
+                        <img src="<%=image%>" onerror="this.src='immagini/prodotti/scarpe.png'" style="width: 120px; height: 120px">
                     </div>
                 </td>
                 <td><%=prod.getNome()%></td>

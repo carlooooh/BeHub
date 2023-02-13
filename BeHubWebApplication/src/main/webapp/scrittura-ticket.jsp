@@ -27,7 +27,7 @@
         </form>
     </div>
 </div>
-<div style="margin-top: 400px">
+<div style="margin-top: 480px">
     <jsp:include page="footer.jsp"/>
 </div>
 

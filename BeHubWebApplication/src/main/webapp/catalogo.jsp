@@ -47,7 +47,7 @@
 
             <div class="item">
                 <div class = "item-img">
-                    <img src = "<%=image%>" alt="immagini/prodotti/scarpe.png">
+                    <img src = "<%=image%>" onerror="this.src='immagini/prodotti/scarpe.png'">
                     <div class = "item-action">
                         <a href = "DettagliProdottoControl?codice=<%=bean.getCodice()%>" class = "view">
 								<span>
@@ -60,7 +60,7 @@
 								</span>
                         </a>
                         <% if (session.getAttribute("utente") != null) { %>
-                        <a href = "AcquistaOra?codice="<%=bean.getCodice()%> class = "wishlist">
+                        <a href = "AcquistaOraControl?codice="<%=bean.getCodice()%> class = "wishlist">
 								<span>
 									<i class = "fas fa-dollar-sign"></i>
 								</span>

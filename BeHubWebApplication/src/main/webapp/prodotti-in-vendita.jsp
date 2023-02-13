@@ -52,7 +52,7 @@
       <tr>
         <td>
           <div class="order-info">
-            <img src="<%=image%>" alt="immagini/prodotti/scarpe.png" style="width: 120px; height: 120px">
+            <img src="<%=image%>" onerror="this.src='immagini/prodotti/scarpe.png'" style="width: 120px; height: 120px">
           </div>
         </td>
         <td><%=prod.getNome()%></td>
@@ -64,7 +64,7 @@
             UserBean utente = (UserBean) session.getAttribute("utente");
             if (utente.getRole().compareTo("RU") == 0) { //l'addetto al supporto non può accedervi
         %>
-        <td><i class = "far fa-edit" style="color: red; cursor: pointer" href=<%=request.getContextPath()%>/ProdottoDaModificareControl?codice=<%=prod.getCodice()%>"></i></td>
+
       </tr>
     <%      }
     %>

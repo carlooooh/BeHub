@@ -27,7 +27,7 @@
       </li>
       <% if (session.getAttribute("utente") != null) {
         UserBean utente = (UserBean) session.getAttribute("utente");
-        if (utente.getRole().compareTo("AS") != 0) {
+        if (utente.getRole().compareTo("RU") == 0) {
       %>
       <li>
         <div class="areapersonale">
@@ -36,8 +36,8 @@
         </div>
       </li>
       <%
-        }
-        else {
+      }
+      else if (utente.getRole().compareTo("AS") == 0){
       %>
       <li>
         <div class="areapersonale">
@@ -48,6 +48,9 @@
       <%
         }
       %>
+      <%
+        if (utente.getRole().compareTo("RU") == 0) {
+      %>
       <li>
         <div class="vendi">
           <i class="fa-solid fa-sack-dollar fa-2xl"></i>
@@ -56,28 +59,28 @@
       </li>
 
 
-       <%
-        }
-       else {
-       %>
+      <% }
+      }
+      else {
+      %>
 
-       <li>
-         <div class="accedi">
-           <i class="fa-regular fa-address-card fa-2xl color" style="color: white"></i>
-           <a href="accesso.jsp" data-item="accedi" class="left-nav-link2">Accedi</a>
-         </div>
-       </li>
-       <%
-         }
-       %>
+      <li>
+        <div class="accedi">
+          <i class="fa-regular fa-address-card fa-2xl color" style="color: white"></i>
+          <a href="accesso.jsp" data-item="accedi" class="left-nav-link2">Accedi</a>
+        </div>
+      </li>
+      <%
+        }
+      %>
     </ul>
   </div>
 
   <div class="ms-auto right-nav2">
 
     <ul>
-        <% if (session.getAttribute("utente") != null) {
-        %>
+      <% if (session.getAttribute("utente") != null) {
+      %>
       <li>
         <div class="logout">
           <a href="LogoutControl">
@@ -85,8 +88,8 @@
           </a>
         </div>
       </li>
-        <% }
-        %>
+      <% }
+      %>
 
       <li>
         <div class="carrello">

@@ -46,7 +46,7 @@
           </a>
         </td>
         </td>
-        <td><a href="DettagliTicketControl?codiceTicket<%=ticket.getCodice()%>" class="btn">Visualizza</a></td>
+        <td><a href="DettagliTicketControl?codiceTicket=<%=ticket.getCodice()%>" class="btn">Visualizza</a></td>
       </tr>
       <%
           }

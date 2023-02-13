@@ -31,7 +31,7 @@ public class VenditaControl extends HttpServlet {
         ProductBean product = new ProductBean();
         product.setEmail((String) request.getSession().getAttribute("email"));
 
-        String UPLOAD_DIRECTORY = "immagini/prodotti";
+        String UPLOAD_DIRECTORY = "C:/Users/eljon/Desktop/immaginiIS";
 
         for (Part p : request.getParts()) {
             if ("nome".equals(p.getName())) {

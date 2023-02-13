@@ -18,7 +18,7 @@
 <div class="container">
   <div class="product">
     <div class="gallery">
-        <img src="<%=bean.getImmagine()%>" alt="immagini/prodotti/scarpe.png">
+        <img src="<%=bean.getImmagine()%>" onerror="this.src='immagini/prodotti/scarpe.png'">
     </div>
     <div class="details">
         <h1><%=bean.getNome()%></h1>

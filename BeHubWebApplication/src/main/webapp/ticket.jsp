@@ -51,7 +51,10 @@
     </div>
     </div>
 </div>
-    <jsp:include page="footer.jsp"/>
+
+    <div style="margin-top: 480px">
+        <jsp:include page="footer.jsp"/>
+    </div>
 </body>
 
 </html>
