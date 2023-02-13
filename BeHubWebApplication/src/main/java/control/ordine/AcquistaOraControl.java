@@ -6,12 +6,10 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import model.DAOImplementation.OrderDAOModel;
-import model.DAOInterfaces.OrderDAO;
-import model.DAOInterfaces.ProductDAO;
-import model.bean.ProductBean;
 import model.DAOImplementation.ProductDAOModel;
-import model.bean.UserBean;
+import model.DAOInterfaces.ProductDAO;
+import model.bean.CartBean;
+import model.bean.ProductBean;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -26,31 +24,26 @@ public class AcquistaOraControl extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         //Smistamento richiesta all'inserimento prodotto nel carrello
+        String redirect = null;
         if (request.getParameter("aggiungiAlCarrello") != null) {
-            RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/InserimentoProdottoControl?codice=" + request.getParameter("codice") + "&quantity=" + request.getParameter("quantity"));
-            dispatcher.forward(request, response);
+            redirect = "/InserimentoProdottoControl?codice=" + request.getParameter("codice") + "&quantity=" + request.getParameter("quantity");
         }
         //Funzionalità di acquisto rapido
         else {
-            OrderDAO orderModel = new OrderDAOModel();
             ProductDAO productModel = new ProductDAOModel();
             int codice = Integer.parseInt(request.getParameter("codice"));
-            UserBean utente = (UserBean) request.getSession().getAttribute("utente");
-            Boolean control = false;
+            CartBean carrello = (CartBean) request.getSession().getAttribute("carrello");
 
             try {
                 ProductBean prodotto = productModel.doRetrieveByKey(codice);
-                control = orderModel.doOrder(prodotto, utente);
+                carrello.setCarrello(prodotto);
+                request.getSession().setAttribute("carrello", carrello);
+                redirect = "/checkout.jsp";
             } catch (SQLException e) {
                 e.printStackTrace();
             }
-
-            if (control == true) {
-                response.sendRedirect(request.getContextPath() + "/ListaOrdiniUtenteControl?emailOrdini=" + utente.getEmail());
-            }
-            else {
-                response.sendRedirect(request.getContextPath() + "/prodotto.jsp?codiceProdotto=" + codice + "&errormsg=true");
-            }
         }
+        RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(redirect);
+        dispatcher.forward(request, response);
     }
 }

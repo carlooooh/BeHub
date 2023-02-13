@@ -1,215 +1,136 @@
-* {
-    margin: 0;
-    padding: 0;
-
-}
-
-html,
 body {
-    width: 100%;
-    height: 100vh;
+    font-family: 'Roboto', sans-serif!important;
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
     background: linear-gradient(to right, #c04848, #610361);
-    color: #fff;
-    overflow: hidden;
 }
 
-@media (min-width: 900px) {
-    .container {
-        display: flex;
-    }
-    .left {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-    }
-}
-
-.container {
-    width: 96%;
-    margin: 30px auto;
-}
-
-.column {
-    width: 50%;
-    height: 100vh;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    margin: 20px;
-    border-radius: 20px;
-}
-
-.left {
+.mainscreen
+{
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    padding: 0 0 100px 0;
-    font-family: Poppins, sans-serif;
-    border: none;
+    color:#963E7B;
 }
 
+.card {
+    width: 60rem;
+    margin: auto;
+    background: white;
+    position:center;
+    align-self: center;
+    top: 50rem;
+    border-radius: 1.5rem;
+    box-shadow: 4px 3px 20px #3535358c;
+    display:flex;
+    flex-direction: row;
 
-.header h1 {
-    text-transform: uppercase;
-    font-size: 150px;
-    font-weight: 300;
-    flex-grow: 1;
-}
-
-.ml12 .letter {
-    display: inline-block;
-    line-height: 1em;
-}
-
-.sottotitolo {
-    color: black;
-    font-family: Poppins, sans-serif;
-    text-transform: uppercase;
-    font-size: 20px;
-    font-weight: 400;
-    padding: 10px;
-    flex-grow: 2;
-    cursor: pointer;
 }
 
-.price {
-    display: flex;
-    justify-content: space-between;
-    color: #fff;
-    font-family: Poppins, sans-serif;
-    text-transform: uppercase;
-    font-size: 20px;
-    font-weight: 400;
-    width: 50%;
-}
-
-.right {
-    padding: 30px;
-}
-
-.nav {
-    display: flex;
-    justify-content: space-between;
-    color: #fff;
-    font-family: Poppins, sans-serif;
-    text-transform: uppercase;
-    font-size: 14px;
-    font-weight: 400;
-    padding-bottom: 20px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    cursor: pointer;
-}
-/*
-.active {
-    color: rgb(104, 104, 104);
-}
-*/
-.card-img {
-    display: flex;
-    justify-content: center;
+.leftside {
+    background: #030303;
+    width: 25rem;
+    display: inline-flex;
     align-items: center;
-
+    justify-content: center;
+    border-top-left-radius: 1.5rem;
+    border-bottom-left-radius: 1.5rem;
 }
 
-.card-img img {
-    width: 110%;
+.product {
+    object-fit: cover;
+    width: 20em;
+    height: 20em;
+    border-radius: 100%;
 }
 
-/*
-.form input {
-    width: 100%;
-    background: none;
-    border: none;
-    border-bottom: 1px solid rgb(104, 104, 104);
-    outline: none;
-    padding: 20px 20px 20px 0;
-    margin: 0 0;
-    color: #fff;
-    font-family: Poppins, sans-serif;
-    text-transform: uppercase;
-    font-size: 14px;
+.rightside {
+    background-color: #ffffff;
+    width: 35rem;
+    border-bottom-right-radius: 1.5rem;
+    border-top-right-radius: 1.5rem;
+    padding: 1rem 2rem 3rem 3rem;
+}
+
+p{
+    display:block;
+    font-size: 1.1rem;
     font-weight: 400;
+    margin: .8rem 0;
 }
 
-.form-row {
-    display: flex;
-    left:-123px;
-
-}
-
-button {
+.inputbox
+{
+    color:#030303;
     width: 100%;
-    margin: 40px 0;
-    padding: 20px 0;
-    background: #c04848;
-    color: #fff;
-    text-transform: uppercase;
-    font-size: 14px;
+    padding: 0.5rem;
     border: none;
-    font-weight: 400;
-    outline: none;
-    border-radius: 40px;
-    cursor: pointer;
+    border-bottom: 1.5px solid #ccc;
+    margin-bottom: 1rem;
+    border-radius: 0.3rem;
+    font-family: 'Roboto', sans-serif;
+    color: #615a5a;
+    font-size: 1.1rem;
+    font-weight: 500;
+    outline:none;
 }
-*/
-@media (max-width: 900px) {
-    html,
-    body {
-        height: 100%;
-        overflow: visible;
-    }
-    .left {
-        display: flex;
 
+.expcvv {
+    display:flex;
+    justify-content: space-between;
+    padding-top: 0.6rem;
+}
+
+.expcvv_text{
+    padding-right: 1rem;
+}
+.expcvv_text2{
+    padding:0 1rem;
+}
+
+.button{
+    background: linear-gradient(
+            135deg
+            , #753370 0%, #298096 100%);
+    padding: 15px;
+    border: none;
+    border-radius: 50px;
+    color: white;
+    font-weight: 400;
+    font-size: 1.2rem;
+    margin-top: 10px;
+    width:100%;
+    letter-spacing: .11rem;
+    outline:none;
+}
+
+.button:hover
+{
+    transform: scale(1.05) translateY(-3px);
+    box-shadow: 3px 3px 6px #38373785;
+}
+
+@media only screen and (max-width: 1000px) {
+    .card{
         flex-direction: column;
-        justify-content: space-between;
+        width: auto;
+
     }
 
-    .column {
-        width: 94% !important;
+    .leftside{
+        width: 100%;
+        border-top-right-radius: 0;
+        border-bottom-left-radius: 0;
+        border-top-right-radius:0;
+        border-radius:0;
+    }
+
+    .rightside{
+        width:auto;
+        border-bottom-left-radius: 1.5rem;
+        padding:0.5rem 3rem 3rem 2rem;
+        border-radius:0;
     }
 }
-
-.step {
-    display: none;
-}
-.step.active {
-    display: block;
-}
-.form-group {
-    width: 100%;
-    margin-top: 20px;
-}
-.form-group input {
-    width: 100%;
-    background: none;
-    border: none;
-    border-bottom: 1px solid rgb(104, 104, 104);
-    outline: none;
-    padding: 20px 20px 20px 0;
-    margin: 0 0;
-    color: #fff;
-    font-family: Poppins, sans-serif;
-    text-transform: uppercase;
-    font-size: 14px;
-    font-weight: 400;
-}
-
-button.next-btn,
-button.previous-btn {
-    float: right;
-    margin-top: 20px;
-    padding: 10px 30px;
-    border: none;
-    outline: none;
-    background: #c04848;
-    font-family: "Poppins", sans-serif;
-    cursor: pointer;
-    text-align: right;
-    color: #fff;
-    text-transform: uppercase;
-    font-size: 14px;
-    font-weight: 400;
-    border-radius: 40px;
-}
-button.previous-btn {
-    float: left;
-}
-

@@ -80,7 +80,7 @@
         %>
       <li>
         <div class="logout">
-          <a href="/LogoutControl">
+          <a href="LogoutControl">
             <i class="fa-solid fa-person-through-window fa-2xl"></i>
           </a>
         </div>

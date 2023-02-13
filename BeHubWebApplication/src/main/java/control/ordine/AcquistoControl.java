@@ -36,14 +36,10 @@ public class AcquistoControl extends HttpServlet {
 
             response.sendRedirect(request.getContextPath() + "/ListaOrdiniUtenteControl?emailOrdini=" + email);
 
-            /*RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/ListaOrdiniUtenteControl?emailOrdini=" + email);
-            dispatcher.forward(request, response);*/
         }
         else {
             response.sendRedirect(request.getContextPath() + "/carrello.jsp?acquisto=failure");
 
-            /*RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/carrello.jsp?acquisto=failure");
-            dispatcher.forward(request, response); */
         }
     }
 }

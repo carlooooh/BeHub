@@ -55,6 +55,7 @@ header {
     position: relative;
     text-transform: uppercase;
 }
+/*
 .left-nav-link2::before {
     content: attr(data-item);
     transition: 0.5s;
@@ -66,11 +67,7 @@ header {
     right: 0;
     width: 0;
     overflow: hidden;
-}
-.left-nav-link2:hover::before {
-    width: 100%;
-    transition: all 0.5s ease-in-out;
-}
+} */
 
 .right-nav-link2 {
     font-size: 25px;
@@ -84,6 +81,7 @@ header {
     position: relative;
     text-transform: uppercase;
 }
+/*
 .right-nav-link2::before {
     content: attr(data-item);
     transition: 0.5s;
@@ -96,11 +94,7 @@ header {
     width: 0;
     overflow: hidden;
 }
-.right-nav-link2:hover::before {
-    width: 100%;
-    transition: all 0.5s ease-in-out;
-}
-
+*/
 
 .fa-user-astronaut{
     color:white;

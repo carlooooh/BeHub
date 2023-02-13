@@ -1,4 +1,5 @@
 <%@ page import="model.bean.ProductBean" %>
+<%@ page import="model.DAOImplementation.ProductDAOModel" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%
     ProductBean bean = new ProductBean();
@@ -17,14 +18,14 @@
 <div class="container">
   <div class="product">
     <div class="gallery">
-        <img src="immagini/scarpe.png">
+        <img src="<%=bean.getImmagine()%>" alt="immagini/prodotti/scarpe.png">
     </div>
     <div class="details">
         <h1><%=bean.getNome()%></h1>
         <h2><%=bean.getPrezzo()%> euro + <%=bean.getSpedizione()%> euro di spedizione</h2>
 
         <h3>E-mail venditore: <%=bean.getEmail()%></h3>
-        <h3>Condizione: <%=bean.getCondizione()%></h3>
+        <h3>Condizione: <%=ProductDAOModel.controllaCondizione(bean.getCondizione())%></h3>
         <p><%=bean.getDescrizione()%></p>
         <form action="AcquistaOraControl?codice=<%=bean.getCodice()%>" method="post">
 
@@ -36,7 +37,7 @@
             <%
                 if (session.getAttribute("utente") != null) {
             %>
-            <button name="acquistaOra" value="Acquista Ora">Acquista Ora</button>
+            <button name="acquistaOra" value="Acquista Ora" href="AcquistaOra?codice="<%=bean.getCodice()%>>Acquista Ora</button>
             <%  }
             %>
             <button name="aggiungiAlCarrello" value="Aggiungi al Carrello">Aggiungi al Carrello</button>

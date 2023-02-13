@@ -12,11 +12,10 @@
         <form action="ScritturaTicketControl" METHOD="POST">
         <h3>Richiesta di supporto</h3>
         <div class="oggetto">
-            <i class="fas fa-envelope"></i>
-            <input type="text" maxlength="50" placeholder="Oggetto" id="oggetto" name="oggetto">
+            <input type="text" maxlength="50" placeholder="Oggetto" id="oggetto" name="oggetto" required>
         </div>
         <div class="message-box">
-            <textarea id="msg" name="msg" cols="30" rows="10" placeholder="Scrivi qui il tuo messaggio!" maxlenght="255" style="resize: none"></textarea>
+            <textarea id="msg" name="msg" cols="30" rows="10" placeholder="Scrivi qui il tuo messaggio!" maxlenght="255" style="resize: none" required></textarea>
         </div>
         <div class="button">
             <button id="send" onclick="message()">Invia</button>
@@ -28,7 +27,9 @@
         </form>
     </div>
 </div>
-<jsp:include page="footer.jsp"/>
+<div style="margin-top: 400px">
+    <jsp:include page="footer.jsp"/>
+</div>
 
 <script>
     function message(){

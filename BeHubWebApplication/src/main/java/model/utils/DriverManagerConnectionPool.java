@@ -27,7 +27,7 @@ public class DriverManagerConnectionPool {
         Connection newConnection = null;
         String db = "BeHubDB";
         String username = "root";
-        String password = "0000";
+        String password = "admin";
 
         newConnection = DriverManager.getConnection("jdbc:mysql://localhost:3306/"+db, username, password);
 

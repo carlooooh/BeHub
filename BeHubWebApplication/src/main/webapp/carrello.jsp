@@ -49,12 +49,12 @@
                         String prezzoTot = df.format(tot);
                         somma += tot;
 
-                        String image = "img/productIMG/" + bean.getImmagine();
+                        String image = bean.getImmagine();
             %>
             <tr>
                 <td>
                     <div class="cart-info">
-                        <img src="<%=image%>" style="width: 160px; height: 160px">
+                        <img src="<%=image%>" alt="immagini/prodotti/scarpe.png" style="width: 160px; height: 160px">
                     </div>
                 </td>
                 <td><%=bean.getNome()%></td>

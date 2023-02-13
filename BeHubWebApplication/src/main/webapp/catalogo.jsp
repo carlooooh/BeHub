@@ -42,12 +42,12 @@
                         DecimalFormat df = new DecimalFormat("0.00");
 
                         String prezzoTot = df.format(tot) + " €";
-                        String image = "immagini/scarpe.png";
+                        String image = bean.getImmagine();
             %>
 
             <div class="item">
                 <div class = "item-img">
-                    <img src = "./immagini/scarpe.png" alt = "img/productIMG/noimg.jpg">
+                    <img src = "<%=image%>" alt="immagini/prodotti/scarpe.png">
                     <div class = "item-action">
                         <a href = "DettagliProdottoControl?codice=<%=bean.getCodice()%>" class = "view">
 								<span>

@@ -31,7 +31,7 @@ public class VenditaControl extends HttpServlet {
         ProductBean product = new ProductBean();
         product.setEmail((String) request.getSession().getAttribute("email"));
 
-        String UPLOAD_DIRECTORY = "C:\\Users\\franc\\OneDrive\\Documenti\\apache-tomcat-10.0.27\\BeHub\\IMG";
+        String UPLOAD_DIRECTORY = "immagini/prodotti";
 
         for (Part p : request.getParts()) {
             if ("nome".equals(p.getName())) {
@@ -78,7 +78,7 @@ public class VenditaControl extends HttpServlet {
             e.printStackTrace();
         }
         finally {
-            String redirectedPage = "/index.jsp";
+            String redirectedPage = "/ProdottiInVenditaControl";
             response.sendRedirect(request.getContextPath() + redirectedPage);
         }
     }

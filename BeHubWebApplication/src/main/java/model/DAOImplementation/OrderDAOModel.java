@@ -40,10 +40,10 @@ public class OrderDAOModel implements OrderDAO {
                     ps.setInt(4, bean.getQuantity());
 
                     ps.executeUpdate();
+                    con.commit();
 
                     productModel.diminuisciQuantità(bean.getCodice(), bean.getQuantity());
                 }
-                con.commit();
             }
             return true;
         } catch (Exception e) {
@@ -77,9 +77,9 @@ public class OrderDAOModel implements OrderDAO {
             ps.setInt(4, prodotto.getQuantity());
 
             ps.executeUpdate();
+            con.commit();
 
             productModel.diminuisciQuantità(prodotto.getCodice(), prodotto.getQuantity());
-            con.commit();
 
             return true;
         } catch (Exception e) {

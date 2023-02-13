@@ -47,12 +47,12 @@
             Double tot = prod.getPrezzo();
             String prezzoTot = df.format(tot);
 
-            String image = "img/productIMG/" + prod.getImmagine();
+            String image = prod.getImmagine();
       %>
       <tr>
         <td>
           <div class="order-info">
-            <img src="<%=image%>" style="width: 120px; height: 120px">
+            <img src="<%=image%>" alt="immagini/prodotti/scarpe.png" style="width: 120px; height: 120px">
           </div>
         </td>
         <td><%=prod.getNome()%></td>
@@ -64,9 +64,12 @@
             UserBean utente = (UserBean) session.getAttribute("utente");
             if (utente.getRole().compareTo("RU") == 0) { //l'addetto al supporto non può accedervi
         %>
-        <td><i class = "far fa-edit" style="color: red; cursor: pointer" href="/ProdottoDaModificareControl?codice=<%=prod.getCodice()%>"></i></td>
+        <td><i class = "far fa-edit" style="color: red; cursor: pointer" href=<%=request.getContextPath()%>/ProdottoDaModificareControl?codice=<%=prod.getCodice()%>"></i></td>
       </tr>
     <%      }
+    %>
+      <td></td>
+      <%
           }
         }
     %>

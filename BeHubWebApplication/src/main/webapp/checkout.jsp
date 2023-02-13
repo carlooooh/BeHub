@@ -28,57 +28,39 @@
   DecimalFormat df = new DecimalFormat("0.00");
   String prezzoTotString = df.format(prezzoTot);
 %>
-<div class="container">
-  <div class="left column">
-    <div class="header"><h1 class="ml12">Checkout</h1></div>
-    <div class="sottotitolo"> <h3> Concludi il tuo acquisto</h3></div>
-    <div class="price">
-      <span>Totale</span>
-      <span><%=prezzoTotString%> &euro;</span>
+<div class="mainscreen">
+  <div class="card">
+    <div class="leftside">
+      <img
+              src="https://i.pinimg.com/originals/18/9d/dc/189ddc1221d9c1c779dda4ad37a35fa1.png"
+              class="product"
+      />
     </div>
-  </div>
-  <div class="right column">
-    <div class="nav">
-      <div class="nav-item">indirizzo</div>
-      ➝
-      <div class="nav-item">checkout</div>
+    <div class="rightside">
+      <form action="AcquistoControl" method="post">
+        <h1>Checkout</h1>
+        <h2>Informazioni di pagamento</h2>
+        <h3>Totale: <%=prezzoTotString + " euro"%></h3>
+        <p>Indirizzo</p>
+        <input type="text" class="inputbox" placeholder="Indirizzo(via, città, provincia, cap, stato)" maxlength="150" name="indirizzo" id="indirizzo" required />
+        <p>Telefono</p>
+        <input type="text" class="inputbox" name="Ntelefono" placeholder="**********" pattern="[0-9]{10,15}" title="Inserisci un numero di telefono di 10-15 cifre" id="telefono" required />
+
+        <p>Numero Carta</p>
+        <input type="text" class="inputbox" placeholder="****************" name="numero-carta" id="card_number" required />
+        <div class="expcvv">
+          <p class="expcvv_text">Expiry</p>
+          <input type="date" class="inputbox" name="exp_date" name="scadenza" id="exp_date" required />
+
+          <p class="expcvv_text2">CVV</p>
+          <input type="password" class="inputbox" name="cvv" id="cvv" placeholder="***" required />
+        </div>
+        <p></p>
+        <button type="submit" class="button" name="acquisto-button">Concludi acquisto</button>
+      </form>
     </div>
-    <div id="img" class="card-img">
-      <img src="immagini/card.png" alt="" />
-    </div>
-
-
-    <div class="container2">
-    <form action="AcquistoControl" method="post">
-
-    <div class="step step-1 active">
-      <div class="form-group">
-        <input type="text" placeholder="indirizzo(via, città, procincia, cap, stato)" id="indirizzo" name="indirizzo" maxlength="150" required>
-      </div>
-      <div class="form-group">
-        <input type="text" id="Ntelefono" name="Ntelefono" pattern="[0-9]{10,15}" title="Inserisci un numero di telefono di 10-15 cifre" placeholder="numero di telefono" required>
-      </div>
-      <button type="button" class="next-btn">Next</button>
-    </div>
-
-    <div class="step step-2">
-      <div class="form-group">
-        <input type="text" id="numero-carta" name="numero-carta" pattern="[0-9]{16}" title="Inserisci un numero valido di 16 cifre" placeholder="numero carta" required>
-      </div>
-      <div class="form-group">
-        <input type="date" placeholder="scadenza" name="scadenza" required/>
-        &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-        <input type="text" minlength="3" maxlength="3" placeholder="cvv" name="CVV" required/>
-      </div>
-      <button type="button" class="previous-btn">Prev</button>
-    </div>
-    </form>
-    </div>
-
-
   </div>
 </div>
-
+<jsp:include page="footer.jsp"/>
 </body>
-<script src="prec-suc.js"> </script>
 </html>

@@ -43,6 +43,6 @@ public class ModificaProdottoControl extends HttpServlet {
             CartBean carrello = cartModel.updateCarrello(prodotto, (CartBean) request.getSession().getAttribute("carrello"));
             request.getSession().setAttribute("carrello", carrello);
         }
-        response.sendRedirect(request.getContextPath() + "/index.jsp");
+        response.sendRedirect(request.getContextPath() + "/ProdottiInVenditaControl");
     }
 }

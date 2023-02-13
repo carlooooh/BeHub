@@ -271,7 +271,8 @@ public class ProductDAOModel implements ProductDAO {
 
     //Metodo per diminuire la quantità di un prodotto dopo l'acquisto
     public synchronized boolean diminuisciQuantità(int codiceProdotto, int quantitàAcquistata) {
-        String sql = "UPDATE Prodotto SET quantity = quantity - ? WHERE codice = ?";
+        String sql = "UPDATE Prodotto SET quantity = ? WHERE codice = ?";
+        String sql2 = "UPDATE Prodotto SET deleted = ? WHERE quantity = 0 AND codice = ?";
         Connection connection = null;
 
         try {
@@ -281,7 +282,13 @@ public class ProductDAOModel implements ProductDAO {
             ps.setInt(2, codiceProdotto);
 
             ps.executeUpdate();
-            //connection.commit();
+            connection.commit();
+            
+            PreparedStatement ps2 = connection.prepareStatement(sql2);
+            ps2.setBoolean(1, true);
+            ps2.setInt(2, codiceProdotto);
+            ps2.executeUpdate();
+            connection.commit();
 
             return true;
         }
